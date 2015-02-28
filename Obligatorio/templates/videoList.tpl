@@ -12,13 +12,13 @@
         <title>2 Col Portfolio - Start Bootstrap Template</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/2-col-portfolio.css" rel="stylesheet">
-        <link href="css/starRating.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
-        <link rel="icon" type="image/png" href="faviconMovie.jpg">
+        <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
+        <link href="resources/css/starRating.css" rel="stylesheet">
+        <link href="resources/css/main.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
     </head>
 
     <body>
@@ -77,14 +77,14 @@
         <div class="footer"></div>
 
         <!-- jQuery -->
-        <script src="js/jquery.js"></script>
+        <script src="resources/js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
 
         <!-- custom scripts -->
-        <script src="js/videoList.js"></script>
-        <script src="js/main.js"></script>
+        <script src="resources/js/videoList.js"></script>
+        <script src="resources/js/main.js"></script>
 
         <script>
             $(function () {
