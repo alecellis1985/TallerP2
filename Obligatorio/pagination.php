@@ -10,8 +10,9 @@
 	$videoTotalCount = 0;
 	$conn = new PDO('mysql:host=localhost;dbname=videoProducer', 'root', 'oso2203');
 
-
-	$sql = "SELECT * FROM videos WHERE deleted <> 1 LIMIT 8";
+        $page = (int)$_POST['pageNumber'];
+        
+        $sql = "SELECT * FROM videos WHERE deleted <> 1 LIMIT ".(($page-1)*8).",8";
 	$sqlCount = "SELECT COUNT(*) FROM videos WHERE deleted <> 1";
 	
 	$result = $conn->query($sql);
@@ -20,10 +21,12 @@
 	$resultCount = $resultCountQuery->fetch();
 	
 	if($resultCount){
-		$videoCount = $resultCount[0];
+                $previousRecordsCount = ($page-1)*8;
+                
+		$videoCount = $resultCount[0] - $previousRecordsCount;
 		if($videoCount > 8)
 			$videoCount = 8;
-
+                
 		$videoTotalCount = $resultCount[0];
 		
 		for ($i=0; $i < $videoCount ; $i+=2) { 
@@ -44,5 +47,4 @@
 	$smarty->assign('videosCount', $videoTotalCount);
 	$smarty->assign('videoPages', $videoPages);
 
-	$smarty->display("videoList.tpl");
-?>
+	$smarty->display("videoPage.tpl");

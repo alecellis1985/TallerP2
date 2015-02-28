@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-02-19 17:57:44
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-02-28 10:56:12
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1424373394,
+      1 => 1425065901,
       2 => 'file',
     ),
   ),
@@ -15,17 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54e64e48ea0814_53351998',
   'variables' => 
   array (
-    'videos' => 0,
-    'pair' => 0,
-    'video' => 0,
     'videoPages' => 0,
     'i' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54e64e48ea0814_53351998',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54e64e48ea0814_53351998')) {function content_54e64e48ea0814_53351998($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -67,36 +64,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
             <!-- /.row -->
 
+            <div id="videosContainer">
+                <?php echo $_smarty_tpl->getSubTemplate ("videoPage.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-            <!-- Projects Row -->
-            <?php  $_smarty_tpl->tpl_vars['pair'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['pair']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['videos']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['pair']->key => $_smarty_tpl->tpl_vars['pair']->value) {
-$_smarty_tpl->tpl_vars['pair']->_loop = true;
-?>
-                <div class="row">
-                    <?php  $_smarty_tpl->tpl_vars['video'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['video']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['pair']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['video']->key => $_smarty_tpl->tpl_vars['video']->value) {
-$_smarty_tpl->tpl_vars['video']->_loop = true;
-?>
-                        <div class="col-md-6 portfolio-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $_smarty_tpl->tpl_vars['video']->value['url'];?>
-?rel=0" frameborder="0" allowfullscreen></iframe>
-                            <h3>
-                                <a href="#"><?php echo $_smarty_tpl->tpl_vars['video']->value['client'];?>
-</a>
-                            </h3>
-                            <p class="starRating"></p>
-                            <p><?php echo $_smarty_tpl->tpl_vars['video']->value['description'];?>
-</p>
-                        </div>
-                    <?php } ?>
-                </div>
-            <?php } ?>
-            <!-- /.row -->
-
-
+            </div>
             <hr>
 
             <!-- Pagination -->
@@ -104,22 +75,31 @@ $_smarty_tpl->tpl_vars['video']->_loop = true;
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="#" class="firstPage">&laquo;</a>
+                            <a href="#" class="firstPage disableClick">&laquo;</a>
+                        </li>
+                        <li>
+                            <a href="#" class="previousPage disableClick">&lsaquo;</a>
                         </li>
                         <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['videoPages']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['videoPages']->value)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
                             <li <?php if ($_smarty_tpl->tpl_vars['i']->value==1) {?> class="active"<?php }?>>
-                                <a href="#" class="paginationBtn"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+                                <a href="#" class="paginationBtn" value="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 </a>
                             </li>                   
-                        <?php }} ?> 
+                        <?php }} ?>
                         <li>
-                            <a href="#" class="lastPage">&raquo;</a>
+                            <a href="#" class="nextPage <?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?>disableClick<?php }?>">&rsaquo;</a>
+                        </li>
+                        <li>
+                            <a href="#" class="lastPage <?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?>disableClick<?php }?>">&raquo;</a>
                         </li>
                     </ul>
                 </div>
+                <input type="hidden" id="totalPages" value="<?php echo $_smarty_tpl->tpl_vars['videoPages']->value;?>
+">
             </div>
             <!-- /.row -->
 
@@ -141,7 +121,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 
         <!-- custom scripts -->
         <?php echo '<script'; ?>
- src="js/index.js"><?php echo '</script'; ?>
+ src="js/videoList.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  src="js/main.js"><?php echo '</script'; ?>

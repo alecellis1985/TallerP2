@@ -336,3 +336,24 @@ html {
         page-break-after: avoid;
     }
 }
+
+.bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.top-buffer { 
+    margin-top:20px;
+}
+
+.bottom-buffer {
+    margin-bottom: 25px;
+}
+
+.companyLogo{ 
+    max-height: 250px;
+    max-width: 250px;
+}
+
+.disableClick{
+    pointer-events: none;
+}

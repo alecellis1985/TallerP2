@@ -38,25 +38,9 @@
             </div>
             <!-- /.row -->
 
-
-            <!-- Projects Row -->
-            {foreach from=$videos item=pair}
-                <div class="row">
-                    {foreach from=$pair item=video}
-                        <div class="col-md-6 portfolio-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{$video.url}?rel=0" frameborder="0" allowfullscreen></iframe>
-                            <h3>
-                                <a href="#">{$video.client}</a>
-                            </h3>
-                            <p class="starRating"></p>
-                            <p>{$video.description}</p>
-                        </div>
-                    {/foreach}
-                </div>
-            {/foreach}
-            <!-- /.row -->
-
-
+            <div id="videosContainer">
+                {include file="videoPage.tpl"}
+            </div>
             <hr>
 
             <!-- Pagination -->
@@ -64,18 +48,25 @@
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="#" class="firstPage">&laquo;</a>
+                            <a href="#" class="firstPage disableClick">&laquo;</a>
+                        </li>
+                        <li>
+                            <a href="#" class="previousPage disableClick">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
                             <li {if $i == 1} class="active"{/if}>
-                                <a href="#" class="paginationBtn">{$i}</a>
+                                <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
                             </li>                   
-                        {/for} 
+                        {/for}
                         <li>
-                            <a href="#" class="lastPage">&raquo;</a>
+                            <a href="#" class="nextPage {if $videoPages == 1 }disableClick{/if}">&rsaquo;</a>
+                        </li>
+                        <li>
+                            <a href="#" class="lastPage {if $videoPages == 1 }disableClick{/if}">&raquo;</a>
                         </li>
                     </ul>
                 </div>
+                <input type="hidden" id="totalPages" value="{$videoPages}">
             </div>
             <!-- /.row -->
 
@@ -92,7 +83,7 @@
         <script src="js/bootstrap.min.js"></script>
 
         <!-- custom scripts -->
-        <script src="js/index.js"></script>
+        <script src="js/videoList.js"></script>
         <script src="js/main.js"></script>
 
         <script>
