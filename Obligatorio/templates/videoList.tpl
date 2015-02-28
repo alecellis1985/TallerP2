@@ -54,7 +54,7 @@
                             <a href="#" class="previousPage disableClick">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
-                            <li {if $i == 1} class="active"{/if}>
+                            <li  class="{if $i == 1}active{/if}{if $i == $videoPages}lastPageBtn{/if}{if $i == 1} firstPageBtn{/if}">
                                 <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
                             </li>                   
                         {/for}

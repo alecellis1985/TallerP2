@@ -16,22 +16,15 @@ $(document).on("click", ".paginationBtn", function (e) {
     $(this).parent().addClass("active");
 
     if (pageNumber === 1) {
-        $(".previousPage").addClass("disableClick");
-        $(".firstPage").addClass("disableClick");
-        $(".nextPage").removeClass("disableClick");
-        $(".lastPage").removeClass("disableClick");
+        setEnablePrevAndFirst(false);
+        setEnableNextAndLast(true);
     } else {
         if (pageNumber === parseInt($("#totalPages").val())) {
-
-            $(".previousPage").removeClass("disableClick");
-            $(".firstPage").removeClass("disableClick");
-            $(".nextPage").addClass("disableClick");
-            $(".lastPage").addClass("disableClick");
-        }else{
-            $(".previousPage").removeClass("disableClick");
-            $(".firstPage").removeClass("disableClick");
-            $(".nextPage").removeClass("disableClick");
-            $(".lastPage").removeClass("disableClick");
+            setEnablePrevAndFirst(true);
+            setEnableNextAndLast(false);
+        } else {
+            setEnablePrevAndFirst(true);
+            setEnableNextAndLast(true);
         }
     }
 
@@ -42,13 +35,10 @@ $(document).on("click", ".nextPage", function (e) {
     var nextPageButton = $(".pagination .active").next().children().first();
     nextPageButton.click();
 
-    $(".firstPage").removeClass("disableClick");
-    $(".previousPage").removeClass("disableClick");
-    if (nextPageButton[0].innerHTML === $("#totalPages").val()) {
-        $(".nextPage").addClass("disableClick");
-        $(".lastPage").addClass("disableClick");
-    }
-
+//    setEnablePrevAndFirst(true);
+//    if (nextPageButton[0].innerHTML === $("#totalPages").val()) {
+//        setEnableNextAndLast(false);
+//    }
 });
 
 $(document).on("click", ".previousPage", function (e) {
@@ -56,19 +46,29 @@ $(document).on("click", ".previousPage", function (e) {
     var previousPageButton = $(".pagination .active").prev().children().first();
     previousPageButton.click();
 
-    $(".nextPage").removeClass("disableClick");
-    $(".lastPage").removeClass("disableClick");
-    if (previousPageButton[0].innerHTML === 1) {
-        $(".previousPage").addClass("disableClick");
-        $(".firstPage").addClass("disableClick");
-    }
+//    setEnableNextAndLast(true);
+//    if (previousPageButton[0].innerHTML === 1) {
+//        setEnablePrevAndFirst(false);
+//    }
 
+});
+
+$(document).on("click",".lastPage", function(e){
+    e.preventDefault();
+    var lastPageButton = $(".lastPageBtn").children().first();
+    lastPageButton.click();
+    
+});
+
+$(document).on("click",".firstPage", function(e){
+    e.preventDefault();
+    var firstPageButton = $(".firstPageBtn").children().first();
+    firstPageButton.click();
+    
 });
 
 function inicioEnvio()
 {
-//  var x=$("#resultados");
-//  x.html('<img src="../cargando.gif">');
 }
 
 function llegadaDatos(datos)
@@ -79,7 +79,27 @@ function llegadaDatos(datos)
 
 function problemas()
 {
-    $("#resultados").text('Problemas en el servidor.');
+}
+
+function setEnablePrevAndFirst(enabled) {
+    if (enabled) {
+        $(".previousPage").removeClass("disableClick");
+        $(".firstPage").removeClass("disableClick");
+    } else {
+        $(".previousPage").addClass("disableClick");
+        $(".firstPage").addClass("disableClick");
+    }
+
+}
+
+function setEnableNextAndLast(enabled) {
+    if (enabled) {
+        $(".nextPage").removeClass("disableClick");
+        $(".lastPage").removeClass("disableClick");
+    } else {
+        $(".nextPage").addClass("disableClick");
+        $(".lastPage").addClass("disableClick");
+    }
 }
 
 
