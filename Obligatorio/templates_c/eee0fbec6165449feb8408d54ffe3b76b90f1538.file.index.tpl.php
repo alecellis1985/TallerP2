@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-02-28 14:58:34
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-02-28 15:17:16
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2489954f1d0de60cbf6-39540379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eee0fbec6165449feb8408d54ffe3b76b90f1538' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425146300,
+      1 => 1425147411,
       2 => 'file',
     ),
   ),
@@ -65,11 +65,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value[0]['url'];?>
 ?rel=0" frameborder="0" allowfullscreen></iframe>
                     <h3>
-                        <a href="#"><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value[0]['client'];?>
+                        <a href="#"><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['client'];?>
 </a>
                     </h3>
                     <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
-                    <p><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value[0]['description'];?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['description'];?>
 </p>
                 </div>
                 
@@ -77,7 +77,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <h3>
                         <i>MyCompany films</i> featured Video
                     </h3>
-                    <p><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value[0]['description'];?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['description'];?>
 </p>
                 </div>
 

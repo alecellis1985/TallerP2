@@ -39,17 +39,17 @@
                 <div class="col-md-6 portfolio-item">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/{$mainVideo[0].url}?rel=0" frameborder="0" allowfullscreen></iframe>
                     <h3>
-                        <a href="#">{$mainVideo[0].client}</a>
+                        <a href="#">{$mainVideo.client}</a>
                     </h3>
                     <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
-                    <p>{$mainVideo[0].description}</p>
+                    <p>{$mainVideo.description}</p>
                 </div>
                 
                 <div class="col-md-5 col-md-offset-1">
                     <h3>
                         <i>MyCompany films</i> featured Video
                     </h3>
-                    <p>{$mainVideo[0].description}</p>
+                    <p>{$mainVideo.description}</p>
                 </div>
 
             </div>
