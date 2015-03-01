@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-02-28 12:53:39
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 12:52:51
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425138805,
+      1 => 1425224994,
       2 => 'file',
     ),
   ),
@@ -26,9 +26,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54f1d1c5eccf48_06368168')) {function content_54f1d1c5eccf48_06368168($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,11 +61,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </div>
             </div>
             <!-- /.row -->
-
             <div id="videosContainer">
                 <?php echo $_smarty_tpl->getSubTemplate ("videoPage.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
             </div>
+            
             <hr>
 
             <!-- Pagination -->
@@ -75,26 +73,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="#" class="firstPage disableClick">&laquo;</a>
+                            <a href="" class="firstPage disableClick" title="First page">&laquo;</a>
                         </li>
                         <li>
-                            <a href="#" class="previousPage disableClick">&lsaquo;</a>
+                            <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['videoPages']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['videoPages']->value)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
                             <li <?php if ($_smarty_tpl->tpl_vars['i']->value==1) {?> class="active"<?php }?>>
-                                <a href="#" class="paginationBtn" value="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+                                <a href="" class="paginationBtn" data-page="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 </a>
                             </li>                   
                         <?php }} ?>
                         <li>
-                            <a href="#" class="nextPage <?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?>disableClick<?php }?>">&rsaquo;</a>
-                        </li>
+                            <a href="" class="nextPage" data-page="2" title="Next page">&rsaquo;</a>
+                        </li> 
                         <li>
-                            <a href="#" class="lastPage <?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?>disableClick<?php }?>">&raquo;</a>
+                            <a href="" class="lastPage" data-page="<?php echo $_smarty_tpl->tpl_vars['videoPages']->value;?>
+" title="Last page">&raquo;</a>
                         </li>
                     </ul>
                 </div>
@@ -102,23 +101,18 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 ">
             </div>
             <!-- /.row -->
-
-
         </div>
         <!-- /.container -->
-
         <div class="footer"></div>
-
-        <!-- jQuery -->
         <?php echo '<script'; ?>
  src="resources/js/jquery.js"><?php echo '</script'; ?>
 >
-
-        <!-- Bootstrap Core JavaScript -->
         <?php echo '<script'; ?>
  src="resources/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-
+        <?php echo '<script'; ?>
+ src="resources/js/jquery.loadTemplate-1.4.4.min"><?php echo '</script'; ?>
+>
         <!-- custom scripts -->
         <?php echo '<script'; ?>
  src="resources/js/videoList.js"><?php echo '</script'; ?>
@@ -126,7 +120,6 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
 >
-
         <?php echo '<script'; ?>
 >
             $(function () {
@@ -136,8 +129,6 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
             });
         <?php echo '</script'; ?>
 > 
-
     </body>
-
 </html>
 <?php }} ?>

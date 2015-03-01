@@ -2,21 +2,21 @@
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 -- 
--- Servidor: localhost
--- Tiempo de generación: 28-02-2015 a las 10:39:27
--- Versión del servidor: 5.0.51
--- Versión de PHP: 5.2.6
+-- Host: localhost
+-- Generation Time: Mar 01, 2015 at 03:14 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- Base de datos: `videoproducer`
+-- Database: `videoproducer`
 -- 
 
 -- --------------------------------------------------------
 
 -- 
--- Estructura de tabla para la tabla `comments`
+-- Table structure for table `comments`
 -- 
 
 CREATE TABLE `comments` (
@@ -31,14 +31,14 @@ CREATE TABLE `comments` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- 
--- Volcar la base de datos para la tabla `comments`
+-- Dumping data for table `comments`
 -- 
 
 
 -- --------------------------------------------------------
 
 -- 
--- Estructura de tabla para la tabla `ratings`
+-- Table structure for table `ratings`
 -- 
 
 CREATE TABLE `ratings` (
@@ -49,14 +49,14 @@ CREATE TABLE `ratings` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
--- Volcar la base de datos para la tabla `ratings`
+-- Dumping data for table `ratings`
 -- 
 
 
 -- --------------------------------------------------------
 
 -- 
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 -- 
 
 CREATE TABLE `users` (
@@ -66,7 +66,7 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
--- Volcar la base de datos para la tabla `users`
+-- Dumping data for table `users`
 -- 
 
 INSERT INTO `users` VALUES ('admin', '5f4dcc3b5aa765d61d8327deb882cf99');
@@ -74,11 +74,12 @@ INSERT INTO `users` VALUES ('admin', '5f4dcc3b5aa765d61d8327deb882cf99');
 -- --------------------------------------------------------
 
 -- 
--- Estructura de tabla para la tabla `videos`
+-- Table structure for table `videos`
 -- 
 
 CREATE TABLE `videos` (
   `idVideo` int(10) unsigned NOT NULL auto_increment,
+  `destacado` tinyint(4) NOT NULL default '0',
   `url` varchar(50) NOT NULL,
   `views` int(11) NOT NULL default '0',
   `description` longtext,
@@ -90,16 +91,16 @@ CREATE TABLE `videos` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 -- 
--- Volcar la base de datos para la tabla `videos`
+-- Dumping data for table `videos`
 -- 
 
-INSERT INTO `videos` VALUES (22, 'F14n63OM3go', 0, 'Bordo vs 12', 'Bordo vs 12', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (23, 'ArislVlGea4', 0, 'Bordo vs Yaguari', 'Bordo vs Yaguari', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (24, 'mJVDeIwSEnw', 0, 'Bordo vs Wanderers', 'Bordo vs Wanderers', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (25, 'CmWaRy31eSA', 0, 'Bordo vs Matadero', 'Bordo vs Matadero', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (17, 'DlJEt2KU33I', 0, '2014 World Cup', 'John Oliver Brazil World Cup', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (18, 'ybyxjlas4Z0', 0, 'Bordo premios', 'Bordo Premios', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (19, '00gzNbI9_a4', 0, 'Bordo vs OCC', 'Bordo vs OCC', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (20, 'nnDfGTGzNDY', 0, 'Bordo vs Odonto', 'Bordo vs Odontologia', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (21, 'ZNpMJGLHDGQ', 0, 'Bordo vs Moron', 'Bordo vs Moron', '2015-10-01', 0x30);
-INSERT INTO `videos` VALUES (16, 'Y0oX0xiwOv8', 0, 'Boyhood is nominated for a total of 6 Academy Awards including Best Picture, Best Actor in a Supporting Role (Ethan Hawke), Best Actress in a Supporting Role (Patricia Arquette), Best Director (Richard Linklater), Best Film Editing (Sandra Adair) and Best Original Screenplay (Richard Linklater). ', 'Boyhood | Official US Trailer | 2015 Oscar No', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (22, 1, 'F14n63OM3go', 0, 'Bordo vs 12', 'Bordo vs 12', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (23, 0, 'ArislVlGea4', 0, 'Bordo vs Yaguari', 'Bordo vs Yaguari', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (24, 0, 'mJVDeIwSEnw', 0, 'Bordo vs Wanderers', 'Bordo vs Wanderers', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (25, 0, 'CmWaRy31eSA', 0, 'Bordo vs Matadero', 'Bordo vs Matadero', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (17, 0, 'DlJEt2KU33I', 0, '2014 World Cup', 'John Oliver Brazil World Cup', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (18, 0, 'ybyxjlas4Z0', 0, 'Bordo premios', 'Bordo Premios', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (19, 0, '00gzNbI9_a4', 0, 'Bordo vs OCC', 'Bordo vs OCC', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (20, 0, 'nnDfGTGzNDY', 0, 'Bordo vs Odonto', 'Bordo vs Odontologia', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (21, 0, 'ZNpMJGLHDGQ', 0, 'Bordo vs Moron', 'Bordo vs Moron', '2015-10-01', 0x30);
+INSERT INTO `videos` VALUES (16, 0, 'Y0oX0xiwOv8', 0, 'Boyhood is nominated for a total of 6 Academy Awards including Best Picture, Best Actor in a Supporting Role (Ethan Hawke), Best Actress in a Supporting Role (Patricia Arquette), Best Director (Richard Linklater), Best Film Editing (Sandra Adair) and Best Original Screenplay (Richard Linklater). ', 'Boyhood | Official US Trailer | 2015 Oscar No', '2015-10-01', 0x30);

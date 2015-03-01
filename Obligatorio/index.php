@@ -19,9 +19,8 @@ if($conn->conectar())
         }
         else
         {
-            "No existe video destacado";
+            echo "No existe video destacado";
         }
-        
     }
     else{
             echo "Error de SQL";

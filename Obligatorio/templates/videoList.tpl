@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,10 +35,10 @@
                 </div>
             </div>
             <!-- /.row -->
-
             <div id="videosContainer">
                 {include file="videoPage.tpl"}
             </div>
+            
             <hr>
 
             <!-- Pagination -->
@@ -48,44 +46,36 @@
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="#" class="firstPage disableClick">&laquo;</a>
+                            <a href="" class="firstPage disableClick" title="First page">&laquo;</a>
                         </li>
                         <li>
-                            <a href="#" class="previousPage disableClick">&lsaquo;</a>
+                            <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
                             <li {if $i == 1} class="active"{/if}>
-                                <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
+                                <a href="" class="paginationBtn" data-page="{$i}">{$i}</a>
                             </li>                   
                         {/for}
                         <li>
-                            <a href="#" class="nextPage {if $videoPages == 1 }disableClick{/if}">&rsaquo;</a>
-                        </li>
+                            <a href="" class="nextPage" data-page="2" title="Next page">&rsaquo;</a>
+                        </li> 
                         <li>
-                            <a href="#" class="lastPage {if $videoPages == 1 }disableClick{/if}">&raquo;</a>
+                            <a href="" class="lastPage" data-page="{$videoPages}" title="Last page">&raquo;</a>
                         </li>
                     </ul>
                 </div>
                 <input type="hidden" id="totalPages" value="{$videoPages}">
             </div>
             <!-- /.row -->
-
-
         </div>
         <!-- /.container -->
-
         <div class="footer"></div>
-
-        <!-- jQuery -->
         <script src="resources/js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
         <script src="resources/js/bootstrap.min.js"></script>
-
+        <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
         <!-- custom scripts -->
         <script src="resources/js/videoList.js"></script>
         <script src="resources/js/main.js"></script>
-
         <script>
             $(function () {
                 $("#header").load("header.html");
@@ -93,7 +83,5 @@
                 $(".footer").load("footer.html");
             });
         </script> 
-
     </body>
-
 </html>
