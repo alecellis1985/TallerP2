@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 12:52:51
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 17:11:50
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425224994,
+      1 => 1425240706,
       2 => 'file',
     ),
   ),
@@ -73,7 +73,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="" class="firstPage disableClick" title="First page">&laquo;</a>
+                            <a href="" class="firstPage disableClick" data-page="1" title="First page">&laquo;</a>
                         </li>
                         <li>
                             <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>

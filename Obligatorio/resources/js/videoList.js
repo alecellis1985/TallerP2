@@ -2,34 +2,27 @@
 $(document).ready(start);
 
 function start(){
+        $(".firstPage").click(goToPage);
 	$(".previousPage").click(goToPage);
 	$(".nextPage").click(goToPage);
         $(".lastPage").click(goToPage);
         $(".paginationBtn").click(goToPage);
 }
 
-
 function goToPage(e){
     e.preventDefault();
+    if($(this).parent('li').attr('class') === 'active') return false;
     var pageNumber = parseInt($(this).attr('data-page'));
-    //var data = "pagina=" + pageNumber;
-    
-    var data = {
-      'pagina':pageNumber
-    };
-    data = $.param(data);
-    
-    
+    $(this).blur();
     $.ajax({
         type: "POST",
         dataType: "json",
         beforeSend: inicioEnvio,
-        success: llegadaDatos,
+        success: function(datos){llegadaDatos(datos,pageNumber);},
         timeout: 4000,
         error: problemas,
         url: "pagination.php",
-        data: data
-        //data:{pagina:pageNumber}
+        data: "pagina=" + pageNumber
     });
 }
 
@@ -39,11 +32,13 @@ function inicioEnvio()
 //  x.html('<img src="../cargando.gif">');
 }
 
-function llegadaDatos(datos)
-{
+function llegadaDatos(datos,page)
+{//Borro los videos actuales y appendeo los nuevos videos
+    
     var vidContainer = $('#videosContainer');
     vidContainer.empty();
-    for(var i=0;i<8;i+=2)
+    var length = datos.length;
+    for(var i=0;i<length;i+=2)
     {
         var row = $('<div class="row"></div>');
         for(var j=0;j<2;j++)
@@ -61,6 +56,56 @@ function llegadaDatos(datos)
             row.append(tmplt);
         }
         vidContainer.append(row);
+    }
+    
+    $('.pagination li').removeClass('active');
+    $('.paginationBtn').each(function(key,val){
+	element = $(val);
+        if(element.data('page')===page)
+        {
+            element.parent('li').addClass('active');
+        }
+    });
+    setPagingElements(page);
+    return false;
+}
+
+function setPagingElements(page)
+{
+    var totPages = parseInt($('#totalPages').val());
+    if(totPages===1)return;
+    setPrevFirstElem(page);
+    setNextLastElem(page,totPages);
+    var previousPage = page < 2 ? 1 : page-1;
+    var nextPage = page < totPages ? page + 1 : totPages;
+    $(".previousPage").attr("data-page",previousPage);
+    $(".nextPage").attr("data-page",nextPage);
+}
+function setNextLastElem(page,totPages)
+{
+    if(page<totPages)
+    {
+        $(".nextPage").removeClass("disableClick");
+        $(".lastPage").removeClass("disableClick");
+    }
+    else
+    {
+        $(".nextPage").addClass("disableClick");
+        $(".lastPage").addClass("disableClick");
+    }
+}
+
+function setPrevFirstElem(page)
+{
+    if(page>1)
+    {
+        $(".previousPage").removeClass("disableClick");
+        $(".firstPage").removeClass("disableClick");
+    }
+    else
+    {
+        $(".previousPage").addClass("disableClick");
+        $(".firstPage").addClass("disableClick");
     }
 }
 

@@ -46,7 +46,7 @@
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="" class="firstPage disableClick" title="First page">&laquo;</a>
+                            <a href="" class="firstPage disableClick" data-page="1" title="First page">&laquo;</a>
                         </li>
                         <li>
                             <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
