@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 17:11:50
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 17:35:23
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425240706,
+      1 => 1425242121,
       2 => 'file',
     ),
   ),
@@ -42,6 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
         <link href="resources/css/starRating.css" rel="stylesheet">
         <link href="resources/css/main.css" rel="stylesheet">
+        <link href="resources/css/common.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
     </head>
 
@@ -51,7 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <!-- Page Content -->
         <div class="container">
-
+            <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
             <!-- Page Header -->
             <div class="row">
                 <div class="col-lg-12">

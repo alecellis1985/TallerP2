@@ -16,6 +16,7 @@
         <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
         <link href="resources/css/starRating.css" rel="stylesheet">
         <link href="resources/css/main.css" rel="stylesheet">
+        <link href="resources/css/common.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
     </head>
 
@@ -25,7 +26,7 @@
 
         <!-- Page Content -->
         <div class="container">
-
+            <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
             <!-- Page Header -->
             <div class="row">
                 <div class="col-lg-12">
