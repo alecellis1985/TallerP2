@@ -20,7 +20,7 @@ function goToPage(e){
         timeout: 4000,
         error: problemas,
         url: "pagination.php",
-        data: "pagina=" + pageNumber
+        data: "pagenumber=" + pageNumber
     });
 }
 
