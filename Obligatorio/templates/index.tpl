@@ -66,10 +66,8 @@
             var bootstrap_enabled = (typeof $().modal == 'function');
             bootstrap_enabled || document.write('<link rel="stylesheet" href="resources/css/bootstrap.css">');
         </script>
-
         <script src="resources/js/plugins.js"></script>
         <script src="resources/js/main.js"></script>
-
         <script>
             $(function () {
                 $("#header").load("header.html");
