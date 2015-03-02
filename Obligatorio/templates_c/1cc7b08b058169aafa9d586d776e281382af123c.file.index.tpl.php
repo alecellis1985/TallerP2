@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-02-28 11:40:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 10:41:48
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:276854f086b5dbb433-12109124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cc7b08b058169aafa9d586d776e281382af123c' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425052013,
+      1 => 1425300864,
       2 => 'file',
     ),
   ),
@@ -32,10 +32,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="resources/css/normalize.css">
+        <link rel="stylesheet" href="resources/css/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="icon" type="image/png" href="faviconMovie.jpg">
+        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
 
     </head>
 
@@ -56,13 +56,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-2">
-                    <img class="companyLogo"src='img/companyLogo.png' alt='Blast off with Bootstrap' />
+                    <img class="companyLogo"src='resources/img/companyLogo.png' alt='Blast off with Bootstrap' />
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-md-6 portfolio-item">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['url'];?>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value[0]['url'];?>
 ?rel=0" frameborder="0" allowfullscreen></iframe>
                     <h3>
                         <a href="#"><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['client'];?>
@@ -92,7 +92,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
         <?php echo '<script'; ?>
 >window.jQuery || document.write('<?php echo '<script'; ?>
- src="js/jquery.js"><\/script>')<?php echo '</script'; ?>
+ src="resources/js/jquery.js"><\/script>')<?php echo '</script'; ?>
 >
 
         <?php echo '<script'; ?>
@@ -101,17 +101,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <?php echo '<script'; ?>
 >
             var bootstrap_enabled = (typeof $().modal == 'function');
-            bootstrap_enabled || document.write('<link rel="stylesheet" href="css/bootstrap.css">');
+            bootstrap_enabled || document.write('<link rel="stylesheet" href="resources/css/bootstrap.css">');
         <?php echo '</script'; ?>
 >
-
         <?php echo '<script'; ?>
- src="js/plugins.js"><?php echo '</script'; ?>
+ src="resources/js/plugins.js"><?php echo '</script'; ?>
 >
-        <?php echo '<script'; ?>
- src="js/main.js"><?php echo '</script'; ?>
->
-
+        
         <?php echo '<script'; ?>
 >
             $(function () {
@@ -120,7 +116,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             });
         <?php echo '</script'; ?>
 > 
-
+        <?php echo '<script'; ?>
+ src="resources/js/main.js"><?php echo '</script'; ?>
+>
     </body>
 </html>
 <?php }} ?>
