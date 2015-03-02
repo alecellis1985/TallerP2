@@ -20,3 +20,7 @@ and open the template in the editor.
     background: #413F3F;
 }
 
+.hide
+{
+    display:none;
+}

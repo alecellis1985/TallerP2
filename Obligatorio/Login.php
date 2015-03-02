@@ -11,7 +11,7 @@ $smarty->compile_dir = 'templates_c';
 $usuario =  $_POST['username'];
 $password = $_POST['password'];
 if(!isset($usuario) && !isset($password))
-{
+{//TODO ERRORS and do login ajax wei
     $smarty->assign("error",$error_message);
     $smarty->display("index.tpl");
     $smarty->assign("errorName",$error_name);
@@ -32,10 +32,10 @@ else
             if(isset($user['userName']))
             {
                 $_SESSION['ingreso'] = true;
-                $_SESSION['usuario'] = $user['username'];
+                $_SESSION['usuario'] = $user['userName'];
                 $_SESSION['password'] = $user['password'];
-                setcookie('usuario',$usuario);
-                $smarty->display("videoList.tpl");
+                setcookie('usuario',  $user['userName']);
+                header('Location: videoList.php');
             }
             else
             {

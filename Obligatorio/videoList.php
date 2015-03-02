@@ -2,10 +2,17 @@
     require_once("includes/libs/Smarty.class.php");
     require_once("includes/class.Conexion.BD.php");
     require_once("config/parametros.php");
-
+    
+    session_start();
+    
     $smarty = new Smarty();
     $smarty->template_dir = 'templates';
     $smarty->compile_dir = 'templates_c';
+    if(!isset($_SESSION['ingreso'] ) || !$_SESSION['ingreso'])
+    {
+        header('Location: index.php');
+    }
+    
     $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
     if($conn->conectar())
     {

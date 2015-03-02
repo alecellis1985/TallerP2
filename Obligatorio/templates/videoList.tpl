@@ -75,8 +75,8 @@
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
         <!-- custom scripts -->
-        <script src="resources/js/videoList.js"></script>
         <script src="resources/js/main.js"></script>
+        <script src="resources/js/videoList.js"></script>        
         <script>
             $(function () {
                 $("#header").load("header.html");

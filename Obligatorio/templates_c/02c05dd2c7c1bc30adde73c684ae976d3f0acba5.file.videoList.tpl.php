@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 22:00:14
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 22:51:38
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425258012,
+      1 => 1425260790,
       2 => 'file',
     ),
   ),
@@ -52,7 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <!-- Page Content -->
         <div class="container">
-            <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="50%" width="50%"></div>
+            <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
             <!-- Page Header -->
             <div class="row">
                 <div class="col-lg-12">
@@ -116,11 +116,11 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 >
         <!-- custom scripts -->
         <?php echo '<script'; ?>
- src="resources/js/videoList.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
 >
+        <?php echo '<script'; ?>
+ src="resources/js/videoList.js"><?php echo '</script'; ?>
+>        
         <?php echo '<script'; ?>
 >
             $(function () {
