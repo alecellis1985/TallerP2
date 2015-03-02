@@ -23,7 +23,7 @@
             <p>{$videos[$x-1].description}</p>
         </div>
     {if $x%2 == 0}
->>>>>>> origin/master
+
     </div>
     {/if}
 {/for} 

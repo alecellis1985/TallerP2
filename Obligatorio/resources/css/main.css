@@ -357,3 +357,8 @@ html {
 .disableClick{
     pointer-events: none;
 }
+
+.error{
+    color: red;
+    font-style: italic
+}

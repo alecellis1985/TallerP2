@@ -43,6 +43,47 @@ function logOut(e)
     });
 }
 
+$(document).on("submit", "#logInForm", logIn);
+$(document).on("click","#closeModal", clearLogInForm);
+
+function clearLogInForm(e){
+    $(':input','#logInForm')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
+    $("#logInErrors").text("");
+    $("#logInErrors").parent().addClass("hide");
+}
+
+function logIn(e){
+    e.preventDefault();
+    var userName = $("#userName").val();
+    var password = $("#pwd").val();
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        success: function(result){ processLogIn(result);},
+        timeout: 4000,
+        error: errorLogIn,
+        url: "Login.php",
+        data: {username: userName, password: password}
+    });
+}
+
+function processLogIn(result){
+    if(result.success){
+        window.location.replace("index.php");        
+    }else{
+        $("#logInErrors").text(result.errorMsj);
+        $("#logInErrors").parent().removeClass("hide");        
+    }
+}
+
+function errorLogIn(e){
+    alert("System error. Contact you SA.");
+}
+
 function logOutSuccess()
 {
     setCookie('usuario', '', -1);
