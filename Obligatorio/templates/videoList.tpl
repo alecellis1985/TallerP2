@@ -89,7 +89,6 @@
         <script>
             $(function () {
                 $("#header").load("header.html");
-                $(".starRating").load("starRating.html");
                 $(".footer").load("footer.html");
             });
         </script> 

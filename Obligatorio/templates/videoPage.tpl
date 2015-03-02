@@ -6,7 +6,7 @@
                 <h3>
                     <a href="#">{$video.client}</a>
                 </h3>
-                <p class="starRating"></p>
+                <p class="starRating">{include file="starRating.tpl"}</p>
                 <p>{$video.description}</p>
             </div>
         {/foreach}
