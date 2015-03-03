@@ -1,20 +1,13 @@
 <?php
 session_start();
-require_once("includes/libs/Smarty.class.php");
 require_once("includes/class.Conexion.BD.php");
 require_once("config/parametros.php");
-
-$smarty = new Smarty();
-$smarty->template_dir = 'templates';
-$smarty->compile_dir = 'templates_c';
 
 $usuario =  $_POST['username'];
 $password = $_POST['password'];
 if(!isset($usuario) && !isset($password))
 {//TODO ERRORS and do login ajax wei
-    $smarty->assign("error",$error_message);
-    $smarty->display("index.tpl");
-    $smarty->assign("errorName",$error_name);
+    echo "User or Password is not correct";
 }
 else
 {
@@ -35,12 +28,12 @@ else
                 $_SESSION['usuario'] = $user['userName'];
                 $_SESSION['password'] = $user['password'];
                 setcookie('usuario',  $user['userName']);
-                header('Location: videoList.php');
+                echo "Hello&nbsp" . $user['userName'] . " you have been successfuly logged in.";
             }
             else
             {
                 $_SESSION['ingreso'] = false;
-                $smarty->display("index.tpl");
+                echo "User or Password is not correct";
             }
         }
         else
