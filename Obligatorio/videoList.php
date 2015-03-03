@@ -2,17 +2,10 @@
     require_once("includes/libs/Smarty.class.php");
     require_once("includes/class.Conexion.BD.php");
     require_once("config/parametros.php");
-    
     session_start();
-    
     $smarty = new Smarty();
     $smarty->template_dir = 'templates';
     $smarty->compile_dir = 'templates_c';
-    //La lista de videos es publica para que califiquen y comenten. No es necesario logearse.
-//    if(!isset($_SESSION['ingreso'] ) || !$_SESSION['ingreso'])
-//    {
-//        header('Location: index.php');
-//    }
     
     $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
     if($conn->conectar())
@@ -44,41 +37,4 @@
     {
         echo "Could not connect to SQL";
     }
-    
-    
-    /*$videoPairs = array();
-    $videoTotalCount = 0;
-    $conn = new PDO('mysql:host=localhost;dbname=videoProducer', 'root', 'turtleman1');
-
-
-    $sql = "SELECT * FROM videos WHERE deleted <> 1 LIMIT 8";
-    $sqlCount = "SELECT COUNT(*) FROM videos WHERE deleted <> 1";
-
-    $result = $conn->query($sql);
-    $resultCountQuery = $conn->query($sqlCount);
-
-    $resultCount = $resultCountQuery->fetch();
-
-    if($resultCount){
-            $videoCount = $resultCount[0];
-            if($videoCount > 8)
-                    $videoCount = 8;
-
-            $videoTotalCount = $resultCount[0];
-
-            for ($i=0; $i < $videoCount ; $i+=2) { 
-                    $pair = array($result->fetch());
-                    $next = $result->fetch();
-                    if ($next) {
-                            array_push($pair, $next);
-                    }
-                    array_push($videoPairs, $pair);
-            }
-    }
-    $videoPages = ceil($resultCount[0]/CANTPAG);
-
-    $smarty->assign('videos', $videoPairs);	
-    $smarty->assign('videosCount', $videoTotalCount);
-    $smarty->assign('videoPages', $videoPages);
-*/
     $smarty->display("videoList.tpl");

@@ -4,7 +4,19 @@
  */
 var Helper = (function() {
     var alertTypes = ['success' , 'error', 'block'];
- 
+    var getUserAsync = function()
+    {
+        var deferred = $.Deferred();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            success: function(result){ deferred.resolve(result)},
+            timeout: 4000,
+            error: errorLogIn,
+            url: "getUser.php",
+        });  
+        return deferred.promise();
+    }
     return {
         /**
          * Alert Types to use for alertMsg function
@@ -13,6 +25,10 @@ var Helper = (function() {
         getAlertTypes:function()
         {
             return alertTypes;
+        },
+        getUser:function()
+        {
+            return getUserAsync();
         },
         /**
          * Function to show 'success' , 'error', 'block' messages in the container div.
