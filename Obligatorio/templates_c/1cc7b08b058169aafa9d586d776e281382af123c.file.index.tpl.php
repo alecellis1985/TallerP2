@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 10:41:48
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 14:55:10
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:276854f086b5dbb433-12109124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cc7b08b058169aafa9d586d776e281382af123c' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425300864,
+      1 => 1425318882,
       2 => 'file',
     ),
   ),
@@ -41,10 +41,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <body>
         <!-- Navigation -->
-        <div id="header"></div>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
+        <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
+        
         <div class="container" style="margin-top: 70px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-6 ">
@@ -85,7 +84,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         </div>
 
-        <div class="footer"></div>
+        <div class="footer"><?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
 
         <?php echo '<script'; ?>
  src="http://code.jquery.com/jquery-1.11.2.min.js"><?php echo '</script'; ?>
@@ -107,15 +107,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <?php echo '<script'; ?>
  src="resources/js/plugins.js"><?php echo '</script'; ?>
 >
-        
-        <?php echo '<script'; ?>
->
-            $(function () {
-                $("#header").load("header.html");
-                $(".footer").load("footer.html");
-            });
-        <?php echo '</script'; ?>
-> 
+               
         <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
 >

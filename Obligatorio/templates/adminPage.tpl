@@ -17,16 +17,11 @@
     <body>
         <!-- Navigation -->
         <div id="header">{include file="header.tpl"}</div>
-        
-        <div class="container" style="margin-top: 70px;">
+        <div id="body" class="container" style="margin-top: 70px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-6 ">
                     <h2><i>MyCompany films corp.</i></h2>
-                    <div>
-                        <p> We are a film producer company that offer our clients high quality custom videos for their business. Bla
-                            Bla Bla Bla Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla Bla
-                            Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla Bla.</p>
-                    </div>
+                    
                 </div>
                 <div class="col-md-4 col-md-offset-2">
                     <img class="companyLogo"src='resources/img/companyLogo.png' alt='Blast off with Bootstrap' />
@@ -35,19 +30,11 @@
             </div>
             <div class="row">
                 <div class="col-md-6 portfolio-item">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{$mainVideo[0].url}?rel=0" frameborder="0" allowfullscreen></iframe>
-                    <h3>
-                        <a href="#">{$mainVideo.client}</a>
-                    </h3>
-                    <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
-                    <p>{$mainVideo.description}</p>
+                   
                 </div>
                 
                 <div class="col-md-5 col-md-offset-1">
-                    <h3>
-                        <i>MyCompany films</i> featured Video
-                    </h3>
-                    <p>{$mainVideo.description}</p>
+                    
                 </div>
 
             </div>
@@ -65,7 +52,8 @@
             bootstrap_enabled || document.write('<link rel="stylesheet" href="resources/css/bootstrap.css">');
         </script>
         <script src="resources/js/plugins.js"></script>
-               
+        
+       
         <script src="resources/js/main.js"></script>
     </body>
 </html>

@@ -22,7 +22,7 @@
 
     <body>
 
-        <div id="header"></div>
+        <div id="header">{include file="header.tpl"}</div>
 
         <!-- Page Content -->
         <div class="container">
@@ -75,18 +75,14 @@
             <!-- /.row -->
         </div>
         <!-- /.container -->
-        <div class="footer"></div>
+        <div class="footer">{include file="footer.tpl"}</div>
+        
         <script src="resources/js/jquery.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
         <!-- custom scripts -->
         <script src="resources/js/main.js"></script>
         <script src="resources/js/videoList.js"></script>        
-        <script>
-            $(function () {
-                $("#header").load("header.html");
-                $(".footer").load("footer.html");
-            });
-        </script> 
+        
     </body>
 </html>
