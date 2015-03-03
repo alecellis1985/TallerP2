@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 11:00:55
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 23:35:42
          compiled from "templates\videoPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3092054f1c8fcc796a4-62577662%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '51dd9406b89923476a38130f920081cf816f7b33' => 
     array (
       0 => 'templates\\videoPage.tpl',
-      1 => 1425304852,
+      1 => 1425350140,
       2 => 'file',
     ),
   ),
@@ -38,7 +38,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <a href="#"><?php echo $_smarty_tpl->tpl_vars['videos']->value[$_smarty_tpl->tpl_vars['x']->value-1]['client'];?>
 </a>
             </h3>
-            <p class="starRating"></p>
+            <p class="starRating"><?php echo $_smarty_tpl->getSubTemplate ("starRating.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</p>
             <p><?php echo $_smarty_tpl->tpl_vars['videos']->value[$_smarty_tpl->tpl_vars['x']->value-1]['description'];?>
 </p>
         </div>

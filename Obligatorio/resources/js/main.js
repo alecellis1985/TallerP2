@@ -72,7 +72,6 @@ function logIn(e){
 
 function processLogIn(result){
     if(result.success){
-        //window.location.replace("index.php");   
         $('#logIn').addClass('hide');
         $('#logOut').removeClass('hide');
         $('#logInForm .btn-default').trigger('click');

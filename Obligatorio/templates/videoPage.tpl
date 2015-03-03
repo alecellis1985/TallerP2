@@ -19,7 +19,7 @@
             <h3>
                 <a href="#">{$videos[$x-1].client}</a>
             </h3>
-            <p class="starRating"></p>
+            <p class="starRating">{include file="starRating.tpl"}</p>
             <p>{$videos[$x-1].description}</p>
         </div>
     {if $x%2 == 0}

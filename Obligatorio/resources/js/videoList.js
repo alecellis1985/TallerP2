@@ -46,7 +46,19 @@ function llegadaDatos(datos,page)
                 '<h3>'+
                     '<a href="#">'+datos[i+j].client+'</a>'+
                 '</h3>'+
-                '<p class="starRating"></p>'+
+                '<p class="starRating">'+
+                '<span class="star-rating">'+
+                ' <input type="radio" name="rating" value="1">' +
+                '<i></i>' +
+                ' <input type="radio" name="rating" value="2">' +
+                '<i></i>' +
+                ' <input type="radio" name="rating" value="3">' +
+                '<i></i>' +
+                ' <input type="radio" name="rating" value="4">' +
+                '<i></i>' +
+                ' <input type="radio" name="rating" value="5">' +
+                '<i></i>' +
+                '</p>' +
                 '<p>'+datos[i+j].description+'</p>'+
             '</div>';
             row.append(tmplt);

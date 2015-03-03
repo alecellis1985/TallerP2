@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 14:55:10
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 23:18:10
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:276854f086b5dbb433-12109124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cc7b08b058169aafa9d586d776e281382af123c' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425318882,
+      1 => 1425348666,
       2 => 'file',
     ),
   ),
@@ -33,10 +33,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="resources/css/normalize.css">
-        <link rel="stylesheet" href="resources/css/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
-
+        <link rel="stylesheet" href="resources/css/main.css">
+        <link rel="stylesheet" href="resources/css/common.css">
     </head>
 
     <body>
@@ -107,7 +107,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <?php echo '<script'; ?>
  src="resources/js/plugins.js"><?php echo '</script'; ?>
 >
-               
+        <?php echo '<script'; ?>
+ src="resources/js/helper.js"><?php echo '</script'; ?>
+>
         <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
 >

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 10:47:02
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 23:13:52
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425303107,
+      1 => 1425318897,
       2 => 'file',
     ),
   ),
@@ -48,7 +48,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <body>
 
-        <div id="header"></div>
+        <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
 
         <!-- Page Content -->
         <div class="container">
@@ -106,7 +107,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
             <!-- /.row -->
         </div>
         <!-- /.container -->
-        <div class="footer"></div>
+        <div class="footer"><?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
+        
         <?php echo '<script'; ?>
  src="resources/js/jquery.js"><?php echo '</script'; ?>
 >
@@ -123,14 +126,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <?php echo '<script'; ?>
  src="resources/js/videoList.js"><?php echo '</script'; ?>
 >        
-        <?php echo '<script'; ?>
->
-            $(function () {
-                $("#header").load("header.html");
-                $(".footer").load("footer.html");
-            });
-        <?php echo '</script'; ?>
-> 
+        
     </body>
 </html>
 <?php }} ?>
