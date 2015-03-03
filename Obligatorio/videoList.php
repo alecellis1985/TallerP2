@@ -8,10 +8,11 @@
     $smarty = new Smarty();
     $smarty->template_dir = 'templates';
     $smarty->compile_dir = 'templates_c';
-    if(!isset($_SESSION['ingreso'] ) || !$_SESSION['ingreso'])
-    {
-        header('Location: index.php');
-    }
+    //La lista de videos es publica para que califiquen y comenten. No es necesario logearse.
+//    if(!isset($_SESSION['ingreso'] ) || !$_SESSION['ingreso'])
+//    {
+//        header('Location: index.php');
+//    }
     
     $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
     if($conn->conectar())

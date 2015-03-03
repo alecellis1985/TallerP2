@@ -22,7 +22,7 @@
 
     <body>
 
-        <div id="header"></div>
+        <div id="header">{include file="header.tpl"}</div>
 
         <!-- Page Content -->
         <div class="container">
@@ -53,8 +53,13 @@
                             <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
+{*<<<<<<< HEAD
+                            <li  class="{if $i == 1}active{/if}{if $i == $videoPages}lastPageBtn{/if}{if $i == 1} firstPageBtn{/if}">
+                                <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
+=======*}
                             <li {if $i == 1} class="active"{/if}>
                                 <a href="" class="paginationBtn" data-page="{$i}">{$i}</a>
+
                             </li>                   
                         {/for}
                         <li>
@@ -70,19 +75,14 @@
             <!-- /.row -->
         </div>
         <!-- /.container -->
-        <div class="footer"></div>
+        <div class="footer">{include file="footer.tpl"}</div>
+        
         <script src="resources/js/jquery.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
         <!-- custom scripts -->
         <script src="resources/js/main.js"></script>
         <script src="resources/js/videoList.js"></script>        
-        <script>
-            $(function () {
-                $("#header").load("header.html");
-                $(".starRating").load("starRating.html");
-                $(".footer").load("footer.html");
-            });
-        </script> 
+        
     </body>
 </html>

@@ -69,7 +69,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES ('admin', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `users` VALUES ('admin', md5('admin');
 
 -- --------------------------------------------------------
 

@@ -30,7 +30,8 @@ function inicioEnvio()
 }
 
 function llegadaDatos(datos,page)
-{//Borro los videos actuales y appendeo los nuevos videos
+{
+    //Borro los videos actuales y appendeo los nuevos videos
     var vidContainer = $('#videosContainer');
     vidContainer.empty();
     var length = datos.length;
