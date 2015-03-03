@@ -1,21 +1,12 @@
 <?php
 session_start();
-require_once("includes/libs/Smarty.class.php");
 require_once("includes/class.Conexion.BD.php");
 require_once("config/parametros.php");
-
-$smarty = new Smarty();
-$smarty->template_dir = 'templates';
-$smarty->compile_dir = 'templates_c';
 
 $usuario =  $_POST['username'];
 $password = $_POST['password'];
 if(!isset($usuario) && !isset($password))
 {
-    //TODO ERRORS and do login ajax wei
-//    $smarty->assign("error",$error_message);
-//    $smarty->display("index.tpl");
-//    $smarty->assign("errorName",$error_name);
     $result = array("success" => false, "errorMsj" => "Username and/or password are required");
     echo json_encode($result);
 }
@@ -38,7 +29,6 @@ else
                 $_SESSION['usuario'] = $user['userName'];
                 $_SESSION['password'] = $user['password'];
                 setcookie('usuario',  $user['userName']);
-                //header('Location: videoList.php');
                 $result = array("success" => true, "errorMsj" => "");
                 echo json_encode($result);
             }
