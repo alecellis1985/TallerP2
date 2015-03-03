@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 01:32:49
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 21:57:57
          compiled from "templates\videoPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:124354f1d1c6069eb2-06555742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e7a6035636a9189d8dca436a4d9aea9691d816ca' => 
     array (
       0 => 'templates\\videoPage.tpl',
-      1 => 1425184195,
+      1 => 1425341665,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ?>
     <?php if ($_smarty_tpl->tpl_vars['x']->value%2==0) {?>
     <div class="row">
+
     <?php }?>
         <div class="col-md-6 portfolio-item">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $_smarty_tpl->tpl_vars['videos']->value[$_smarty_tpl->tpl_vars['x']->value-1]['url'];?>
@@ -42,6 +43,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </p>
         </div>
     <?php if ($_smarty_tpl->tpl_vars['x']->value%2==0) {?>
+
     </div>
     <?php }?>
-<?php }} ?> <?php }} ?>
+<?php }} ?> 
+<?php }} ?>

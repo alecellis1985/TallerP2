@@ -16,20 +16,22 @@ $(document).ready(startDoc);
 
 function startDoc()
 {
-    var user = getCookie('usuario');
-    $(window).load(function(){
-      if(user === undefined)
-    {
-        $('#logIn').removeClass('hide');
-        $('#logOut').removeClass('hide').addClass('hide');
-    }
-    else
-    {
-        $('#logIn').addClass('hide');
-        $('#logOut').removeClass('hide');
-    }
-    $('#logOut').click(logOut);
-   });
+    var user = Helper.getCookie('usuario');
+    //$(window).load(function(){
+        if(user === undefined)
+        {
+            $('#logIn').removeClass('hide');
+            $('#logOut').removeClass('hide').addClass('hide');
+        }
+        else
+        {
+            $('#logIn').addClass('hide');
+            $('#logOut').removeClass('hide');
+        }
+        $('#logOut').click(logOut);
+        $('#closeModal').click(clearLogInForm);
+        $("#logInForm").submit(logIn);
+   //});
 }
 
 function logOut(e)
@@ -42,9 +44,6 @@ function logOut(e)
         timeout: 4000
     });
 }
-
-$(document).on("submit", "#logInForm", logIn);
-$(document).on("click","#closeModal", clearLogInForm);
 
 function clearLogInForm(e){
     $(':input','#logInForm')
@@ -73,7 +72,12 @@ function logIn(e){
 
 function processLogIn(result){
     if(result.success){
-        window.location.replace("index.php");        
+        //window.location.replace("index.php");   
+        $('#logIn').addClass('hide');
+        $('#logOut').removeClass('hide');
+        $('#logInForm .btn-default').trigger('click');
+        clearLogInForm();
+        Helper.alertMsg($('#alerts'),Helper.getAlertTypes()[0],'Hello&nbsp' +Helper.getCookie('usuario') + ' you have been successfuly logged in.');
     }else{
         $("#logInErrors").text(result.errorMsj);
         $("#logInErrors").parent().removeClass("hide");        
@@ -86,36 +90,6 @@ function errorLogIn(e){
 
 function logOutSuccess()
 {
-    setCookie('usuario', '', -1);
+    Helper.setCookie('usuario', '', -1);
     window.location = "index.php";
-}
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-    }
-    return undefined;
-}
-
-function checkCookie() {
-    var user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
-    }
 }
