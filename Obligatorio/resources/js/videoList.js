@@ -110,10 +110,3 @@ function problemas()
 {
     $("#resultados").text('Problemas en el servidor.');
 }
-/*
-function activeLink()
-{
-    $(".pagination li").removeClass("active");
-    $(this).parent().addClass("active");
-}
-*/

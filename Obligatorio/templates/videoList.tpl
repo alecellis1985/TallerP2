@@ -11,7 +11,6 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-
         <!-- Custom CSS -->
         <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
         <link href="resources/css/starRating.css" rel="stylesheet">
@@ -77,11 +76,12 @@
         <!-- /.container -->
         <div class="footer">{include file="footer.tpl"}</div>
         
-        <script src="resources/js/jquery.js"></script>
-        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/libs/jquery.js"></script>
+        <script src="resources/js/libs/bootstrap.min.js"></script>
         <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
         <!-- custom scripts -->
         <script src="resources/js/main.js"></script>
+        <script src="resources/js/helper.js"></script>
         <script src="resources/js/videoList.js"></script>        
         
     </body>
