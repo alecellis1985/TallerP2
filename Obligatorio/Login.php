@@ -31,6 +31,7 @@ else
                 setcookie('usuario',  $user['userName']);
                 $result = array("success" => true, "errorMsj" => "");
                 echo json_encode($result);
+                //echo "Hello&nbsp" . $user['userName'] . " you have been successfuly logged in.";
             }
             else
             {
@@ -42,7 +43,8 @@ else
         }
         else
         {
-            echo "SQL ERROR";
+            echo $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
+            echo json_encode($result);
         }
     }
 }

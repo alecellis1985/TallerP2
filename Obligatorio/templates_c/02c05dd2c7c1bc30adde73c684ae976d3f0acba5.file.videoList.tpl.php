@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-01 22:51:38
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 21:57:57
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425260790,
+      1 => 1425341665,
       2 => 'file',
     ),
   ),
@@ -48,7 +48,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <body>
 
-        <div id="header"></div>
+        <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
 
         <!-- Page Content -->
         <div class="container">
@@ -83,10 +84,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+
                             <li <?php if ($_smarty_tpl->tpl_vars['i']->value==1) {?> class="active"<?php }?>>
                                 <a href="" class="paginationBtn" data-page="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 </a>
+
                             </li>                   
                         <?php }} ?>
                         <li>
@@ -104,7 +107,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
             <!-- /.row -->
         </div>
         <!-- /.container -->
-        <div class="footer"></div>
+        <div class="footer"><?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
+        
         <?php echo '<script'; ?>
  src="resources/js/jquery.js"><?php echo '</script'; ?>
 >
@@ -121,15 +126,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <?php echo '<script'; ?>
  src="resources/js/videoList.js"><?php echo '</script'; ?>
 >        
-        <?php echo '<script'; ?>
->
-            $(function () {
-                $("#header").load("header.html");
-                $(".starRating").load("starRating.html");
-                $(".footer").load("footer.html");
-            });
-        <?php echo '</script'; ?>
-> 
+        
     </body>
 </html>
 <?php }} ?>

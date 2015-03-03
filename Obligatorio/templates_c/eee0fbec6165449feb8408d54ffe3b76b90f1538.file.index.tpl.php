@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 00:07:09
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 22:46:23
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2489954f1d0de60cbf6-39540379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eee0fbec6165449feb8408d54ffe3b76b90f1538' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425265627,
+      1 => 1425347104,
       2 => 'file',
     ),
   ),
@@ -33,18 +33,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="resources/css/normalize.css">
-        <link rel="stylesheet" href="resources/css/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
-
+        <link rel="stylesheet" href="resources/css/main.css">
+        <link rel="stylesheet" href="resources/css/common.css">
     </head>
 
     <body>
         <!-- Navigation -->
-        <div id="header"></div>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
+        <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
+        
         <div class="container" style="margin-top: 70px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-6 ">
@@ -85,7 +84,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         </div>
 
-        <div class="footer"></div>
+        <div class="footer"><?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
 
         <?php echo '<script'; ?>
  src="http://code.jquery.com/jquery-1.11.2.min.js"><?php echo '</script'; ?>
@@ -107,15 +107,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <?php echo '<script'; ?>
  src="resources/js/plugins.js"><?php echo '</script'; ?>
 >
-        
         <?php echo '<script'; ?>
+ src="resources/js/helper.js"><?php echo '</script'; ?>
 >
-            $(function () {
-                $("#header").load("header.html");
-                $(".footer").load("footer.html");
-            });
-        <?php echo '</script'; ?>
-> 
         <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
 >

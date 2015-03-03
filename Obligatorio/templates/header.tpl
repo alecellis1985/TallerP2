@@ -1,6 +1,7 @@
 <header class="navbar navbar-inverse navbar-fixed-top">
         <nav role="navigation" >
             <div class="container">
+                <div id="alerts"></div>
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -37,7 +38,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">User LogIn</h4>
       </div>
-      <form id="logInForm" role="form" action="Login.php" method="POST">
+      <form id="logInForm" role="form" action="login.php" method="POST">
           <div class="modal-body">
                 <div class="form-group">
                   <label for="userName">User:</label>
