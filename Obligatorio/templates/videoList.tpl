@@ -70,7 +70,6 @@
                     </ul>
                 </div>
                 <input type="hidden" id="totalPages" value="{$videoPages}">
-                <input type="hidden" id="userIp" value="">
             </div>
             <!-- /.row -->
         </div>

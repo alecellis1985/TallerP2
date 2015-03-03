@@ -3,7 +3,7 @@
  * @type Function| returns all basic functions
  */
 var Helper = (function() {
-    var alertTypes = ['success' , 'error', 'block'];
+    var alertTypes = ['success' , 'danger', 'info'];
     var getUserAsync = function()
     {
         var deferred = $.Deferred();

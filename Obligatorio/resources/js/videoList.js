@@ -8,14 +8,6 @@ function start() {
     //$(".star-rating input").change(rateVideo);
 }
 
-$(document).ready(function ()
-{
-    $.getJSON("http://smart-ip.net/geoip-json?callback=?", function (data) {
-        alert(data.host);
-        $("#userIp").val(data.host);
-    });
-});
-
 $(document).on("click", ".star-rating input", rateVideo);
 
 function goToPage(e) {
@@ -139,10 +131,8 @@ function problemas()
 
 }
 function rateVideo(e) {
-    debugger;
     var rating = $(this).val();
     var videoId = $(this).parent().parent().prev().val();
-    var userIp = $("#userIp").val();
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -153,14 +143,13 @@ function rateVideo(e) {
         timeout: 4000,
         error: problemas,
         url: "rating.php",
-        data: {rating: rating, videoId: videoId, userIp: userIp}
+        data: {rating: rating, videoId: videoId}
     }).done(function () {
         $('.loadingOverlay').css('display', 'none');
     });
 }
 
-function processRating(datos) {
-    debugger;
+function processRating(result) {
     if (result.success) {
         Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], 'Video successfully rated.');
     } else {
