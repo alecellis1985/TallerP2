@@ -136,15 +136,8 @@ function setPrevFirstElem(page)
 function problemas()
 {
     $("#resultados").text('Problemas en el servidor.');
-}
-/*
- function activeLink()
- {
- $(".pagination li").removeClass("active");
- $(this).parent().addClass("active");
- }
- */
 
+}
 function rateVideo(e) {
     debugger;
     var rating = $(this).val();
@@ -173,4 +166,5 @@ function processRating(datos) {
     } else {
         Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], 'You have already rated this video.');
     }
+
 }

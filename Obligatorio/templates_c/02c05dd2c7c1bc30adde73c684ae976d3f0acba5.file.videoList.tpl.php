@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 21:57:57
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-03 00:26:52
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425341665,
+      1 => 1425350771,
       2 => 'file',
     ),
   ),
@@ -37,7 +37,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <!-- Bootstrap Core CSS -->
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-
         <!-- Custom CSS -->
         <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
         <link href="resources/css/starRating.css" rel="stylesheet">
@@ -111,10 +110,10 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 </div>
         
         <?php echo '<script'; ?>
- src="resources/js/jquery.js"><?php echo '</script'; ?>
+ src="resources/js/libs/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="resources/js/bootstrap.min.js"><?php echo '</script'; ?>
+ src="resources/js/libs/bootstrap.min.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  src="resources/js/jquery.loadTemplate-1.4.4.min"><?php echo '</script'; ?>
@@ -122,6 +121,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <!-- custom scripts -->
         <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="resources/js/helper.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  src="resources/js/videoList.js"><?php echo '</script'; ?>

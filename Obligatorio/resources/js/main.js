@@ -16,22 +16,21 @@ $(document).ready(startDoc);
 
 function startDoc()
 {
-    var user = Helper.getCookie('usuario');
-    //$(window).load(function(){
-        if(user === undefined)
-        {
-            $('#logIn').removeClass('hide');
-            $('#logOut').removeClass('hide').addClass('hide');
-        }
-        else
+    Helper.getUser().then(function(data){
+        if(data.success)
         {
             $('#logIn').addClass('hide');
             $('#logOut').removeClass('hide');
         }
-        $('#logOut').click(logOut);
-        $('#closeModal').click(clearLogInForm);
-        $("#logInForm").submit(logIn);
-   //});
+        else
+        {
+            $('#logIn').removeClass('hide');
+            $('#logOut').removeClass('hide').addClass('hide');
+        }
+    });
+    $('#logOut').click(logOut);
+    $('#closeModal').click(clearLogInForm);
+    $("#logInForm").submit(logIn);
 }
 
 function logOut(e)
@@ -65,7 +64,7 @@ function logIn(e){
         success: function(result){ processLogIn(result);},
         timeout: 4000,
         error: errorLogIn,
-        url: "Login.php",
+        url: "login.php",
         data: {username: userName, password: password}
     });
 }
