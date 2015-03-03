@@ -73,7 +73,7 @@ function logIn(e){
 
 function processLogIn(result){
     if(result.success){
-        window.location.replace("index.php");        
+        window.location.replace("adminPage.php");        
     }else{
         $("#logInErrors").text(result.errorMsj);
         $("#logInErrors").parent().removeClass("hide");        

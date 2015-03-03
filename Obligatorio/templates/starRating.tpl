@@ -1,8 +1,8 @@
 <span class="star-rating">
     <input type="radio" name="rating" value="1">
-    <i class="rated"></i>
+    <i></i>
     <input type="radio" name="rating" value="2">
-    <i class="rated"></i>
+    <i></i>
     <input type="radio" name="rating" value="3">
     <i></i>
     <input type="radio" name="rating" value="4">
