@@ -52,6 +52,7 @@ function llegadaDatos(datos, page)
                     '<h3>' +
                     '<a href="#">' + datos[i + j].client + '</a>' +
                     '</h3>' +
+                    '<input type="hidden" class="videoId" value="'+ datos[i + j].idVideo + '">'+
                     '<p class="starRating">' +
                     '<span class="star-rating">' +
                     ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="1">' +
@@ -64,6 +65,7 @@ function llegadaDatos(datos, page)
                     '<i></i>' +
                     ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="5">' +
                     '<i></i>' +
+                    '</span>' +
                     '</p>' +
                     '<p>' + datos[i + j].description + '</p>' +
                     '</div>';

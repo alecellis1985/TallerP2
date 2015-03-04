@@ -9,7 +9,7 @@ if ($conn->conectar()) {
     if (empty($pagina)) {
         $pagina = 1;
     }
-    $sql = "SELECT * FROM videos WHERE deleted <> 1 LIMIT " . (($pagina - 1) * CANTPAG) . "," . CANTPAG;
+    $sql = "SELECT * FROM videos WHERE deleted  <> 1 ORDER BY rating desc LIMIT " . (($pagina - 1) * CANTPAG) . "," . CANTPAG;
     if ($conn->consulta($sql, array())) {
         $videos = $conn->restantesRegistros();
         echo json_encode($videos);

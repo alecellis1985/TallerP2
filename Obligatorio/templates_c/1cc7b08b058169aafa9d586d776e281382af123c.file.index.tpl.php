@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-02 23:18:10
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-03 18:20:34
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:276854f086b5dbb433-12109124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cc7b08b058169aafa9d586d776e281382af123c' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425348666,
+      1 => 1425356513,
       2 => 'file',
     ),
   ),
@@ -92,7 +92,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
         <?php echo '<script'; ?>
 >window.jQuery || document.write('<?php echo '<script'; ?>
- src="resources/js/jquery.js"><\/script>')<?php echo '</script'; ?>
+ src="resources/js/libs/jquery.js"><\/script>')<?php echo '</script'; ?>
 >
 
         <?php echo '<script'; ?>
@@ -105,7 +105,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="resources/js/plugins.js"><?php echo '</script'; ?>
+ src="resources/js/libs/plugins.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  src="resources/js/helper.js"><?php echo '</script'; ?>
