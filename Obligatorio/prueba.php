@@ -23,4 +23,3 @@
 
 
     $smarty->display("prueba.tpl");
-?>

@@ -16,18 +16,20 @@ $(document).ready(startDoc);
 
 function startDoc()
 {
-    Helper.getUser().then(function(data){
-        if(data.success)
-        {
-            $('#logIn').addClass('hide');
-            $('#logOut').removeClass('hide');
-        }
-        else
-        {
-            $('#logIn').removeClass('hide');
-            $('#logOut').removeClass('hide').addClass('hide');
-        }
-    });
+//    Helper.getUser().then(function(data){
+//        if(data.success)
+//        {
+//            $('#logIn').addClass('hide');
+//            $('#logOut').removeClass('hide');
+//            $('#privateComponent').show();
+//        }
+//        else
+//        {
+//            $('#logIn').removeClass('hide');
+//            $('#logOut').removeClass('hide').addClass('hide');
+//            $('#privateComponent').hide();
+//        }
+//    });
     $('#logOut').click(logOut);
     $('#closeModal').click(clearLogInForm);
     $("#logInForm").submit(logIn);
@@ -73,6 +75,7 @@ function processLogIn(result){
     if(result.success){
         $('#logIn').addClass('hide');
         $('#logOut').removeClass('hide');
+        $('#privateComponent').show();
         $('#logInForm .btn-default').trigger('click');
         clearLogInForm();
         Helper.alertMsg($('#alerts'),Helper.getAlertTypes()[0],'Hello&nbsp' +Helper.getCookie('usuario') + ' you have been successfuly logged in.');

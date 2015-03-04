@@ -22,6 +22,9 @@
                             <a id="logIn" data-toggle="modal" data-target="#myModal" href="#">Log In</a>
                             <a id="logOut" class="hide" href="">Log Out</a>
                         </li>
+                        <li id="privateComponent" style="display:none;">
+                            <a href="privateFunctions/manageVideos.php">Manage videos</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -58,7 +61,6 @@
             <button type="submit" class="btn btn-primary">Log In</button>
           </div>  
       </form>
-      
     </div>
   </div>
 </div>

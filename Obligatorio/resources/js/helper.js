@@ -16,7 +16,60 @@ var Helper = (function() {
             url: "getUser.php",
         });  
         return deferred.promise();
+    };
+    
+    var getParentElem = function (element, tagg) {
+        if (element === null || element === undefined)
+            return null;
+        if (element.nodeName.toLowerCase() === tagg.toLowerCase()) {
+            return element;
+        }
+        else {
+            return getParentElem(element.parentElement, tagg);
+        };
+    };
+    var isUndefinedOrNull = function (obj) {
+        return obj === null || obj === undefined;
     }
+    /**
+     * Deletes an element from an array 
+     * eg: deleteByPropertyAndValueInArray('id', 23, myArray)
+     * result = 1 element deleted
+     * @param {string} property
+     * @param {any} value
+     * @param {array} arr
+     * @returns {deletes element if found}
+     */
+    var deleteByPropertyAndValueInArr = function (property, value, arr) {
+        var arrLength = arr.length;
+        while (arrLength--) {
+            if (arr[arrLength][property] == value) {
+                arr.splice(arrLength, 1);
+                return;
+            }
+        }
+    };
+    /**
+     * gets an el ement from an array by a given field and value, if not found returns -1
+     * @param {array} arr
+     * @param {STRING/INT} value
+     * @param {type} field
+     * @returns {element, if not found -1}
+     */
+    var getItemByFieldValue = function (arr, value, field)
+    {
+        if (isUndefinedOrNull(arr) || isUndefinedOrNull(value) || isUndefinedOrNull(field)) {
+            return -1;
+        }
+        var arrLength = arr.length;
+        while (arrLength--)
+        {
+            if (arr[arrLength][field] == value)
+                return arr[arrLength];
+        }
+        return -1;
+    };
+    
     return {
         /**
          * Alert Types to use for alertMsg function
@@ -29,6 +82,18 @@ var Helper = (function() {
         getUser:function()
         {
             return getUserAsync();
+        },
+        getParentElement:function(element, tagg)
+        {
+            return getParentElem(element, tagg);
+        },
+        deleteByPropertyAndValueInArray:function(property, value, arr)
+        {
+            deleteByPropertyAndValueInArr(property, value, arr);
+        },
+        getItemFromArray:function(arr, value, field)
+        {
+            return getItemByFieldValue(arr, value, field);
         },
         /**
          * Function to show 'success' , 'error', 'block' messages in the container div.
