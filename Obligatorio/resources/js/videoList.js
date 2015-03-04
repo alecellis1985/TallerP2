@@ -46,13 +46,14 @@ function llegadaDatos(datos, page)
         var row = $('<div class="row"></div>');
         for (var j = 0; j < 2; j++)
         {
-            datos[i + j].url = 'https://www.youtube.com/embed/' + datos[i + j].url + '?rel=0';
+            //datos[i + j].url = 'https://www.youtube.com/embed/' + datos[i + j].url + '?rel=0';
             var tmplt = '<div class="col-md-6 portfolio-item">' +
-                    '<iframe width="560" height="315" src="' + datos[i + j].url + '" frameborder="0" allowfullscreen></iframe>' +
+                    //'<iframe class="videoPlayer" width="560" height="315" src="' + datos[i + j].url + '" frameborder="0" allowfullscreen data-videoId="' + datos[i + j].idVideo + '"></iframe>' +
+                    '<div class="videoPlayer" id="videoPlayer'+datos[i + j].idVideo+'" data-url="'+datos[i + j].url+'"></div>' +
                     '<h3>' +
                     '<a href="#">' + datos[i + j].client + '</a>' +
                     '</h3>' +
-                    '<input type="hidden" class="videoId" value="'+ datos[i + j].idVideo + '">'+
+                    '<input type="hidden" class="videoId" value="' + datos[i + j].idVideo + '">' +
                     '<p class="starRating">' +
                     '<span class="star-rating">' +
                     ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="1">' +
@@ -83,6 +84,7 @@ function llegadaDatos(datos, page)
         }
     });
     setPagingElements(page);
+    loadVideos();
     $('.loadingOverlay').css('display', 'none');
     return false;
 }

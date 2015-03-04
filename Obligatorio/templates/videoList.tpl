@@ -82,7 +82,8 @@
         <!-- custom scripts -->
         <script src="resources/js/main.js"></script>
         <script src="resources/js/helper.js"></script>
-        <script src="resources/js/videoList.js"></script>        
+        <script src="resources/js/videoList.js"></script>   
+        <script src="resources/js/youTubePlayer.js"></script>        
         
     </body>
 </html>

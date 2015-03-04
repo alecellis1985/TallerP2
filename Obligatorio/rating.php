@@ -6,7 +6,7 @@ require_once("config/parametros.php");
 
 $rating = (int) $_POST['rating'];
 $videoId = (int) $_POST['videoId'];
-$userIp = "172.0.0.2"; //$_SERVER['REMOTE_ADDR'];
+$userIp = $_SERVER['REMOTE_ADDR'];
 
 $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
 if ($conn->conectar()) {
@@ -34,8 +34,7 @@ if ($conn->conectar()) {
                 $paramsSelect[0] = array("idVideo", $videoId, "int");
                 if ($conn->consulta($sqlSelectVideo, $paramsSelect)) {
                     $videos = $conn->restantesRegistros();
-                    $video = $videos[0];
-                    
+                    $video = $videos[0];                    
                     $newVotes = intval($video["votes"]) + 1; 
                     $currentRating = floatval($video["rating"]);
                     $newAvgRating = (($currentRating + $rating) / $newVotes);
