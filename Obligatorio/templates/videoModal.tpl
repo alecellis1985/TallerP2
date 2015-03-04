@@ -5,8 +5,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="videoTitle"></h4>
       </div>
-      <form id="editVideofrm" role="form" action="editVideo.php" method="POST">
+      <form id="videofrm" role="form" action="editVideo.php" method="POST">
           <div class="modal-body">
+              <input id="idVideo"type="hidden" name="idVideo">
                 <div class="form-group">
                   <label for="userName">Client:</label>
                   <input type="text" name="client" class="form-control" placeholder="Client" required>
@@ -14,10 +15,6 @@
               <div class="form-group">
                   <label for="userName">Url:</label>
                   <input type="text" name="url" class="form-control" placeholder="Url" required>
-                </div>
-              <div class="form-group">
-                  <label for="userName">Client:</label>
-                  <input type="text" name="client" class="form-control" placeholder="Client" required>
                 </div>
               <div class="form-group">
                   <label for="userName">Release Date:</label>
