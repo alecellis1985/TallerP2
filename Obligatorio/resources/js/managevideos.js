@@ -5,7 +5,7 @@ function startVideos()
     $('.deleteVid').click(deleteVid);
     $('.editVid').click(editVid);
     $('#addVid').click(addVid);
-    $('#saveVideo').submit(saveVid);
+    $('#videofrm').submit(saveVid);
 }
 
 function addVid()
@@ -23,10 +23,13 @@ function addVid()
 function saveVid(e)
 {
     e.preventDefault();
+    var data = $(this).serialize();
+    var url = '../privateFunctions/'+$(this).attr('action');
     $.ajax({
-        type:'POST',
-        url:'../privateFunctions/'+$('#videofrm').attr('action'),
-        dataType:'json',
+        type:"POST",
+        dataType:"json",
+        url:url,
+        data:data,
         timeout: 4000,
         success:function(datos)
         {
@@ -37,10 +40,11 @@ function saveVid(e)
         {
             var pd = datos;
             //"show error"
-        },
-        data:$('#videofrm').serialize()
+        }        
     });
 }
+
+
 
 
 

@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="videoTitle"></h4>
       </div>
-      <form id="videofrm" role="form" action="editVideo.php" method="POST">
+      <form id="videofrm" role="form" action="" method="POST">
           <div class="modal-body">
               <input id="idVideo"type="hidden" name="idVideo">
                 <div class="form-group">
