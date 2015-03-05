@@ -5,4 +5,4 @@
     define("SERVIDOR", "localhost");
     define("BASE", "videoProducer");
     define("USUARIO", "root");
-    define("CLAVE", "turtleman1");
+    define("CLAVE", "oso2203");

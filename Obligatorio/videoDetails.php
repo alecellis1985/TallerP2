@@ -23,10 +23,19 @@ if ($conn->conectar()) {
         $paramsComments = array();
         $paramsComments[0] = array("videoId", $videoId, "int");
         if ($conn->consulta($sqlComments, $paramsComments)) {
-            $comments =  $conn->restantesRegistros();
+            $comments = $conn->restantesRegistros();
             $smarty->assign("comments", $comments);
-            
-            $smarty->display("videoDetails.tpl");
+
+            $sqlCount = "SELECT COUNT(*) FROM comments WHERE idVideo = :videoId";
+            $paramsCount = array();
+            $paramsCount[0] = array("videoId", $videoId, "int");
+            if ($conn->consulta($sqlCount, $paramsCount)) {
+                $commentsPages = ceil((int) $conn->cantidadRegistros() / CANTPAG);
+                $smarty->assign("commentsPages", $commentsPages);
+                $smarty->display("videoDetails.tpl");
+            } else {
+                echo "SQL ERROR.";
+            }
         } else {
             echo "SQL ERROR";
         }

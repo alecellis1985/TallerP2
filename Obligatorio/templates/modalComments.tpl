@@ -10,11 +10,11 @@
                     <input id="idVideo" type="hidden" name="idVideo">
                     <div class="form-group">
                         <label for="alias">Alias:</label>
-                        <input type="text" name="alias" class="form-control" placeholder="Alias">
+                        <input id="alias" type="text" name="alias" class="form-control" placeholder="Alias">
                     </div>
                     <div class="form-group">
                         <label for="comment">Comment:</label>
-                        <textarea class="form-control" type="text" rows="5" name="comment" class="form-control" placeholder="Comment" required></textarea>
+                        <textarea id="commentText" class="form-control" type="text" rows="5" name="comment" class="form-control" placeholder="Comment" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

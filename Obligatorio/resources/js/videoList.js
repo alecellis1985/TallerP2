@@ -9,7 +9,6 @@ function start() {
     $(".videoDetails").click(videoDetails);
 }
 
-//$(document).on("click", ".star-rating input", rateVideo);
 
 var videoParent;
 function videoDetails(e) {
@@ -22,7 +21,7 @@ function videoDetails(e) {
         dataType: "html",
         beforeSend: inicioEnvio,
         success: function (data) {
-            processVideoDetails(data, $(this).closest(".row"));
+            processVideoDetails(data);
         },
         timeout: 4000,
         error: problemas,
@@ -30,17 +29,15 @@ function videoDetails(e) {
         data: {videoId: videoId}
     }).done(function (e) {
         $('.loadingOverlay').css('display', 'none');
+        $("#idVideo").val(videoId);
     });
 }
 
-function processVideoDetails(data, parentRow) {
+function processVideoDetails(data) {
     debugger;
-    var container = $('<div class="row videoDetailsContainer"></div>');
+    var container = $('<div id="videoDetails" class="row"></div>');
     container.hide();
     container.append(data);
-    container.before($('<hr>'));
-    container.after($('<hr>'));
-    //parentRow.after(container);
     videoParent.after(container);
     container.slideDown('slow');
 }

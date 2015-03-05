@@ -54,10 +54,7 @@
                             <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
-                            {*<<<<<<< HEAD
-                            <li  class="{if $i == 1}active{/if}{if $i == $videoPages}lastPageBtn{/if}{if $i == 1} firstPageBtn{/if}">
-                            <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
-                            =======*}
+                            
                             <li {if $i == 1} class="active"{/if}>
                                 <a href="" class="paginationBtn" data-page="{$i}">{$i}</a>
 
@@ -85,7 +82,8 @@
         <script src="resources/js/main.js"></script>
         <script src="resources/js/helper.js"></script>
         <script src="resources/js/videoList.js"></script>   
-        <script src="resources/js/youTubePlayer.js"></script>        
+        <script src="resources/js/youTubePlayer.js"></script>
+        <script src="resources/js/comments.js"></script>        
 
     </body>
 </html>
