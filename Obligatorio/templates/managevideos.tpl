@@ -29,13 +29,13 @@
                             <tbody>
                                 {foreach from=$videos item=video}
 					<tr data-id="{$video['idVideo']}">
-                                            <td><div>{$video['client']}</div></td>
-						<td><div>{$video['views']}</div></td>
-						<td><div>{$video['url']}</div></td>
-                                                <td><div>{$video['destacado']}</div></td>
-                                                <td><div>{$video['deleted']}</div></td>
-                                                <td><div>{$video['releaseDate']}</div></td>
-                                                <td><div>{$video['description']}</div></td>
+                                            <td><div data-id="client">{$video['client']}</div></td>
+						<td><div data-id="client">{$video['views']}</div></td>
+						<td><div data-id="url">{$video['url']}</div></td>
+                                                <td><div data-id="destacado">{$video['destacado']}</div></td>
+                                                <td><div data-id="deleted">{$video['deleted']}</div></td>
+                                                <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
+                                                <td><div data-id="description">{$video['description']}</div></td>
 						<td>
                                                     <div><button type="button" class="btn btn-default editVid" data-id="{$video['idVideo']}" data-toggle="modal" data-target="#videoModal">Edit</button></div>
 						</td>

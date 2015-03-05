@@ -23,8 +23,10 @@ function addVid()
 function saveVid(e)
 {
     e.preventDefault();
+    var id = $('idVideo').val();
     var data = $(this).serialize();
-    var url = '../privateFunctions/'+$(this).attr('action');
+    var action =$(this).attr('action');
+    var url = '../privateFunctions/'+action;
     $.ajax({
         type:"POST",
         dataType:"json",
@@ -33,7 +35,14 @@ function saveVid(e)
         timeout: 4000,
         success:function(datos)
         {
-            var pd = datos;
+            if(action==="editVideo.php")
+            {
+                completeEditVideo(data,id);
+            }
+            else if (action=="addVideo.php")
+            {
+                completeaddVideo(datos);
+            }
             //appendVideo
         },
         error: function(datos)
@@ -44,9 +53,23 @@ function saveVid(e)
     });
 }
 
-
-
-
+function completeEditVideo(datos,id)
+{
+    var arrElement = Helper.getItemFromArray(videos, id, 'idVideo');
+    if(arrElement != -1)
+    {
+        arrElement = datos;
+        $.each($('#manageVideosTable tbody>tr'),function(key,elem){
+            var element = $(elem);
+            if(element.data('id') === id)
+            {
+                $.each($('#manageVideosTable tbody>tr'),function(key,elem){
+                    
+                });
+            }
+        });
+    }
+}
 
 function editVid()
 {
