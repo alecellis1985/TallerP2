@@ -5,10 +5,45 @@ function start() {
     $(".nextPage").click(goToPage);
     $(".lastPage").click(goToPage);
     $(".paginationBtn").click(goToPage);
-    //$(".star-rating input").change(rateVideo);
+    $(".star-rating input").click(rateVideo);
+    $(".videoDetails").click(videoDetails);
 }
 
-$(document).on("click", ".star-rating input", rateVideo);
+//$(document).on("click", ".star-rating input", rateVideo);
+
+var videoParent;
+function videoDetails(e) {
+    e.preventDefault();
+    $(this).addClass("disableClick");
+    var videoId = $(this).parent().parent().children(".videoId").val();
+    videoParent = $(this).closest(".row");
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        beforeSend: inicioEnvio,
+        success: function (data) {
+            processVideoDetails(data, $(this).closest(".row"));
+        },
+        timeout: 4000,
+        error: problemas,
+        url: "videoDetails.php",
+        data: {videoId: videoId}
+    }).done(function (e) {
+        $('.loadingOverlay').css('display', 'none');
+    });
+}
+
+function processVideoDetails(data, parentRow) {
+    debugger;
+    var container = $('<div class="row videoDetailsContainer"></div>');
+    container.hide();
+    container.append(data);
+    container.before($('<hr>'));
+    container.after($('<hr>'));
+    //parentRow.after(container);
+    videoParent.after(container);
+    container.slideDown('slow');
+}
 
 function goToPage(e) {
     e.preventDefault();
@@ -49,7 +84,7 @@ function llegadaDatos(datos, page)
             //datos[i + j].url = 'https://www.youtube.com/embed/' + datos[i + j].url + '?rel=0';
             var tmplt = '<div class="col-md-6 portfolio-item">' +
                     //'<iframe class="videoPlayer" width="560" height="315" src="' + datos[i + j].url + '" frameborder="0" allowfullscreen data-videoId="' + datos[i + j].idVideo + '"></iframe>' +
-                    '<div class="videoPlayer" id="videoPlayer'+datos[i + j].idVideo+'" data-url="'+datos[i + j].url+'"></div>' +
+                    '<div class="videoPlayer" id="videoPlayer' + datos[i + j].idVideo + '" data-url="' + datos[i + j].url + '"></div>' +
                     '<h3>' +
                     '<a href="#">' + datos[i + j].client + '</a>' +
                     '</h3>' +

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-04 16:57:59
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-04 23:27:10
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425499071,
+      1 => 1425522428,
       2 => 'file',
     ),
   ),
@@ -47,9 +47,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <body>
 
+        <div id="modalCommentsContainer"><?php echo $_smarty_tpl->getSubTemplate ("modalComments.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
+        
         <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-
+        
         <!-- Page Content -->
         <div class="container">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
@@ -66,7 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <?php echo $_smarty_tpl->getSubTemplate ("videoPage.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
             </div>
-            
+
             <hr>
 
             <!-- Pagination -->
@@ -83,7 +86,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-
+                            
                             <li <?php if ($_smarty_tpl->tpl_vars['i']->value==1) {?> class="active"<?php }?>>
                                 <a href="" class="paginationBtn" data-page="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
@@ -108,7 +111,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <!-- /.container -->
         <div class="footer"><?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-        
+
         <?php echo '<script'; ?>
  src="resources/js/libs/jquery.js"><?php echo '</script'; ?>
 >
@@ -131,7 +134,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <?php echo '<script'; ?>
  src="resources/js/youTubePlayer.js"><?php echo '</script'; ?>
 >        
-        
+
     </body>
 </html>
 <?php }} ?>

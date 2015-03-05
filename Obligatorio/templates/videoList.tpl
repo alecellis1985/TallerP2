@@ -21,8 +21,10 @@
 
     <body>
 
+        <div id="modalCommentsContainer">{include file="modalComments.tpl"}</div>
+        
         <div id="header">{include file="header.tpl"}</div>
-
+        
         <!-- Page Content -->
         <div class="container">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
@@ -38,7 +40,7 @@
             <div id="videosContainer">
                 {include file="videoPage.tpl"}
             </div>
-            
+
             <hr>
 
             <!-- Pagination -->
@@ -52,10 +54,10 @@
                             <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
-{*<<<<<<< HEAD
+                            {*<<<<<<< HEAD
                             <li  class="{if $i == 1}active{/if}{if $i == $videoPages}lastPageBtn{/if}{if $i == 1} firstPageBtn{/if}">
-                                <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
-=======*}
+                            <a href="#" class="paginationBtn" value="{$i}">{$i}</a>
+                            =======*}
                             <li {if $i == 1} class="active"{/if}>
                                 <a href="" class="paginationBtn" data-page="{$i}">{$i}</a>
 
@@ -75,7 +77,7 @@
         </div>
         <!-- /.container -->
         <div class="footer">{include file="footer.tpl"}</div>
-        
+
         <script src="resources/js/libs/jquery.js"></script>
         <script src="resources/js/libs/bootstrap.min.js"></script>
         <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
@@ -84,6 +86,6 @@
         <script src="resources/js/helper.js"></script>
         <script src="resources/js/videoList.js"></script>   
         <script src="resources/js/youTubePlayer.js"></script>        
-        
+
     </body>
 </html>
