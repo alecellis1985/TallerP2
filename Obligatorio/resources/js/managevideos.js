@@ -100,9 +100,7 @@ function editVid()
 function deleteVid()
 {
     $(this).addClass("disableClick");
-    console.log('click');
     var videoId = $(this).data('id');
-    deleteVidComplete('',videoId);
     $.ajax({
         type:'POST',
         url:'../privateFunctions/deleteVideo',
