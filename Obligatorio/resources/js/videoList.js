@@ -6,41 +6,10 @@ function start() {
     $(".lastPage").click(goToPage);
     $(".paginationBtn").click(goToPage);
     $(".star-rating input").click(rateVideo);
-    $(".videoDetails").click(videoDetails);
 }
 
 
-var videoParent;
-function videoDetails(e) {
-    e.preventDefault();
-    $(this).addClass("disableClick");
-    var videoId = $(this).parent().parent().children(".videoId").val();
-    videoParent = $(this).closest(".row");
-    $.ajax({
-        type: "POST",
-        dataType: "html",
-        beforeSend: inicioEnvio,
-        success: function (data) {
-            processVideoDetails(data);
-        },
-        timeout: 4000,
-        error: problemas,
-        url: "videoDetails.php",
-        data: {videoId: videoId}
-    }).done(function (e) {
-        $('.loadingOverlay').css('display', 'none');
-        $("#idVideo").val(videoId);
-    });
-}
 
-function processVideoDetails(data) {
-    debugger;
-    var container = $('<div id="videoDetails" class="row"></div>');
-    container.hide();
-    container.append(data);
-    videoParent.after(container);
-    container.slideDown('slow');
-}
 
 function goToPage(e) {
     e.preventDefault();
@@ -133,6 +102,7 @@ function setPagingElements(page)
     $(".previousPage").attr("data-page", previousPage);
     $(".nextPage").attr("data-page", nextPage);
 }
+
 function setNextLastElem(page, totPages)
 {
     if (page < totPages)

@@ -1,4 +1,99 @@
 $(document).on("submit", "#commentForm", saveComment);
+$(document).on("click", "#closeVideoDetails", closeVideoDetails);
+
+$(document).on("click", ".firstPageComment", goToPageComment);
+$(document).on("click", ".previousPageComment", goToPageComment);
+$(document).on("click", ".nextPageComment", goToPageComment);
+$(document).on("click", ".lastPageComment", goToPageComment);
+$(document).on("click", ".paginationBtnComment", goToPageComment);
+
+$(document).ready(start);
+function start() {
+    $(".videoDetails").click(videoDetails);
+}
+
+function goToPageComment(e) {
+    debugger;
+    e.preventDefault();
+    if ($(this).parent('li').attr('class') === 'active')
+        return false;
+    var pageNumber = parseInt($(this).attr('data-page'));
+    var idVideo = $("#idVideo").val();
+    $(this).blur();
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        beforeSend: function (e) {
+            $('.loadingOverlay').css('display', 'block');
+        },
+        success: function (data) {
+            processPaginationComment(data, pageNumber);
+        },
+        timeout: 4000,
+        error: problemas,
+        url: "paginationComments.php",
+        data: {pagenumber: pageNumber, idVideo: idVideo}
+    }).done(function () {
+        $('.loadingOverlay').css('display', 'none');
+    });
+}
+
+//TODO: Refactor this and video pagination to shared functions
+function processPaginationComment(data, page){
+    $("#videoCommentsContainer").empty();
+    $("#videoCommentsContainer").append(data); 
+    
+    $('#videoDetails .pagination li').removeClass('active');
+    $('.paginationBtnComment').each(function (key, val) {
+        element = $(val);
+        if (element.data('page') === page)
+        {
+            element.parent('li').addClass('active');
+        }
+    });
+    setPagingCommentsElements(page);
+}
+
+function setPagingCommentsElements(page)
+{
+    var totPages = parseInt($('#totalPages').val());
+    if (totPages === 1)
+        return;
+    setPrevFirstElemComment(page);
+    setNextLastElemComment(page, totPages);
+    var previousPage = page < 2 ? 1 : page - 1;
+    var nextPage = page < totPages ? page + 1 : totPages;
+    $(".previousPageComment").attr("data-page", previousPage);
+    $(".nextPageComment").attr("data-page", nextPage);
+}
+
+function setNextLastElemComment(page, totPages)
+{
+    if (page < totPages)
+    {
+        $(".nextPageComment").removeClass("disableClick");
+        $(".lastPageComment").removeClass("disableClick");
+    }
+    else
+    {
+        $(".nextPageComment").addClass("disableClick");
+        $(".lastPageComment").addClass("disableClick");
+    }
+}
+
+function setPrevFirstElemComment(page)
+{
+    if (page > 1)
+    {
+        $(".previousPageComment").removeClass("disableClick");
+        $(".firstPageComment").removeClass("disableClick");
+    }
+    else
+    {
+        $(".previousPageComment").addClass("disableClick");
+        $(".firstPageComment").addClass("disableClick");
+    }
+}
 
 function saveComment(e) {
     debugger;
@@ -28,6 +123,7 @@ function saveComment(e) {
 
 function processSaveComment(data) {
     if (data.success) {
+        //TODO: reload comments
         $('#commentForm .btn-default').trigger('click');
     } else {
         alert(data.errorMsj);
@@ -41,4 +137,54 @@ function clearCommentForm(e) {
             .removeAttr('checked')
             .removeAttr('selected');
 }
+
+function closeVideoDetails(e) {
+    e.preventDefault();
+    var container = $("#videoDetails");
+    container.slideUp("slow", function () {
+        container.empty();
+        container.remove();
+    });
+    currentLink.removeClass("disableClick");
+}
+
+var videoParent;
+var currentLink;
+function videoDetails(e) {
+    debugger;
+    e.preventDefault();
+    if (document.getElementById('videoDetails') != null)
+        closeVideoDetails(e);
+    currentLink = $(this);
+    $(this).addClass("disableClick");
+    var videoId = $(this).parent().parent().children(".videoId").val();
+    videoParent = $(this).closest(".row");
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        beforeSend: function (e) {
+            $('.loadingOverlay').css('display', 'block');
+        },
+        success: function (data) {
+            processVideoDetails(data);
+        },
+        timeout: 4000,
+        error: problemas,
+        url: "videoDetails.php",
+        data: {videoId: videoId}
+    }).done(function (e) {
+        $('.loadingOverlay').css('display', 'none');
+        $("#idVideo").val(videoId);
+    });
+}
+
+function processVideoDetails(data) {
+    var container = $('<div id="videoDetails" class="row"></div>');
+    container.hide();
+    container.append(data);
+    videoParent.after(container);
+    container.slideDown('slow');
+}
+
+
 

@@ -10,7 +10,7 @@
             {foreach from=$comments item=comment}
                 <tr data-id="{$comment['idComments']}">
                     <td><div>{$comment['text']}</div></td>
-                    <td><div>{$comment['alias']}</div></td>
+                    <td><div>{if $comment['alias'] eq ''} {$comment['ip']} {else} {$comment['alias']} {/if}</div></td>
                     <td><div>{$comment['dateTime']}</div></td>
                 </tr>
             {/foreach}
