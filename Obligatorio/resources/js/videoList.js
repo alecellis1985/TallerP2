@@ -1,15 +1,12 @@
 $(document).ready(start);
 function start() {
-    $(".firstPage").click(goToPage);
-    $(".previousPage").click(goToPage);
-    $(".nextPage").click(goToPage);
-    $(".lastPage").click(goToPage);
-    $(".paginationBtn").click(goToPage);
+    $(".videoListPagination .firstPage").click(goToPage);
+    $(".videoListPagination .previousPage").click(goToPage);
+    $(".videoListPagination .nextPage").click(goToPage);
+    $(".videoListPagination .lastPage").click(goToPage);
+    $(".videoListPagination .paginationBtn").click(goToPage);
     $(".star-rating input").click(rateVideo);
 }
-
-
-
 
 function goToPage(e) {
     e.preventDefault();
@@ -76,8 +73,8 @@ function llegadaDatos(datos, page)
         vidContainer.append(row);
     }
 
-    $('.pagination li').removeClass('active');
-    $('.paginationBtn').each(function (key, val) {
+    $('.videoListPagination.pagination li').removeClass('active');
+    $('.videoListPagination .paginationBtn').each(function (key, val) {
         element = $(val);
         if (element.data('page') === page)
         {
@@ -99,21 +96,21 @@ function setPagingElements(page)
     setNextLastElem(page, totPages);
     var previousPage = page < 2 ? 1 : page - 1;
     var nextPage = page < totPages ? page + 1 : totPages;
-    $(".previousPage").attr("data-page", previousPage);
-    $(".nextPage").attr("data-page", nextPage);
+    $(".videoListPagination .previousPage").attr("data-page", previousPage);
+    $(".videoListPagination .nextPage").attr("data-page", nextPage);
 }
 
 function setNextLastElem(page, totPages)
 {
     if (page < totPages)
     {
-        $(".nextPage").removeClass("disableClick");
-        $(".lastPage").removeClass("disableClick");
+        $(".videoListPagination .nextPage").removeClass("disableClick");
+        $(".videoListPagination .lastPage").removeClass("disableClick");
     }
     else
     {
-        $(".nextPage").addClass("disableClick");
-        $(".lastPage").addClass("disableClick");
+        $(".videoListPagination .nextPage").addClass("disableClick");
+        $(".videoListPagination .lastPage").addClass("disableClick");
     }
 }
 
@@ -121,13 +118,13 @@ function setPrevFirstElem(page)
 {
     if (page > 1)
     {
-        $(".previousPage").removeClass("disableClick");
-        $(".firstPage").removeClass("disableClick");
+        $(".videoListPagination .previousPage").removeClass("disableClick");
+        $(".videoListPagination .firstPage").removeClass("disableClick");
     }
     else
     {
-        $(".previousPage").addClass("disableClick");
-        $(".firstPage").addClass("disableClick");
+        $(".videoListPagination .previousPage").addClass("disableClick");
+        $(".videoListPagination .firstPage").addClass("disableClick");
     }
 }
 

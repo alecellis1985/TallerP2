@@ -46,7 +46,7 @@
             <!-- Pagination -->
             <div class="row text-center">
                 <div class="col-lg-12">
-                    <ul class="pagination">
+                    <ul class="pagination videoListPagination">
                         <li>
                             <a href="" class="firstPage disableClick" data-page="1" title="First page">&laquo;</a>
                         </li>

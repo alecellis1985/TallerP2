@@ -39,22 +39,22 @@
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
-                            <a href="" class="firstPageComment disableClick" data-page="1" title="First page">&laquo;</a>
+                            <a href="" class="firstPage disableClick" data-page="1" title="First page">&laquo;</a>
                         </li>
                         <li>
-                            <a href="" class="previousPageComment disableClick" title="Previous page">&lsaquo;</a>
+                            <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         {for $i=1 to $commentsPages}
                             <li {if $i == 1} class="active"{/if}>
-                                <a href="" class="paginationBtnComment" data-page="{$i}">{$i}</a>
+                                <a href="" class="paginationBtn" data-page="{$i}">{$i}</a>
 
                             </li>                   
                         {/for}
                         <li>
-                            <a href="" class="nextPageComment" data-page="2" title="Next page">&rsaquo;</a>
+                            <a href="" class="nextPage" data-page="2" title="Next page">&rsaquo;</a>
                         </li> 
                         <li>
-                            <a href="" class="lastPageComment" data-page="{$commentsPages}" title="Last page">&raquo;</a>
+                            <a href="" class="lastPage" data-page="{$commentsPages}" title="Last page">&raquo;</a>
                         </li>
                     </ul>
                 </div>

@@ -1,11 +1,11 @@
 $(document).on("submit", "#commentForm", saveComment);
 $(document).on("click", "#closeVideoDetails", closeVideoDetails);
 
-$(document).on("click", ".firstPageComment", goToPageComment);
-$(document).on("click", ".previousPageComment", goToPageComment);
-$(document).on("click", ".nextPageComment", goToPageComment);
-$(document).on("click", ".lastPageComment", goToPageComment);
-$(document).on("click", ".paginationBtnComment", goToPageComment);
+$(document).on("click", "#videoDetails .firstPage", goToPageComment);
+$(document).on("click", "#videoDetails .previousPage", goToPageComment);
+$(document).on("click", "#videoDetails .nextPage", goToPageComment);
+$(document).on("click", "#videoDetails .lastPage", goToPageComment);
+$(document).on("click", "#videoDetails .paginationBtn", goToPageComment);
 
 $(document).ready(start);
 function start() {
@@ -44,7 +44,7 @@ function processPaginationComment(data, page){
     $("#videoCommentsContainer").append(data); 
     
     $('#videoDetails .pagination li').removeClass('active');
-    $('.paginationBtnComment').each(function (key, val) {
+    $('#videoDetails .paginationBtn').each(function (key, val) {
         element = $(val);
         if (element.data('page') === page)
         {
@@ -63,21 +63,21 @@ function setPagingCommentsElements(page)
     setNextLastElemComment(page, totPages);
     var previousPage = page < 2 ? 1 : page - 1;
     var nextPage = page < totPages ? page + 1 : totPages;
-    $(".previousPageComment").attr("data-page", previousPage);
-    $(".nextPageComment").attr("data-page", nextPage);
+    $("#videoDetails .previousPage").attr("data-page", previousPage);
+    $("#videoDetails .nextPage").attr("data-page", nextPage);
 }
 
 function setNextLastElemComment(page, totPages)
 {
     if (page < totPages)
     {
-        $(".nextPageComment").removeClass("disableClick");
-        $(".lastPageComment").removeClass("disableClick");
+        $("#videoDetails .nextPage").removeClass("disableClick");
+        $("#videoDetails .lastPage").removeClass("disableClick");
     }
     else
     {
-        $(".nextPageComment").addClass("disableClick");
-        $(".lastPageComment").addClass("disableClick");
+        $("#videoDetails .nextPage").addClass("disableClick");
+        $("#videoDetails .lastPage").addClass("disableClick");
     }
 }
 
@@ -85,13 +85,13 @@ function setPrevFirstElemComment(page)
 {
     if (page > 1)
     {
-        $(".previousPageComment").removeClass("disableClick");
-        $(".firstPageComment").removeClass("disableClick");
+        $("#videoDetails .previousPage").removeClass("disableClick");
+        $("#videoDetails .firstPage").removeClass("disableClick");
     }
     else
     {
-        $(".previousPageComment").addClass("disableClick");
-        $(".firstPageComment").addClass("disableClick");
+        $("#videoDetails .previousPage").addClass("disableClick");
+        $("#videoDetails .firstPage").addClass("disableClick");
     }
 }
 
@@ -185,6 +185,3 @@ function processVideoDetails(data) {
     videoParent.after(container);
     container.slideDown('slow');
 }
-
-
-
