@@ -14,7 +14,7 @@ require_once("../includes/class.Conexion.BD.php");
         var_dump($idVideo);
         if($conn->consulta($sql,$params))
         {
-            echo json_encode(array('success'=>true,'msg'=>'Element Deleted'));
+            echo json_encode(array('success'=>true,'msg'=>'Video successfully eleted'));
         }
         else
         {

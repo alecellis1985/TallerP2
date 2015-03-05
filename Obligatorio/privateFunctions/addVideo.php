@@ -11,15 +11,8 @@ $description = $_Post['description'];
 $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
 
 if($conn->conectar()){
-//	if($accion=="N"){ //Es uno nuevo
-		$sql = "INSERT INTO videos (client, url, releaseDate,description,destacado,views,deleted)";
-		$sql .= " VALUES (:client, :url, :releaseDate,:description,0,0,0)";
-//	}
-//	else{	//Es Modificaci�n
-//		$sql = "UPDATE autores SET nombre = :nombre, especialidad = :especialidad,";
-//		$sql .= " foto = :foto WHERE id = :id";
-//	}
-	
+        $sql = "INSERT INTO videos (client, url, releaseDate,description,destacado,views,deleted)";
+        $sql .= " VALUES (:client, :url, :releaseDate,:description,0,0,0)";
 	$parametros = array();
 	$parametros[0] =  array("client",$client,"STRING",200);
 	$parametros[1] =  array("url",$url,"STRING",150);
@@ -29,7 +22,7 @@ if($conn->conectar()){
             $id = $conn->ultimoIdInsert();
             $sql2 = "SELECT * FROM videos where id = " . $id;
             if($conn->consulta($sql)){
-                $result = array("success" =>true,'msg'=>'Elemento Insertado',"element"=>$insertedVid);
+                $result = array("success" =>true,'msg'=>'Video successfully added',"element"=>$insertedVid);
                 echo json_encode($result);
             }
             else{
@@ -39,7 +32,6 @@ if($conn->conectar()){
 	else{
 		echo "Error de SQL";
 	}
-	
 }
 else{
 	echo "Error de Conexi�n";

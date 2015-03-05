@@ -18,7 +18,7 @@ if($conn->conectar()){
     $parametros[3] =  array("description",$description,"STRING",250);
     $parametros[4] =  array("idVideo",$idVideo,"INT");
     if($conn->consulta($sql,$parametros)){
-        $result = array("success" =>true,'msg'=>'Element updated');
+        $result = array("success" =>true,'msg'=>'Video successfully updated');
         echo json_encode($result);
     }
     else{

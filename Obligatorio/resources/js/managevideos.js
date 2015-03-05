@@ -30,7 +30,6 @@ function saveVid(e)
 	releaseDate:$('input[name="releaseDate"]').val(),
 	description:$('textarea[name="description"]').val()
     };
-    var id = $('#idVideo').val();
     var action =$(this).attr('action');
     var url = '../privateFunctions/'+action;
     $.ajax({
@@ -49,7 +48,6 @@ function saveVid(e)
             {
                 completeaddVideo(datos);
             }
-            //appendVideo
         },
         error: function(datos)
         {
@@ -57,6 +55,12 @@ function saveVid(e)
             //"show error"
         }        
     });
+}
+
+function completeAddVideo(datos)
+{
+    videos.push(datos.element);
+    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
 }
 
 function completeEditVideo(datos,modifiedData)
@@ -147,5 +151,6 @@ function deleteVidComplete(datos,id){
             htmlElement.remove();
         });
     }
+    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
     //make json call to get one more elem for this page and add it
 }
