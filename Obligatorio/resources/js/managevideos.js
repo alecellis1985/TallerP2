@@ -23,21 +23,27 @@ function addVid()
 function saveVid(e)
 {
     e.preventDefault();
-    var id = $('idVideo').val();
-    var data = $(this).serialize();
+    var modifiedData = {
+	idVideo:$('#idVideo').val(),
+	client:$('input[name="client"]').val(),
+	url:$('input[name="url"]').val(),
+	releaseDate:$('input[name="releaseDate"]').val(),
+	description:$('textarea[name="description"]').val()
+    };
+    var id = $('#idVideo').val();
     var action =$(this).attr('action');
     var url = '../privateFunctions/'+action;
     $.ajax({
         type:"POST",
         dataType:"json",
         url:url,
-        data:data,
+        data:modifiedData,
         timeout: 4000,
         success:function(datos)
         {
             if(action==="editVideo.php")
             {
-                completeEditVideo(data,id);
+                completeEditVideo(datos,modifiedData);
             }
             else if (action=="addVideo.php")
             {
@@ -53,22 +59,24 @@ function saveVid(e)
     });
 }
 
-function completeEditVideo(datos,id)
+function completeEditVideo(datos,modifiedData)
 {
-    var arrElement = Helper.getItemFromArray(videos, id, 'idVideo');
+    var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
     if(arrElement != -1)
     {
-        arrElement = datos;
+        arrElement = $.extend({}, arrElement, modifiedData);
         $.each($('#manageVideosTable tbody>tr'),function(key,elem){
             var element = $(elem);
-            if(element.data('id') === id)
+            if(element.data('id') == modifiedData.idVideo)
             {
-                $.each($('#manageVideosTable tbody>tr'),function(key,elem){
-                    
+                $.each(element.find('div'),function(key,elem){
+                    $(elem).html(arrElement[$(elem).data('id')]);
                 });
             }
         });
     }
+    $('#closeVideoModal').trigger('click');
+    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
 }
 
 function editVid()
@@ -87,7 +95,6 @@ function editVid()
             elem.value = arrElement[elem.name];
         });
     }
-    //var tr = Helper.getParentElement(this, 'tr');
 }
 
 function deleteVid()
