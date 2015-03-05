@@ -18,7 +18,7 @@
         <!-- Navigation -->
         <div id="header">{include file="header.tpl"}</div>
         
-        <div class="container" style="margin-top: 70px;">
+        <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-6 ">
                     <h2><i>MyCompany films corp.</i></h2>

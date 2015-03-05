@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-03 18:20:34
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-05 16:45:40
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:276854f086b5dbb433-12109124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cc7b08b058169aafa9d586d776e281382af123c' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425356513,
+      1 => 1425584739,
       2 => 'file',
     ),
   ),
@@ -44,7 +44,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
         
-        <div class="container" style="margin-top: 70px;">
+        <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-6 ">
                     <h2><i>MyCompany films corp.</i></h2>

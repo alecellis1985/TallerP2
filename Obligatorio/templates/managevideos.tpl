@@ -15,7 +15,7 @@
     <body>
         <!-- Navigation -->
         <div id="header">{include file="header.tpl"}</div>
-        <div class="container" style="margin-top: 70px;">
+        <div class="container contentContainer" style="margin-top: 50px;">
             <div>{include file="videoModal.tpl"}</div>
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12 ">

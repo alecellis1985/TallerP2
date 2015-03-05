@@ -26,7 +26,7 @@
         <div id="header">{include file="header.tpl"}</div>
         
         <!-- Page Content -->
-        <div class="container">
+        <div class="container contentContainer">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
             <!-- Page Header -->
             <div class="row">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-05 04:44:46
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-05 16:42:01
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425540257,
+      1 => 1425584519,
       2 => 'file',
     ),
   ),
@@ -54,7 +54,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
         
         <!-- Page Content -->
-        <div class="container">
+        <div class="container contentContainer">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
             <!-- Page Header -->
             <div class="row">
