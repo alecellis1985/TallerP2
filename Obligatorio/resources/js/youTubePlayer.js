@@ -43,7 +43,7 @@ function playVideo(state) {
             type: "POST",
             dataType: "json",
             success: function (result) {
-                debugger;
+                
                 if (!result.success) {
                     alert(result.errorMsj);
                 }

@@ -133,9 +133,12 @@ function problemas()
     $("#resultados").text('Problemas en el servidor.');
 
 }
+
+var stars;
 function rateVideo(e) {
     var rating = $(this).val();
     var videoId = $(this).parent().parent().prev().val();
+    stars = $(this).siblings();
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -153,7 +156,9 @@ function rateVideo(e) {
 }
 
 function processRating(result) {
+    debugger;
     if (result.success) {
+        stars.addClass("disableClick");
         Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], 'Video successfully rated.');
     } else {
         Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], 'You have already rated this video.');

@@ -6,6 +6,9 @@ $(document).on("click", "#videoDetails .previousPage", goToPageComment);
 $(document).on("click", "#videoDetails .nextPage", goToPageComment);
 $(document).on("click", "#videoDetails .lastPage", goToPageComment);
 $(document).on("click", "#videoDetails .paginationBtn", goToPageComment);
+$(document).on("click", "#addComment", function(e){
+    $("#modalCommentsTitle").text("Add comment");
+});
 
 $(document).ready(start);
 function start() {
@@ -13,7 +16,7 @@ function start() {
 }
 
 function goToPageComment(e) {
-    debugger;
+    
     e.preventDefault();
     if ($(this).parent('li').attr('class') === 'active')
         return false;
@@ -96,12 +99,11 @@ function setPrevFirstElemComment(page)
 }
 
 function saveComment(e) {
-    debugger;
     e.preventDefault();
     var comment = $("#commentText").val();
     var alias = $("#alias").val();
     var idVideo = $("#idVideo").val();
-    $("#modalCommentsTitle").text("Add comment");
+    
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -151,7 +153,7 @@ function closeVideoDetails(e) {
 var videoParent;
 var currentLink;
 function videoDetails(e) {
-    debugger;
+    
     e.preventDefault();
     if (document.getElementById('videoDetails') != null)
         closeVideoDetails(e);

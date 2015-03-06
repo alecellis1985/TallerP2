@@ -16,7 +16,7 @@ $(document).ready(startDoc);
 
 function startDoc()
 {
-    debugger;
+    
     var path = "getUser.php";
     if(typeof getUserPath != 'undefined')
         path = getUserPath;

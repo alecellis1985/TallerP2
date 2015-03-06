@@ -1,6 +1,5 @@
 $(document).on("click", ".paginationBtn", function (e) {
     e.preventDefault();
-    debugger;
     var pageNumber = parseInt(this.innerHTML);
     $.ajax({
         type: "POST",

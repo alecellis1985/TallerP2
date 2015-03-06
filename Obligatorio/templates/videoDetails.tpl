@@ -4,27 +4,27 @@
         <tbody>
             <tr>
                 <td><h4>Client</h4></td>
-                <td><p>{$video.client}</p></td>
+                <td align="center" valign="bottom"><p>{$video.client}</p></td>
             </tr>
             <tr>
                 <td><h4>Release date</h4></td>
-                <td><p>{$video.releaseDate}</p></td>
+                <td align="center" valign="bottom"><p>{$video.releaseDate}</p></td>
             </tr>
             <tr>
                 <td><h4>Rating</h4></td>
-                <td>
+                <td align="center" valign="middle">
                     <p>
                         <span class="star-rating">
                             <input type="radio" name="ratingStatic" value="1" class="disableClick">
-                            <i {if $video.rating > 1} class="rated" {/if}></i>
+                            <i {if $video.rating >= 1} class="rated" {/if}></i>
                             <input type="radio" name="ratingStatic" value="2" class="disableClick">
-                            <i {if $video.rating > 2} class="rated" {/if}></i>
+                            <i {if $video.rating >= 2} class="rated" {/if}></i>
                             <input type="radio" name="ratingStatic" value="3" class="disableClick">
-                            <i {if $video.rating > 3} class="rated" {/if}></i>
+                            <i {if $video.rating >= 3} class="rated" {/if}></i>
                             <input type="radio" name="ratingStatic" value="4" class="disableClick">
-                            <i {if $video.rating > 4} class="rated" {/if}></i>
+                            <i {if $video.rating >= 4} class="rated" {/if}></i>
                             <input type="radio" name="ratingStatic" value="5" class="disableClick">
-                            <i {if $video.rating > 5} class="rated" {/if}></i>
+                            <i {if $video.rating >= 5} class="rated" {/if}></i>
                         </span>
                     </p>
                 </td>

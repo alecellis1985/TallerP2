@@ -82,6 +82,7 @@ CREATE TABLE `videos` (
   `destacado` tinyint(4) NOT NULL default '0',
   `url` varchar(50) NOT NULL,
   `views` int(11) NOT NULL default '0',
+  `title` varchar(45) NOT NULL,
   `description` longtext,
   `client` varchar(45) NOT NULL,
   `releaseDate` date NOT NULL,
@@ -96,13 +97,13 @@ CREATE TABLE `videos` (
 -- Dumping data for table `videos`
 -- 
 
-INSERT INTO `videos` VALUES (22, 1, 'F14n63OM3go', 0, 'Bordo vs 12', 'Bordo vs 12', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (23, 0, 'ArislVlGea4', 0, 'Bordo vs Yaguari', 'Bordo vs Yaguari', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (24, 0, 'mJVDeIwSEnw', 0, 'Bordo vs Wanderers', 'Bordo vs Wanderers', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (25, 0, 'CmWaRy31eSA', 0, 'Bordo vs Matadero', 'Bordo vs Matadero', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (17, 0, 'DlJEt2KU33I', 0, '2014 World Cup', 'John Oliver Brazil World Cup', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (18, 0, 'ybyxjlas4Z0', 0, 'Bordo premios', 'Bordo Premios', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (19, 0, '00gzNbI9_a4', 0, 'Bordo vs OCC', 'Bordo vs OCC', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (20, 0, 'nnDfGTGzNDY', 0, 'Bordo vs Odonto', 'Bordo vs Odontologia', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (21, 0, 'ZNpMJGLHDGQ', 0, 'Bordo vs Moron', 'Bordo vs Moron', '2015-10-01',0,0, 0x30);
-INSERT INTO `videos` VALUES (16, 0, 'Y0oX0xiwOv8', 0, 'Boyhood is nominated for a total of 6 Academy Awards including Best Picture, Best Actor in a Supporting Role (Ethan Hawke), Best Actress in a Supporting Role (Patricia Arquette), Best Director (Richard Linklater), Best Film Editing (Sandra Adair) and Best Original Screenplay (Richard Linklater). ', 'Boyhood | Official US Trailer | 2015 Oscar No', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (22, 1, 'F14n63OM3go', 0, 'Bordo vs 12', 'Bordo vs 12', 'Bordo vs 12', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (23, 0, 'ArislVlGea4', 0, 'Bordo vs Yaguari', 'Bordo vs Yaguari', 'Bordo vs Yaguari', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (24, 0, 'mJVDeIwSEnw', 0, 'Bordo vs Wanderers', 'Bordo vs Wanderers', 'Bordo vs Wanderers', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (25, 0, 'CmWaRy31eSA', 0, 'Bordo vs Matadero', 'Bordo vs Matadero', 'Bordo vs Matadero', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (17, 0, 'DlJEt2KU33I', 0, '2014 World Cup', '2014 World Cup', 'John Oliver Brazil World Cup', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (18, 0, 'ybyxjlas4Z0', 0, 'Bordo premios', 'Bordo premios', 'Bordo Premios', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (19, 0, '00gzNbI9_a4', 0, 'Bordo vs OCC', 'Bordo vs OCC', 'Bordo vs OCC', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (20, 0, 'nnDfGTGzNDY', 0, 'Bordo vs Odonto', 'Bordo vs Odonto', 'Bordo vs Odontologia', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (21, 0, 'ZNpMJGLHDGQ', 0, 'Bordo vs Moron', 'Bordo vs Moron', 'Bordo vs Moron', '2015-10-01',0,0, 0x30);
+INSERT INTO `videos` VALUES (16, 0, 'Y0oX0xiwOv8', 0,'Boyhood Trailer', 'Boyhood is nominated for a total of 6 Academy Awards including Best Picture, Best Actor in a Supporting Role (Ethan Hawke), Best Actress in a Supporting Role (Patricia Arquette), Best Director (Richard Linklater), Best Film Editing (Sandra Adair) and Best Original Screenplay (Richard Linklater). ', 'Boyhood | Official US Trailer | 2015 Oscar No', '2015-10-01',0,0, 0x30);
