@@ -3,13 +3,16 @@
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 //TODO MISSING TITLE
-$client = $_Post['client'];
-$url = $_Post['url'];
-$releaseDate = $_Post['releaseDate'];
-$description = $_Post['description'];
+$client = $_POST['client'];
+$url = $_POST['url'];
+$releaseDate = $_POST['releaseDate'];
+$description = $_POST['description'];
 
 $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
-
+var_dump($client);
+var_dump($url);
+var_dump($releaseDate);
+var_dump($description);
 if($conn->conectar()){
         $sql = "INSERT INTO videos (client, url, releaseDate,description,destacado,views,deleted)";
         $sql .= " VALUES (:client, :url, :releaseDate,:description,0,0,0)";
