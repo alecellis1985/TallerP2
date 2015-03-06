@@ -9,8 +9,8 @@
         <div class='col-sm-2 col-xs-6 col-md-offset-1'>
             <h4>Links</h4>
             <ul class='list-unstyled'>
-                <li><a href='index.php'>Home</a></li>
-                <li><a href='videoList.php'>All videos</a></li>
+                <li><a id="homeFooterLink" href='index.php'>Home</a></li>
+                <li><a id="videoListFooterLink" href='videoList.php'>All videos</a></li>
             </ul>
         </div>
 

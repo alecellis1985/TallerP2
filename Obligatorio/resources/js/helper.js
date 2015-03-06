@@ -4,7 +4,7 @@
  */
 var Helper = (function() {
     var alertTypes = ['success' , 'danger', 'info'];
-    var getUserAsync = function()
+    var getUserAsync = function(url)
     {
         var deferred = $.Deferred();
         $.ajax({
@@ -13,7 +13,7 @@ var Helper = (function() {
             success: function(result){ deferred.resolve(result)},
             timeout: 4000,
             error: errorLogIn,
-            url: "getUser.php",
+            url: url,
         });  
         return deferred.promise();
     };
@@ -79,9 +79,9 @@ var Helper = (function() {
         {
             return alertTypes;
         },
-        getUser:function()
+        getUser:function(url)
         {
-            return getUserAsync();
+            return getUserAsync(url);
         },
         getParentElement:function(element, tagg)
         {

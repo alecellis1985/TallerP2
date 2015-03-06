@@ -16,20 +16,24 @@ $(document).ready(startDoc);
 
 function startDoc()
 {
-//    Helper.getUser().then(function(data){
-//        if(data.success)
-//        {
-//            $('#logIn').addClass('hide');
-//            $('#logOut').removeClass('hide');
-//            $('#privateComponent').show();
-//        }
-//        else
-//        {
-//            $('#logIn').removeClass('hide');
-//            $('#logOut').removeClass('hide').addClass('hide');
-//            $('#privateComponent').hide();
-//        }
-//    });
+    debugger;
+    var path = "getUser.php";
+    if(typeof getUserPath != 'undefined')
+        path = getUserPath;
+    Helper.getUser(path).then(function(data){
+        if(data.success)
+        {
+            $('#logIn').addClass('hide');
+            $('#logOut').removeClass('hide');
+            $('#privateComponent').show();
+        }
+        else
+        {
+            $('#logIn').removeClass('hide');
+            $('#logOut').removeClass('hide').addClass('hide');
+            $('#privateComponent').hide();
+        }
+    });
     $('#logOut').click(logOut);
     $('#closeModal').click(clearLogInForm);
     $("#logInForm").submit(logIn);
@@ -90,7 +94,7 @@ function processLogIn(result) {
 }
 
 function errorLogIn(e) {
-    alert("System error. Contact you SA.");
+    alert("System error. Contact you SAdawdaw.");
 }
 
 function logOutSuccess()

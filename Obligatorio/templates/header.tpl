@@ -10,20 +10,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php">MyCompany Videos</a>
+                    <a class="navbar-brand" id="homeLink" href="index.php">MyCompany Videos</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="videoList.php">All videos</a>
+                            <a id="allVideosLink" href="videoList.php">All videos</a>
                         </li>
                         <li>
                             <a id="logIn" data-toggle="modal" data-target="#myModal" href="#">Log In</a>
                             <a id="logOut" class="hide" href="">Log Out</a>
                         </li>
                         <li id="privateComponent" style="display:none;">
-                            <a href="privateFunctions/manageVideos.php">Manage videos</a>
+                            <a id="manageVideosId" href="privateFunctions/manageVideos.php">Manage videos</a>
                         </li>
                     </ul>
                 </div>

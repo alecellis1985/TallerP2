@@ -6,6 +6,12 @@ function startVideos()
     $('.editVid').click(editVid);
     $('#addVid').click(addVid);
     $('#videofrm').submit(saveVid);
+    $("#allVideosLink").attr("href","../videoList.php");
+    $("#homeLink").attr("href","../index.php");
+    $("#manageVideosId").attr("href","manageVideos.php");
+    
+    $("#homeFooterLink").attr("href","../videoList.php");
+    $("#videoListFooterLink").attr("href","../index.php");
 }
 
 function addVid()

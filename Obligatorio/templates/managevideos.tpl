@@ -68,6 +68,8 @@
                 var vid = {$video|json_encode}; 
                 videos.push(vid);
             {/foreach}
+            var getUserPath = '../getUser.php';
+
         </script>
         <script type="text/javascript" src="../resources/js/managevideos.js"></script>
     </body>
