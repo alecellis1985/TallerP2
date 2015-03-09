@@ -364,8 +364,8 @@ html {
 }
 
 body{
-    // background-image: url("../img/movieBackground.jpg");
-    background-color: #31b0d5; 
+    background-image: url("../img/movieBackground.jpg");
+    //background-color: #31b0d5; 
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -383,22 +383,22 @@ body{
     width: auto;
     height: auto;
     background-color: #efefef;
-    z-index: 1;
+    z-index: 3;
     border-radius: 10px;
 }
 
 @media (min-width: 768px) {
-  #videoDetails {
-    width: 750px;
-  }
+    #videoDetails {
+        width: 750px;
+    }
 }
 @media (min-width: 992px) {
-  #videoDetails {
-    width: 970px;
-  }
+    #videoDetails {
+        width: 970px;
+    }
 }
 @media (min-width: 1200px) {
-  #videoDetails {
-    width: 1170px;
-  }
+    #videoDetails {
+        width: 1170px;
+    }
 }

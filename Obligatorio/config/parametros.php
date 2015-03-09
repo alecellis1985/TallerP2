@@ -1,6 +1,7 @@
 <?php
 
     define("CANTPAG", 8);
+    define("CANTPAGCOMMENTS", 5);
     define("DRIVER", "mysql");
     define("SERVIDOR", "localhost");
     define("BASE", "videoProducer");

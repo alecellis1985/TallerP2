@@ -21,7 +21,7 @@
         {
             echo "SQL Error";
         }
-        $sql2 = "SELECT * FROM videos where deleted <> 1 ORDER BY rating desc LIMIT 8";
+        $sql2 = "SELECT * FROM videos where deleted <> 1 ORDER BY rating desc LIMIT ". CANTPAG;
         if($conn->consulta($sql2))
         {
             $videos = $conn->restantesRegistros();

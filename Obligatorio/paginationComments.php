@@ -15,7 +15,7 @@ if ($conn->conectar()) {
     if (empty($pagina)) {
         $pagina = 1;
     }
-    $sql = "SELECT * FROM comments WHERE idVideo = :videoId AND public = true ORDER BY dateTime desc LIMIT " . (($pagina - 1) * CANTPAG) . "," . CANTPAG;
+    $sql = "SELECT * FROM comments WHERE idVideo = :videoId AND public = true ORDER BY dateTime desc LIMIT " . (($pagina - 1) * CANTPAGCOMMENTS) . "," . CANTPAGCOMMENTS;
     $paramsComments = array();
     $paramsComments[0] = array("videoId", $idVideo, "int");
     if ($conn->consulta($sql, $paramsComments)) {
