@@ -6,7 +6,7 @@ $(document).on("click", "#videoDetails .previousPage", goToPageComment);
 $(document).on("click", "#videoDetails .nextPage", goToPageComment);
 $(document).on("click", "#videoDetails .lastPage", goToPageComment);
 $(document).on("click", "#videoDetails .paginationBtn", goToPageComment);
-$(document).on("click", "#addComment", function(e){
+$(document).on("click", "#addComment", function (e) {
     $("#modalCommentsTitle").text("Add comment");
 });
 
@@ -16,7 +16,6 @@ function start() {
 }
 
 function goToPageComment(e) {
-    
     e.preventDefault();
     if ($(this).parent('li').attr('class') === 'active')
         return false;
@@ -42,10 +41,10 @@ function goToPageComment(e) {
 }
 
 //TODO: Refactor this and video pagination to shared functions
-function processPaginationComment(data, page){
+function processPaginationComment(data, page) {
     $("#videoCommentsContainer").empty();
-    $("#videoCommentsContainer").append(data); 
-    
+    $("#videoCommentsContainer").append(data);
+
     $('#videoDetails .pagination li').removeClass('active');
     $('#videoDetails .paginationBtn').each(function (key, val) {
         element = $(val);
@@ -59,7 +58,7 @@ function processPaginationComment(data, page){
 
 function setPagingCommentsElements(page)
 {
-    var totPages = parseInt($('#totalPages').val());
+    var totPages = parseInt($('#totalCommentPages').val());
     if (totPages === 1)
         return;
     setPrevFirstElemComment(page);
@@ -103,7 +102,7 @@ function saveComment(e) {
     var comment = $("#commentText").val();
     var alias = $("#alias").val();
     var idVideo = $("#idVideo").val();
-    
+
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -126,6 +125,7 @@ function saveComment(e) {
 function processSaveComment(data) {
     if (data.success) {
         //TODO: reload comments
+        reloadComments();
         $('#commentForm .btn-default').trigger('click');
     } else {
         alert(data.errorMsj);
@@ -140,8 +140,7 @@ function clearCommentForm(e) {
             .removeAttr('selected');
 }
 
-function closeVideoDetails(e) {
-    e.preventDefault();
+function closeVideoDetails() {
     var container = $("#videoDetails");
     container.slideUp("slow", function () {
         container.empty();
@@ -152,14 +151,15 @@ function closeVideoDetails(e) {
 
 var videoParent;
 var currentLink;
+var currentVideoId;
 function videoDetails(e) {
-    
+
     e.preventDefault();
     if (document.getElementById('videoDetails') != null)
-        closeVideoDetails(e);
+        closeVideoDetails();
     currentLink = $(this);
     $(this).addClass("disableClick");
-    var videoId = $(this).parent().parent().children(".videoId").val();
+    currentVideoId = $(this).parent().parent().children(".videoId").val();
     videoParent = $(this).closest(".row");
     $.ajax({
         type: "POST",
@@ -173,10 +173,10 @@ function videoDetails(e) {
         timeout: 4000,
         error: problemas,
         url: "videoDetails.php",
-        data: {videoId: videoId}
+        data: {videoId: currentVideoId}
     }).done(function (e) {
         $('.loadingOverlay').css('display', 'none');
-        $("#idVideo").val(videoId);
+        $("#idVideo").val(currentVideoId);
     });
 }
 
@@ -186,4 +186,23 @@ function processVideoDetails(data) {
     container.append(data);
     videoParent.after(container);
     container.slideDown('slow');
+}
+
+
+function reloadComments() {
+    if (document.getElementById('videoDetails') != null)
+        closeVideoDetails();
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        success: function (data) {
+            processVideoDetails(data);
+        },
+        timeout: 4000,
+        error: problemas,
+        url: "videoDetails.php",
+        data: {videoId: currentVideoId}
+    }).done(function () {
+        $("#idVideo").val(currentVideoId);
+    });
 }
