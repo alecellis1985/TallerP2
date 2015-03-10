@@ -33,6 +33,7 @@
         $smarty->assign('videos', $videos);	
         $smarty->assign('videosCount', $countVideos);
         $smarty->assign('videoPages', $videoPages);
+        $smarty->assign('videosCountInPage', count($videos));
     }
     else
     {

@@ -16,7 +16,7 @@ function goToPage(e) {
     $(this).blur();
     $.ajax({
         type: "POST",
-        dataType: "json",
+        dataType: "html",
         beforeSend: inicioEnvio,
         success: function (datos) {
             llegadaDatos(datos, pageNumber);
@@ -38,41 +38,7 @@ function llegadaDatos(datos, page)
     //Borro los videos actuales y appendeo los nuevos videos
     var vidContainer = $('#videosContainer');
     vidContainer.empty();
-    var length = datos.length;
-    for (var i = 0; i < length; i += 2)
-    {
-        var row = $('<div class="row"></div>');
-        for (var j = 0; j < 2; j++)
-        {
-            //datos[i + j].url = 'https://www.youtube.com/embed/' + datos[i + j].url + '?rel=0';
-            var tmplt = '<div class="col-md-6 portfolio-item">' +
-                    //'<iframe class="videoPlayer" width="560" height="315" src="' + datos[i + j].url + '" frameborder="0" allowfullscreen data-videoId="' + datos[i + j].idVideo + '"></iframe>' +
-                    '<div class="videoPlayer" id="videoPlayer' + datos[i + j].idVideo + '" data-url="' + datos[i + j].url + '"></div>' +
-                    '<h3>' +
-                    '<a class="videoDetails" href="">' + datos[i + j].client + '</a>' +
-                    '</h3>' +
-                    '<input type="hidden" class="videoId" value="' + datos[i + j].idVideo + '">' +
-                    '<p class="starRating">' +
-                    '<span class="star-rating">' +
-                    ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="1">' +
-                    '<i></i>' +
-                    ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="2">' +
-                    '<i></i>' +
-                    ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="3">' +
-                    '<i></i>' +
-                    ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="4">' +
-                    '<i></i>' +
-                    ' <input type="radio" name="rating' + datos[i + j].idVideo + '" value="5">' +
-                    '<i></i>' +
-                    '</span>' +
-                    '</p>' +
-                    '<p>' + datos[i + j].description + '</p>' +
-                    '</div>';
-            row.append(tmplt);
-        }
-        vidContainer.append(row);
-    }
-
+    vidContainer.append(datos);
     $('.videoListPagination.pagination li').removeClass('active');
     $('.videoListPagination .paginationBtn').each(function (key, val) {
         element = $(val);
@@ -83,6 +49,7 @@ function llegadaDatos(datos, page)
     });
     setPagingElements(page);
     loadVideos();
+    $('html, body').animate({ scrollTop: 0 }, 0);
     $('.loadingOverlay').css('display', 'none');
     return false;
 }
