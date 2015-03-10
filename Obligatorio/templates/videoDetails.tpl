@@ -28,6 +28,11 @@
                         </span>
                     </p>
                 </td>
+
+            </tr>
+            <tr>
+                <td><h4>Votes</h4></td>
+                <td align="center" valign="bottom"><p>{$video.votes}</p></td>
             </tr>
         </tbody>
     </table>

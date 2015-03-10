@@ -3,7 +3,7 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-//var players;
+var players = new Array();
 var currentPlayer;
 function onYouTubeIframeAPIReady() {
     loadVideos();
@@ -12,11 +12,11 @@ function onYouTubeIframeAPIReady() {
 
 function loadVideos() {
     $('.loadingOverlay').css('display', 'block');
-    //players = [];
     var playerDivs = $(".videoPlayer");
     playerDivs.each(function (index, div) {
         var videoId = div.id;
         var videoUrl = $(div).data("url");
+        players[videoId.toString()] = false;
         var player = new YT.Player(videoId, {
             height: '315',
             width: '560',
@@ -25,7 +25,6 @@ function loadVideos() {
                 'onStateChange': onPlayerStateChange
             }
         });
-        //players.push([player, videoId]);
     });
     $('.loadingOverlay').css('display', 'none');
 }
@@ -37,20 +36,18 @@ function onPlayerStateChange(event) {
 }
 
 function playVideo(state) {
-    if (state == YT.PlayerState.PLAYING) {
+    if (state === YT.PlayerState.PLAYING) {
+        debugger;
         var videoId = parseInt(currentPlayer.c.id.replace("videoPlayer", ""));
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            success: function (result) {
-                
-                if (!result.success) {
-                    alert(result.errorMsj);
-                }
-            },
-            timeout: 4000,
-            url: "videoView.php",
-            data: {videoId: videoId}
-        });
+        if (!players[currentPlayer.c.id.toString()]) {
+            players[currentPlayer.c.id.toString()] =  true;
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                timeout: 4000,
+                url: "videoView.php",
+                data: {videoId: videoId}
+            });
+        }
     }
 }

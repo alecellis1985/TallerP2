@@ -43,9 +43,10 @@ function startDoc()
 
 function logOut(e)
 {
+    var url = $(e.target).data('url');
     e.preventDefault();
     $.ajax({
-        url: "logout.php",
+        url: url,
         type: "POST",
         success: logOutSuccess,
         timeout: 4000
@@ -100,7 +101,7 @@ function errorLogIn(e) {
 function logOutSuccess()
 {
     Helper.setCookie('usuario', '', -1);
-    window.location = "index.php";
+    window.location = $("#homeLink").attr("href");
 }
 
 

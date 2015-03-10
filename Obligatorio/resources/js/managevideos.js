@@ -8,6 +8,7 @@ function startVideos()
     $('#videofrm').submit(saveVid);
     $("#allVideosLink").attr("href","../videoList.php");
     $("#homeLink").attr("href","../index.php");
+    $("#logOut").data("url","../logout.php");
     $("#manageVideosId").attr("href","manageVideos.php");
     
     $("#homeFooterLink").attr("href","../videoList.php");

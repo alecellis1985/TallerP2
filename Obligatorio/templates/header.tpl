@@ -20,7 +20,7 @@
                         </li>
                         <li>
                             <a id="logIn" data-toggle="modal" data-target="#myModal" href="#">Log In</a>
-                            <a id="logOut" class="hide" href="">Log Out</a>
+                            <a id="logOut" data-url="logout.php" class="hide" href="">Log Out</a>
                         </li>
                         <li id="privateComponent" style="display:none;">
                             <a id="manageVideosId" href="privateFunctions/manageVideos.php">Manage videos</a>
