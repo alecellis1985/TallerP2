@@ -10,6 +10,7 @@ function startVideos()
     $("#homeLink").attr("href","../index.php");
     $("#logOut").data("url","../logout.php");
     $("#manageVideosId").attr("href","manageVideos.php");
+    $("#statisticsId").attr("href","statistics.php");
     
     $("#homeFooterLink").attr("href","../videoList.php");
     $("#videoListFooterLink").attr("href","../index.php");
