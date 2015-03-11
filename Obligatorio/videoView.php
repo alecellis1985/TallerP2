@@ -7,6 +7,7 @@ require_once("config/parametros.php");
 $videoId = intval($_POST['videoId']);
 
 $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
+$ERROR = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
 if ($conn->conectar()) {
     $sql = "SELECT idVideo, views FROM videos WHERE idVideo = :videoId";
     $params = array();
@@ -23,14 +24,11 @@ if ($conn->conectar()) {
             $result = array("success" => true);
             echo json_encode($result);
         } else {
-            $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
-            echo json_encode($result);
+            echo json_encode($ERROR);
         }
     } else {
-        $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
-        echo json_encode($result);
+        echo json_encode($ERROR);
     }
 } else {
-    $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
-    echo json_encode($result);
+    echo json_encode($ERROR);
 }

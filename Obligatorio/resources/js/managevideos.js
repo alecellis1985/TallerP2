@@ -19,12 +19,7 @@ function addVid()
 {
     $('#videofrm').attr('action','addVideo.php');
     $('#videoTitle').html('Add new video');
-    $.each($('#videofrm input'),function(key,elem){
-        elem.value = '';
-    });
-    $.each($('#videofrm textarea'),function(key,elem){
-        elem.value = '';
-    });
+    $('#videofrm')[0].reset();
 }
 
 function saveVid(e)
@@ -39,6 +34,7 @@ function saveVid(e)
     };
     var action =$(this).attr('action');
     var url = '../privateFunctions/'+action;
+    $('#closeVideoModal').trigger('click');
     $.ajax({
         type:"POST",
         dataType:"json",
@@ -53,21 +49,20 @@ function saveVid(e)
             }
             else if (action=="addVideo.php")
             {
-                completeaddVideo(datos);
+                completeAddVideo(datos);
             }
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
         error: function(datos)
         {
-            var pd = datos;
-            //"show error"
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
         }        
     });
 }
 
 function completeAddVideo(datos)
 {
-    videos.push(datos.element);
-    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
+    videos.push(datos.data);
 }
 
 function completeEditVideo(datos,modifiedData)
@@ -86,8 +81,6 @@ function completeEditVideo(datos,modifiedData)
             }
         });
     }
-    $('#closeVideoModal').trigger('click');
-    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
 }
 
 function editVid()
@@ -120,10 +113,12 @@ function deleteVid()
         success:function(datos)
         {
             deleteVidComplete(datos,videoId);
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
         error: function(datos)
         {
             deleteVidComplete(datos,videoId);
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
         },
         data:{'idVideo':videoId}
     });
@@ -158,6 +153,5 @@ function deleteVidComplete(datos,id){
             htmlElement.remove();
         });
     }
-    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
     //make json call to get one more elem for this page and add it
 }

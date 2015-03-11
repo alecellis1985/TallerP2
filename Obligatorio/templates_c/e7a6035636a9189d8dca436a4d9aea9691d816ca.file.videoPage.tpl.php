@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-10 00:50:34
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-11 10:57:18
          compiled from "templates\videoPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:124354f1d1c6069eb2-06555742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e7a6035636a9189d8dca436a4d9aea9691d816ca' => 
     array (
       0 => 'templates\\videoPage.tpl',
-      1 => 1425681046,
+      1 => 1426078808,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'x' => 0,
+    'videosCountInPage' => 0,
     'videos' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54f1d1c60a50e5_84530757')) {function content_54f1d1c60a50e5_84530757($_smarty_tpl) {?><?php  $_smarty_tpl->tpl_vars['x'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['x']->value = 1;
-  if ($_smarty_tpl->tpl_vars['x']->value<9) { for ($_foo=true;$_smarty_tpl->tpl_vars['x']->value<9; $_smarty_tpl->tpl_vars['x']->value++) {
+  if ($_smarty_tpl->tpl_vars['x']->value<$_smarty_tpl->tpl_vars['videosCountInPage']->value+1) { for ($_foo=true;$_smarty_tpl->tpl_vars['x']->value<$_smarty_tpl->tpl_vars['videosCountInPage']->value+1; $_smarty_tpl->tpl_vars['x']->value++) {
 ?>
     <?php if ($_smarty_tpl->tpl_vars['x']->value%2==1) {?>
         <div class="row">
@@ -46,7 +47,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <p><?php echo $_smarty_tpl->tpl_vars['videos']->value[$_smarty_tpl->tpl_vars['x']->value-1]['description'];?>
 </p>
         </div>
-        <?php if ($_smarty_tpl->tpl_vars['x']->value%2==0) {?>
+        <?php if ($_smarty_tpl->tpl_vars['x']->value%2==0||$_smarty_tpl->tpl_vars['x']->value==$_smarty_tpl->tpl_vars['videosCountInPage']->value) {?>
         </div>
     <?php }?>
 <?php }} ?> 

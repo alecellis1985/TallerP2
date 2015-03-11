@@ -24,7 +24,7 @@
                         <button id="addVid" type="button" class="btn btn-default" data-toggle="modal" data-target="#videoModal">Add new video</button>
                         <table id="manageVideosTable" class="table table-striped">
                              <thead>
-                             <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th>Release Date</th><th>Description</th><th colspan="2">Actions</th>
+                             <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="2">Actions</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videos item=video}
@@ -69,7 +69,6 @@
                 videos.push(vid);
             {/foreach}
             var getUserPath = '../getUser.php';
-
         </script>
         <script type="text/javascript" src="../resources/js/managevideos.js"></script>
     </body>

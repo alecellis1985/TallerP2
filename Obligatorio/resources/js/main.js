@@ -12,11 +12,10 @@ $(document).on("blur", ".currentRate", function () {
     $(this).next().addClass("rated");
 });
 
-$(document).ready(startDoc);
+$(document).ready(mainReadyFns);
 
-function startDoc()
+function mainReadyFns()
 {
-    
     var path = "getUser.php";
     if(typeof getUserPath != 'undefined')
         path = getUserPath;
@@ -34,8 +33,8 @@ function startDoc()
             $('#privateComponent').hide();
         }
     });
+    $('#logIn').click(clearLogInForm);
     $('#logOut').click(logOut);
-    $('#closeModal').click(clearLogInForm);
     $("#logInForm").submit(logIn);
 }
 
@@ -53,20 +52,15 @@ function logOut(e)
     });
 }
 
-function clearLogInForm(e) {
-    $(':input', '#logInForm')
-            .not(':button, :submit, :reset, :hidden')
-            .val('')
-            .removeAttr('checked')
-            .removeAttr('selected');
+function clearLogInForm() {
+    $('#logInForm')[0].reset();
     $("#logInErrors").text("");
     $("#logInErrors").parent().addClass("hide");
 }
 
 function logIn(e) {
     e.preventDefault();
-    var userName = $("#userName").val();
-    var password = $("#pwd").val();
+    var postData = {username: $("#userName").val(), password: $("#pwd").val()}
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -76,7 +70,7 @@ function logIn(e) {
         timeout: 4000,
         error: errorLogIn,
         url: "login.php",
-        data: {username: userName, password: password}
+        data: postData
     });
 }
 
@@ -86,7 +80,6 @@ function processLogIn(result) {
         $('#logOut').removeClass('hide');
         $('#privateComponent').show();
         $('#logInForm .btn-default').trigger('click');
-        clearLogInForm();
         Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], 'Hello&nbsp' + Helper.getCookie('usuario') + ' you have been successfuly logged in.');
     } else {
         $("#logInErrors").text(result.errorMsj);
