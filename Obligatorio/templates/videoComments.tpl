@@ -1,7 +1,6 @@
 <div class="col-md-12">
     <button id="addComment" type="button" class="btn btn-default" data-toggle="modal" 
             data-target="#modalComments">Add Comment</button>
-                        
     <table id="videoComments" class="table table-striped">
         <thead>
         <th>Comment</th><th>Author</th><th>Date</th>

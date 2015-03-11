@@ -19,6 +19,13 @@ if($conn->conectar()){
 	$parametros[1] =  array("url",$url,"STRING",150);
 	$parametros[2] =  array("releaseDate",$releaseDate,"STRING",250);
         $parametros[3] =  array("description",$description,"STRING",250);
+        /*
+        * TODO: check if video already exists
+         * * TODO: check if video already exists
+         * * TODO: check if video already exists
+         * * TODO: check if video already exists
+         * TODO: check if video already exists
+         *          */
 	if($conn->consulta($sql,$parametros)){
             $id = $conn->ultimoIdInsert();
             $sql2 = "SELECT * FROM videos where idVideo = " . $id;
