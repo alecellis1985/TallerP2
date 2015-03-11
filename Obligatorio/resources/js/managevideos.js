@@ -10,7 +10,7 @@ function startVideos()
     $("#homeLink").attr("href","../index.php");
     $("#logOut").data("url","../logout.php");
     $("#manageVideosId").attr("href","manageVideos.php");
-    
+    $(".commentsVid").click(videoDetails);
     $("#homeFooterLink").attr("href","../videoList.php");
     $("#videoListFooterLink").attr("href","../index.php");
 }
@@ -110,6 +110,7 @@ function deleteVid()
         url:'../privateFunctions/deleteVideo',
         dataType:'json',
         timeout: 4000,
+        data:{'idVideo':videoId},
         success:function(datos)
         {
             deleteVidComplete(datos,videoId);
@@ -117,10 +118,9 @@ function deleteVid()
         },
         error: function(datos)
         {
-            deleteVidComplete(datos,videoId);
+//            deleteVidComplete(datos,videoId);
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
-        },
-        data:{'idVideo':videoId}
+        }
     });
 }
 
@@ -141,12 +141,12 @@ function getTrElemById(id)
 function deleteVidComplete(datos,id){
     Helper.deleteByPropertyAndValueInArray('idVideo',id,videos);
     var htmlElement = getTrElemById(id);
+    closeDetails(htmlElement.next());
     if(htmlElement !== undefined)
     {
         htmlElement.css('background-color','#F9E6E6');
         var children = htmlElement.children();
         var height = $(children[0]).height();
-        //set height for divs so slide up works it!
         var tdDivs = htmlElement.children().find('div');
         tdDivs.height(height+'px');
         tdDivs.slideUp(1500,function(){
@@ -154,4 +154,54 @@ function deleteVidComplete(datos,id){
         });
     }
     //make json call to get one more elem for this page and add it
+}
+
+function videoDetails() {
+    var vidId = $(this).data('id');
+    var tr = getTrElemById(vidId);
+    if(closeDetails(tr.next()))
+    {
+        return;
+    }
+    var data = {videoId: vidId};
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        beforeSend: function (e) {
+            $('.loadingOverlay').css('display', 'block');
+        },
+        success: function (data) {
+            processVideoDetails(data,tr);
+        },
+        timeout: 4000,
+        error: problemas,
+        url: "../videoDetails.php",
+        data: data
+    }).done(function (e) {
+        $('.loadingOverlay').css('display', 'none');
+    });
+}
+
+function closeDetails(tr)
+{
+    if(tr.attr('class') === 'videoDetails')
+    {
+        tr.find('.videoDetails').slideUp('slow',function(){
+            tr.remove();
+        });
+        return true;
+    }
+    return false;
+}
+
+function problemas(){}
+
+function processVideoDetails(data,tr) {
+    
+    var divAnimation = $('<div style="display:none" class="videoDetails"></div>');
+    divAnimation.append(data);
+    var container = $('<tr class="videoDetails"><td colspan="10"></td></tr>');
+    container.find('td').append(divAnimation);
+    container.insertAfter(tr);
+    divAnimation.slideDown('slow');
 }

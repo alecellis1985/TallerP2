@@ -24,7 +24,7 @@
                         <button id="addVid" type="button" class="btn btn-default" data-toggle="modal" data-target="#videoModal">Add new video</button>
                         <table id="manageVideosTable" class="table table-striped">
                              <thead>
-                             <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="2">Actions</th>
+                             <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="3">Actions</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videos item=video}
@@ -38,6 +38,9 @@
                                             <td><div data-id="description">{$video['description']}</div></td>
                                             <td>
                                                 <div><button type="button" class="btn btn-default editVid" data-id="{$video['idVideo']}" data-toggle="modal" data-target="#videoModal">Edit</button></div>
+                                            </td>
+                                            <td>
+                                                <div><button type="button" class="btn btn-default commentsVid" data-id="{$video['idVideo']}">Comments</button></div>
                                             </td>
                                             <td>
                                                 <div><button type="button" class="btn btn-danger deleteVid" data-id="{$video['idVideo']}">Delete</button></div>
