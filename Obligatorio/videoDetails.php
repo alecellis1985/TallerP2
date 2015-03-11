@@ -10,7 +10,6 @@ $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
 $smarty = new Smarty();
 $smarty->template_dir = 'templates';
 $smarty->compile_dir = 'templates_c';
-
 if ($conn->conectar()) {
     $sqlSelectVideo = "SELECT * FROM videos WHERE idVideo = :videoId ";
     $paramsSelect = array();
@@ -18,7 +17,6 @@ if ($conn->conectar()) {
     if ($conn->consulta($sqlSelectVideo, $paramsSelect)) {
         $video = $conn->siguienteRegistro();
         $smarty->assign('video', $video);
-
         $sqlComments = "SELECT * FROM comments WHERE idVideo = :videoId AND public = true ORDER BY dateTime desc LIMIT " . CANTPAGCOMMENTS;
         $paramsComments = array();
         $paramsComments[0] = array("videoId", $videoId, "int");
