@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-03 00:26:52
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-10 00:50:33
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425350771,
+      1 => 1425681046,
       2 => 'file',
     ),
   ),
@@ -47,11 +47,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <body>
 
+        <div id="modalCommentsContainer"><?php echo $_smarty_tpl->getSubTemplate ("modalComments.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+</div>
+        
         <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-
+        
         <!-- Page Content -->
-        <div class="container">
+        <div class="container contentContainer">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
             <!-- Page Header -->
             <div class="row">
@@ -66,13 +69,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <?php echo $_smarty_tpl->getSubTemplate ("videoPage.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
             </div>
-            
+
             <hr>
 
             <!-- Pagination -->
             <div class="row text-center">
                 <div class="col-lg-12">
-                    <ul class="pagination">
+                    <ul class="pagination videoListPagination">
                         <li>
                             <a href="" class="firstPage disableClick" data-page="1" title="First page">&laquo;</a>
                         </li>
@@ -83,7 +86,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-
+                            
                             <li <?php if ($_smarty_tpl->tpl_vars['i']->value==1) {?> class="active"<?php }?>>
                                 <a href="" class="paginationBtn" data-page="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
@@ -108,7 +111,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         <!-- /.container -->
         <div class="footer"><?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-        
+
         <?php echo '<script'; ?>
  src="resources/js/libs/jquery.js"><?php echo '</script'; ?>
 >
@@ -127,8 +130,14 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 >
         <?php echo '<script'; ?>
  src="resources/js/videoList.js"><?php echo '</script'; ?>
+>   
+        <?php echo '<script'; ?>
+ src="resources/js/youTubePlayer.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="resources/js/comments.js"><?php echo '</script'; ?>
 >        
-        
+
     </body>
 </html>
 <?php }} ?>

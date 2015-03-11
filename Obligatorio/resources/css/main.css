@@ -386,6 +386,10 @@ body{
     z-index: 3;
     border-radius: 10px;
 }
+.videoDetails
+{
+    background-color: #efefef;
+}
 
 @media (min-width: 768px) {
     #videoDetails {

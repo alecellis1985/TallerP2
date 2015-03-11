@@ -12,6 +12,7 @@ function startVideos()
     $("#manageVideosId").attr("href","manageVideos.php");
     $("#statisticsId").attr("href","statistics.php");
     
+    $(".commentsVid").click(videoDetails);
     $("#homeFooterLink").attr("href","../videoList.php");
     $("#videoListFooterLink").attr("href","../index.php");
 }
@@ -20,12 +21,7 @@ function addVid()
 {
     $('#videofrm').attr('action','addVideo.php');
     $('#videoTitle').html('Add new video');
-    $.each($('#videofrm input'),function(key,elem){
-        elem.value = '';
-    });
-    $.each($('#videofrm textarea'),function(key,elem){
-        elem.value = '';
-    });
+    $('#videofrm')[0].reset();
 }
 
 function saveVid(e)
@@ -40,6 +36,7 @@ function saveVid(e)
     };
     var action =$(this).attr('action');
     var url = '../privateFunctions/'+action;
+    $('#closeVideoModal').trigger('click');
     $.ajax({
         type:"POST",
         dataType:"json",
@@ -54,21 +51,20 @@ function saveVid(e)
             }
             else if (action=="addVideo.php")
             {
-                completeaddVideo(datos);
+                completeAddVideo(datos);
             }
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
         error: function(datos)
         {
-            var pd = datos;
-            //"show error"
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
         }        
     });
 }
 
 function completeAddVideo(datos)
 {
-    videos.push(datos.element);
-    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
+    videos.push(datos.data);
 }
 
 function completeEditVideo(datos,modifiedData)
@@ -87,8 +83,6 @@ function completeEditVideo(datos,modifiedData)
             }
         });
     }
-    $('#closeVideoModal').trigger('click');
-    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
 }
 
 function editVid()
@@ -118,15 +112,17 @@ function deleteVid()
         url:'../privateFunctions/deleteVideo',
         dataType:'json',
         timeout: 4000,
+        data:{'idVideo':videoId},
         success:function(datos)
         {
             deleteVidComplete(datos,videoId);
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
         error: function(datos)
         {
-            deleteVidComplete(datos,videoId);
-        },
-        data:{'idVideo':videoId}
+//            deleteVidComplete(datos,videoId);
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
+        }
     });
 }
 
@@ -147,18 +143,67 @@ function getTrElemById(id)
 function deleteVidComplete(datos,id){
     Helper.deleteByPropertyAndValueInArray('idVideo',id,videos);
     var htmlElement = getTrElemById(id);
+    closeDetails(htmlElement.next());
     if(htmlElement !== undefined)
     {
         htmlElement.css('background-color','#F9E6E6');
         var children = htmlElement.children();
         var height = $(children[0]).height();
-        //set height for divs so slide up works it!
         var tdDivs = htmlElement.children().find('div');
         tdDivs.height(height+'px');
         tdDivs.slideUp(1500,function(){
             htmlElement.remove();
         });
     }
-    Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
     //make json call to get one more elem for this page and add it
+}
+
+function videoDetails() {
+    var vidId = $(this).data('id');
+    var tr = getTrElemById(vidId);
+    if(closeDetails(tr.next()))
+    {
+        return;
+    }
+    var data = {videoId: vidId};
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        beforeSend: function (e) {
+            $('.loadingOverlay').css('display', 'block');
+        },
+        success: function (data) {
+            processVideoDetails(data,tr);
+        },
+        timeout: 4000,
+        error: problemas,
+        url: "../videoDetails.php",
+        data: data
+    }).done(function (e) {
+        $('.loadingOverlay').css('display', 'none');
+    });
+}
+
+function closeDetails(tr)
+{
+    if(tr.attr('class') === 'videoDetails')
+    {
+        tr.find('.videoDetails').slideUp('slow',function(){
+            tr.remove();
+        });
+        return true;
+    }
+    return false;
+}
+
+function problemas(){}
+
+function processVideoDetails(data,tr) {
+    
+    var divAnimation = $('<div style="display:none" class="videoDetails"></div>');
+    divAnimation.append(data);
+    var container = $('<tr class="videoDetails"><td colspan="10"></td></tr>');
+    container.find('td').append(divAnimation);
+    container.insertAfter(tr);
+    divAnimation.slideDown('slow');
 }

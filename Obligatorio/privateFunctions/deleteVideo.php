@@ -1,33 +1,34 @@
 <?php
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
+require_once("../includes/MessageHandler.php");
 //start_session();
 //if($_SESSION['ingreso'])
 //{
    $idVideo = $_POST['idVideo'];
    $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
+   $response = null;
     if($conn->conectar())
     {
         $sql = "UPDATE videos SET deleted = 1 where idVideo = :idVideo";
         $params = array();
         $params[0] = array("idVideo",$idVideo,"INT");
-        var_dump($idVideo);
         if($conn->consulta($sql,$params))
         {
-            echo json_encode(array('success'=>true,'msg'=>'Video successfully eleted'));
+            $response = MessageHandler::getSuccessResponse('Video successfully deleted',null);
         }
-        else
-        {
-            echo "Error, please refresh the web.";
-        }
+    }
+    if($response == null)
+    {
+        header('HTTP/1.1 400 Bad Request');
+        echo MessageHandler::getDBErrorResponse();
     }
     else
     {
-        echo "SQL ERROR";
+        echo $response;
     }
 //}
 //else
 //{
 //    echo "FORBBBBIDENZEN";
 //}
-
