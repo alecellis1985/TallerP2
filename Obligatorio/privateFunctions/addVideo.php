@@ -9,10 +9,6 @@ $releaseDate = $_POST['releaseDate'];
 $description = $_POST['description'];
 
 $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
-var_dump($client);
-var_dump($url);
-var_dump($releaseDate);
-var_dump($description);
 if($conn->conectar()){
         $sql = "INSERT INTO videos (client, url, releaseDate,description,destacado,views,deleted)";
         $sql .= " VALUES (:client, :url, :releaseDate,:description,0,0,0)";
@@ -23,19 +19,23 @@ if($conn->conectar()){
         $parametros[3] =  array("description",$description,"STRING",250);
 	if($conn->consulta($sql,$parametros)){
             $id = $conn->ultimoIdInsert();
-            $sql2 = "SELECT * FROM videos where id = " . $id;
-            if($conn->consulta($sql)){
-                $result = array("success" =>true,'msg'=>'Video successfully added',"element"=>$insertedVid);
+            $sql2 = "SELECT * FROM videos where idVideo = " . $id;
+            if($conn->consulta($sql2)){
+                $elemInserted = $conn->restantesRegistros();
+                $result = array("success" =>true,'msg'=>'Video successfully added',"element"=>$elemInserted);
                 echo json_encode($result);
             }
-            else{
-                    echo "Error de SQL";
+            else
+            {
+                    echo "Error de SQL 1";
             }
 	}
-	else{
-		echo "Error de SQL";
+	else
+        {
+		echo "Error de SQL 2";
 	}
 }
-else{
-	echo "Error de Conexi�n";
+else
+{
+	echo "Error de Conexion";
 }
