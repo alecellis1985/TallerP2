@@ -19,6 +19,7 @@
                             <i {if $video.rating >= 1} class="rated" {/if}></i>
                             <input type="radio" name="ratingStatic" value="2" class="disableClick">
                             <i {if $video.rating >= 2} class="rated" {/if}></i>
+                            <a href="videoDetails.tpl"></a>
                             <input type="radio" name="ratingStatic" value="3" class="disableClick">
                             <i {if $video.rating >= 3} class="rated" {/if}></i>
                             <input type="radio" name="ratingStatic" value="4" class="disableClick">

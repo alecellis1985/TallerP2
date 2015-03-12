@@ -11,35 +11,63 @@
         <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
         <link rel="stylesheet" href="../resources/css/main.css">
         <link rel="stylesheet" href="../resources/css/common.css">
+        <link rel="stylesheet" href="../resources/css/starRating.css">
     </head>
     <body>
         <!-- Navigation -->
         <div id="header">{include file="header.tpl"}</div>
         <div class="container contentContainer" style="margin-top: 50px;">
+
+            <div class="row ">
+                <div class="col-md-6">
+                    <h1>Site Statistics</h1>
+                </div>
+                <div class="col-md-4 col-md-offset-2">
+                    <ul class="nav navbar-nav" style="margin:20px 0 10px 0;">
+                        <li>
+                            <div><button type="button" class="btn btn-danger generatePdf">PDF</button></div>
+                        </li>
+                        <li style="margin-left: 10px;">
+                            <div><button type="button" class="btn btn-success generateXls">Excel</button></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="row bottom bottom-buffer">
-                <div class="col-md-12 ">
+                <div class="col-md-12">
                     <h2><i>Videos per Rating</i></h2>
                     <div>
                         <table id="videosPerRatingTable" class="table table-striped">
                             <thead>
-                            <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th>Release Date</th><th>Description</th><th colspan="2">Actions</th>
+                            <th >Rating</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Release Date</th><th>Description</th>
                             </thead>
                             <tbody>
-                                {foreach from=$videos item=video}
+                                {foreach from=$videosPerRating item=video}
                                     <tr data-id="{$video['idVideo']}">
+
+                                        <td align="center" valign="middle">
+                                            <p>
+                                                <span class="star-rating">
+                                                    <input type="radio" name="ratingStatic" value="1" class="disableClick">
+                                                    <i {if $video.rating >= 1} class="rated" {/if}></i>
+                                                    <input type="radio" name="ratingStatic" value="2" class="disableClick">
+                                                    <i {if $video.rating >= 2} class="rated" {/if}></i>
+                                                    <a href="videoDetails.tpl"></a>
+                                                    <input type="radio" name="ratingStatic" value="3" class="disableClick">
+                                                    <i {if $video.rating >= 3} class="rated" {/if}></i>
+                                                    <input type="radio" name="ratingStatic" value="4" class="disableClick">
+                                                    <i {if $video.rating >= 4} class="rated" {/if}></i>
+                                                    <input type="radio" name="ratingStatic" value="5" class="disableClick">
+                                                    <i {if $video.rating >= 5} class="rated" {/if}></i>
+                                                </span>
+                                            </p>
+                                        </td>
                                         <td><div data-id="client">{$video['client']}</div></td>
                                         <td><div data-id="client">{$video['views']}</div></td>
                                         <td><div data-id="url">{$video['url']}</div></td>
                                         <td><div data-id="destacado">{$video['destacado']}</div></td>
-                                        <td><div data-id="deleted">{$video['deleted']}</div></td>
                                         <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                         <td><div data-id="description">{$video['description']}</div></td>
-                                        <td>
-                                            <div><button type="button" class="btn btn-default editVid" data-id="{$video['idVideo']}" data-toggle="modal" data-target="#videoModal">Edit</button></div>
-                                        </td>
-                                        <td>
-                                            <div><button type="button" class="btn btn-danger deleteVid" data-id="{$video['idVideo']}">Delete</button></div>
-                                        </td>
                                     </tr>
                                 {/foreach}
                             </tbody>
@@ -53,24 +81,22 @@
                 <div>
                     <table id="videosPerCommentTable" class="table table-striped">
                         <thead>
-                        <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th>Release Date</th><th>Description</th><th colspan="2">Actions</th>
+                        <th>Comments count</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th>Release Date</th><th>Description</th><th colspan="2">Actions</th>
                         </thead>
                         <tbody>
-                            {foreach from=$videos item=video}
+                            {foreach from=$videosPerComment item=video}
                                 <tr data-id="{$video['idVideo']}">
+
+                                    <td><div data-id="client">{$video['commentCount']}</div></td>
                                     <td><div data-id="client">{$video['client']}</div></td>
-                                    <td><div data-id="client">{$video['views']}</div></td>
+                                    <td><div data-id="views">{$video['views']}</div></td>
                                     <td><div data-id="url">{$video['url']}</div></td>
                                     <td><div data-id="destacado">{$video['destacado']}</div></td>
                                     <td><div data-id="deleted">{$video['deleted']}</div></td>
                                     <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                     <td><div data-id="description">{$video['description']}</div></td>
-                                    <td>
-                                        <div><button type="button" class="btn btn-default editVid" data-id="{$video['idVideo']}" data-toggle="modal" data-target="#videoModal">Edit</button></div>
-                                    </td>
-                                    <td>
-                                        <div><button type="button" class="btn btn-danger deleteVid" data-id="{$video['idVideo']}">Delete</button></div>
-                                    </td>
+                                    <td><div data-id="description">videoCommentsCount</div></td>
+
                                 </tr>
                             {/foreach}
                         </tbody>
