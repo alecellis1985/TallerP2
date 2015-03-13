@@ -18,11 +18,11 @@
         <div id="header">{include file="header.tpl"}</div>
         <div class="container contentContainer" style="margin-top: 50px;">
 
-            <div class="row ">
+            <div class="row bottom-buffer">
                 <div class="col-md-6">
                     <h1>Site Statistics</h1>
                 </div>
-                <div class="col-md-4 col-md-offset-2">
+                <div class="col-md-2 col-md-offset-4">
                     <ul class="nav navbar-nav" style="margin:20px 0 10px 0;">
                         <li>
                             <div><button type="button" class="btn btn-danger generatePdf">PDF</button></div>
@@ -87,7 +87,7 @@
                             {foreach from=$videosPerComment item=video}
                                 <tr data-id="{$video['idVideo']}">
 
-                                    <td><div data-id="client">{$video['commentCount']}</div></td>
+                                    <td><div data-id="commentCount">{$video['commentCount']}</div></td>
                                     <td><div data-id="client">{$video['client']}</div></td>
                                     <td><div data-id="views">{$video['views']}</div></td>
                                     <td><div data-id="url">{$video['url']}</div></td>
@@ -95,7 +95,6 @@
                                     <td><div data-id="deleted">{$video['deleted']}</div></td>
                                     <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                     <td><div data-id="description">{$video['description']}</div></td>
-                                    <td><div data-id="description">videoCommentsCount</div></td>
 
                                 </tr>
                             {/foreach}
@@ -127,6 +126,6 @@
         var getUserPath = '../getUser.php';
 
     </script>
-    <script type="text/javascript" src="../resources/js/managevideos.js"></script>
+    <script type="text/javascript" src="../resources/js/statistics.js"></script>
 </body>
 </html>
