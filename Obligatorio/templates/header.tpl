@@ -28,6 +28,9 @@
                     <li class="privateComponent" style="display:none;">
                         <a id="statisticsId" href="privateFunctions/statistics.php">Statistics</a>
                     </li>
+                    <li class="privateComponent" style="display:none;">
+                        <a id="statisticsId" href="privateFunctions/comments.php">Comments</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
