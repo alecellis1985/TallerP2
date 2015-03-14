@@ -9,7 +9,6 @@ $smarty->compile_dir = '../templates_c';
         
 if($_SESSION['ingreso'])
 {
-    
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     if($conn->conectar())
     {

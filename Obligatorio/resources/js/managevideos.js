@@ -178,7 +178,7 @@ function videoDetails() {
         },
         timeout: 4000,
         error: problemas,
-        url: "../videoDetails.php",
+        url: "../privateFunctions/videoDetailsPrivate.php",
         data: data
     }).done(function (e) {
         $('.loadingOverlay').css('display', 'none');
