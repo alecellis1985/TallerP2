@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-10 00:50:33
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-14 13:25:57
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1425681046,
+      1 => 1426350145,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>2 Col Portfolio - Start Bootstrap Template</title>
+        <title>MyCompany Videos</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
