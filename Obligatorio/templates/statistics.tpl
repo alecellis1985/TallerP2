@@ -41,7 +41,7 @@
                     <div>
                         <table id="videosPerRatingTable" class="table table-striped">
                             <thead>
-                            <th >Rating</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Release Date</th><th>Description</th><th>Available?</th>
+                            <th >Rating</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th width="110px">Release Date</th><th>Description</th><th>Available?</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videosPerRating item=video}
@@ -67,11 +67,10 @@
                                         <td><div data-id="client">{$video['client']}</div></td>
                                         <td><div data-id="client">{$video['views']}</div></td>
                                         <td><div data-id="url">{$video['url']}</div></td>
-                                        <td><div data-id="destacado">{$video['destacado']}</div></td>
+                                        <td><div data-id="destacado">{if $video['destacado'] == 0}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
                                         <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                         <td><div data-id="description">{$video['description']}</div></td>
                                         <td><div data-id="deleted">{if $video['deleted']}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
-
                                     </tr>
                                 {/foreach}
                             </tbody>
@@ -85,21 +84,19 @@
                 <div>
                     <table id="videosPerCommentTable" class="table table-striped">
                         <thead>
-                        <th>Comments count</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th>Release Date</th><th>Description</th>
+                        <th>Comments count</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th>
                         </thead>
                         <tbody>
                             {foreach from=$videosPerComment item=video}
                                 <tr data-id="{$video['idVideo']}">
-
                                     <td><div data-id="commentCount">{if $video['commentCount']}{$video['commentCount']}{else}0{/if}</div></td>
                                     <td><div data-id="client">{$video['client']}</div></td>
                                     <td><div data-id="views">{$video['views']}</div></td>
                                     <td><div data-id="url">{$video['url']}</div></td>
-                                    <td><div data-id="destacado">{$video['destacado']}</div></td>
-                                    <td><div data-id="deleted">{$video['deleted']}</div></td>
+                                    <td><div data-id="destacado">{if $video['destacado'] == 0}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
+                                    <td><div data-id="deleted">{if $video['deleted'] == 0}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
                                     <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                     <td><div data-id="description">{$video['description']}</div></td>
-
                                 </tr>
                             {/foreach}
                         </tbody>
