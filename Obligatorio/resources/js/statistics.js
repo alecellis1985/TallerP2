@@ -1,6 +1,20 @@
 $(document).on("click", ".generatePdf", exportToPDF);
 $(document).on("click", ".generateXls", exportToXLS);
 
+$(document).ready(startDoc);
+
+function startDoc(e){
+    $("#homeFooterLink").attr("href","../videoList.php");
+    $("#videoListFooterLink").attr("href","../index.php");
+    
+    $("#allVideosLink").attr("href","../videoList.php");
+    $("#homeLink").attr("href","../index.php");
+    $("#logOut").data("url","../logout.php");
+    $("#manageVideosId").attr("href","manageVideos.php");
+    $("#statisticsId").attr("href","statistics.php");
+    
+}
+
 function exportToPDF(e) {
     $.ajax({
         type: "POST",

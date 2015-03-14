@@ -77,7 +77,6 @@
 
         <script src="resources/js/libs/jquery.js"></script>
         <script src="resources/js/libs/bootstrap.min.js"></script>
-        <script src="resources/js/jquery.loadTemplate-1.4.4.min"></script>
         <!-- custom scripts -->
         <script src="resources/js/main.js"></script>
         <script src="resources/js/helper.js"></script>

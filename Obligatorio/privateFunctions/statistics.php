@@ -18,9 +18,9 @@ if ($_SESSION['ingreso']) {
             $videosPerRating = $conn->restantesRegistros();
             $smarty->assign("videosPerRating", $videosPerRating);
 
-            $sqlPerComments = "select v.*, c3.commentCount from videos as v join (select distinct c.idVideo, commentCount from comments as c join 
+            $sqlPerComments = "select v.*, c3.commentCount from videos as v left join (select distinct c.idVideo, commentCount from comments as c join 
                                 (select idVideo, count(*) as commentCount from comments group by idVideo)
-                                as c2 on (c.idVideo = c2.idVideo) order by c2.commentCount desc) as c3 on v.idVideo = c3.idVideo;";
+                                as c2 on (c.idVideo = c2.idVideo) order by c2.commentCount desc) as c3 on v.idVideo = c3.idVideo order by c3.commentCount desc;";
             if ($conn->consulta($sqlPerComments)) {
                 $videosPerComment = $conn->restantesRegistros();
                 $smarty->assign("videosPerComment", $videosPerComment);

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-12 12:24:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-13 23:32:25
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1426106906,
+      1 => 1426300344,
       2 => 'file',
     ),
   ),
@@ -117,9 +117,6 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 >
         <?php echo '<script'; ?>
  src="resources/js/libs/bootstrap.min.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
- src="resources/js/jquery.loadTemplate-1.4.4.min"><?php echo '</script'; ?>
 >
         <!-- custom scripts -->
         <?php echo '<script'; ?>

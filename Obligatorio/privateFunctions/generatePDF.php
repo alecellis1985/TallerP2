@@ -112,10 +112,10 @@ $pdf->FancyTable($header, $data);
 
 $header2 = array('Video Id', 'Title', 'Rating', 'Votes');
 // Data loading
-$data = $pdf->LoadData($videosPerRating, false, "Videos per Rating");
+$data2 = $pdf->LoadData($videosPerRating, false, "Videos per Rating");
 $pdf->SetFont('Arial', '', 14);
 $pdf->AddPage();
-$pdf->FancyTable($header2, $data);
+$pdf->FancyTable($header2, $data2);
 
 
 $url = '../temp/Pdf/test.pdf';
