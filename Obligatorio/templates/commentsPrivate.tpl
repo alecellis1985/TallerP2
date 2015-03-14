@@ -18,28 +18,32 @@
         <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12 ">
-                    <h2><i>MyCompany films corp.</i></h2>
+                    <h2>Comments</h2>
                     <div>
-                        <table id="manageVideosTable" class="table table-striped">
-                             <thead>
-                             <th>Video Id</th><th>Alias</th><th>Ip</th><th width="110px">Comment</th><th>Date</th><th>Active</th><th colspan="1">Actions</th>
-                            </thead>
-                            <tbody>
-                                {foreach from=$comments item=comment}
-					<tr data-id="{$comment['idComments']}">
-                                            <td><div data-id="idVideo">{$comment['idVideo']}</div></td>
-                                            <td><div data-id="client">{$comment['alias']}</div></td>
-                                            <td><div data-id="client">{$comment['ip']}</div></td>
-                                            <td><div data-id="client">{$comment['text']}</div></td>
-                                            <td><div data-id="url">{$comment['dateTime']}</div></td>
-                                            <td><div data-id="url">{$comment['public']}</div></td>
-                                            <td>
-                                                <div><button type="button" class="btn btn-default " data-id="{$comment['idComments']}" data-toggle="modal" data-target="#videoModal">Widthraw</button></div>
-                                            </td>
-					</tr>
-				{/foreach}
-                            </tbody>
-                        </table>
+                    {if $commentsCount < 1} 
+                        <h2>There are no comments to be shown at the moment.</h2>
+                    {else} 
+                        <table id="manageCommentsTable" class="table table-striped">
+                                 <thead>
+                                 <th>Video Id</th><th>Alias</th><th>Ip</th><th width="110px">Comment</th><th>Date</th><th>Active</th><th colspan="1">Actions</th>
+                                </thead>
+                                <tbody>
+                                    {foreach from=$comments item=comment}
+                                            <tr data-id="{$comment['idComments']}">
+                                                <td><div data-id="idVideo">{$comment['idVideo']}</div></td>
+                                                <td><div data-id="client">{$comment['alias']}</div></td>
+                                                <td><div data-id="client">{$comment['ip']}</div></td>
+                                                <td><div data-id="client">{$comment['text']}</div></td>
+                                                <td><div data-id="dateTime">{$comment['dateTime']}</div></td>
+                                                <td><div data-id="public">{$comment['public']}</div></td>
+                                                <td>
+                                                    <div><button type="button" class="btn btn-default widthrawComment" data-id="{$comment['idComments']}">Widthraw</button></div>
+                                                </td>
+                                            </tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>
+                    {/if}
                     </div>
                 </div>
             </div>

@@ -15,6 +15,8 @@ if ($_SESSION['ingreso'])
         $sqlVideosPerRating = "SELECT * FROM comments ORDER BY dateTime DESC";
         if ($conn->consulta($sqlVideosPerRating)) {
             $comments = $conn->restantesRegistros();
+            $count = $conn->cantidadRegistros();
+            $smarty->assign("commentsCount", $count);
             $smarty->assign("comments", $comments);
                 $smarty->display("commentsPrivate.tpl");
             } else {
