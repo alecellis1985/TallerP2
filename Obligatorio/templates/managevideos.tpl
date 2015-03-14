@@ -24,13 +24,15 @@
                         <button id="addVid" type="button" class="btn btn-default" data-toggle="modal" data-target="#videoModal">Add new video</button>
                         <table id="manageVideosTable" class="table table-striped">
                              <thead>
-                             <th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="3">Actions</th>
+                             <th>Title</th><th>Client</th><th>Views</th><th>Rating</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="3">Actions</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videos item=video}
 					<tr data-id="{$video['idVideo']}">
+                                            <td><div data-id="title">{$video['title']}</div></td>
                                             <td><div data-id="client">{$video['client']}</div></td>
                                             <td><div data-id="client">{$video['views']}</div></td>
+                                            <td><div data-id="client">{$video['rating']}</div></td>
                                             <td><div data-id="url">{$video['url']}</div></td>
                                             <td><div data-id="destacado">{$video['destacado']}</div></td>
                                             <td><div data-id="deleted">{$video['deleted']}</div></td>

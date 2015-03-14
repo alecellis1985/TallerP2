@@ -8,17 +8,19 @@ $client = $_POST['client'];
 $url = $_POST['url'];
 $releaseDate = $_POST['releaseDate'];
 $description = $_POST['description'];
+$title = $_POST['title'];
 
 $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
 $response = null;
 if($conn->conectar()){
-        $sql = "INSERT INTO videos (client, url, releaseDate,description,destacado,views,deleted)";
-        $sql .= " VALUES (:client, :url, :releaseDate,:description,0,0,0)";
+        $sql = "INSERT INTO videos (client, url, title, releaseDate, description, destacado, views, deleted)";
+        $sql .= " VALUES (:client, :url, :title, :releaseDate, :description, 0, 0, 0)";
 	$parametros = array();
-	$parametros[0] =  array("client",$client,"STRING",200);
+	$parametros[0] =  array("client",$client,"STRING",45);
 	$parametros[1] =  array("url",$url,"STRING",150);
-	$parametros[2] =  array("releaseDate",$releaseDate,"STRING",250);
-        $parametros[3] =  array("description",$description,"STRING",250);
+        $parametros[2] =  array("title",$title,"STRING",45);
+	$parametros[3] =  array("releaseDate",$releaseDate,"STRING",250);
+        $parametros[4] =  array("description",$description,"STRING",250);
         /*
         * TODO: check if video already exists
          * * TODO: check if video already exists

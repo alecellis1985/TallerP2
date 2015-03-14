@@ -32,7 +32,8 @@ function saveVid(e)
 	client:$('input[name="client"]').val(),
 	url:$('input[name="url"]').val(),
 	releaseDate:$('input[name="releaseDate"]').val(),
-	description:$('textarea[name="description"]').val()
+	description:$('textarea[name="description"]').val(),
+        title:$('input[name="title"]').val(),
     };
     var action =$(this).attr('action');
     var url = '../privateFunctions/'+action;
@@ -202,7 +203,7 @@ function processVideoDetails(data,tr) {
     
     var divAnimation = $('<div style="display:none" class="videoDetails"></div>');
     divAnimation.append(data);
-    var container = $('<tr class="videoDetails"><td colspan="10"></td></tr>');
+    var container = $('<tr class="videoDetails"><td colspan="12"></td></tr>');
     container.find('td').append(divAnimation);
     container.insertAfter(tr);
     divAnimation.slideDown('slow');

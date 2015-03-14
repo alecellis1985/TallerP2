@@ -35,15 +35,5 @@ else
 {
     echo "Private Zone";
 }
-//if($response == null)
-//{
-//    header('HTTP/1.1 400 Bad Request');
-//    echo MessageHandler::getDBErrorResponse();
-//}
-//else
-//{
-//    echo $response;
-//}
-
 
 

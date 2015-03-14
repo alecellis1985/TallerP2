@@ -8,20 +8,24 @@
       <form id="videofrm" role="form" action="" method="POST">
           <div class="modal-body">
               <input id="idVideo"type="hidden" name="idVideo">
-                <div class="form-group">
-                  <label for="userName">Client:</label>
+              <div class="form-group">
+                  <label for="client">Title:</label>
+                  <input type="text" name="title" class="form-control" placeholder="Title" required>
+                </div>  
+              <div class="form-group">
+                  <label for="client">Client:</label>
                   <input type="text" name="client" class="form-control" placeholder="Client" required>
                 </div>
               <div class="form-group">
-                  <label for="userName">Url:</label>
+                  <label for="url">Url:</label>
                   <input type="text" name="url" class="form-control" placeholder="Url" required>
                 </div>
               <div class="form-group">
-                  <label for="userName">Release Date:</label>
+                  <label for="releaseDate">Release Date:</label>
                   <input type="text" name="releaseDate" class="form-control" placeholder="Release Date" required>
                 </div>
               <div class="form-group">
-                  <label for="userName">Description:</label>
+                  <label for="description">Description:</label>
                   <textarea class="form-control" type="text" rows="8" name="description" class="form-control" placeholder="Description" required></textarea>
                 </div>
                 
