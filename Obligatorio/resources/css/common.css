@@ -23,3 +23,8 @@
     margin-left: 10%;  
     z-index: 50;
 }
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus
+{
+    outline: none;
+    outline-offset: 0px;
+}

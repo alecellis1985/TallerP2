@@ -28,7 +28,9 @@
                             <div><button type="button" class="btn btn-danger generatePdf">PDF</button></div>
                         </li>
                         <li style="margin-left: 10px;">
-                            <div><button type="button" class="btn btn-success generateXls">Excel</button></div>
+                            <div>
+                                <button type="button" class="btn btn-success generateXls" onclick="self.location.href = 'http://localhost:8081/TallerP2/Obligatorio/privateFunctions/excelPrinter.php';">Excel</button>
+                            </div>
                         </li>
                     </ul>
                 </div>

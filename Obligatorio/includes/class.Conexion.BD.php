@@ -158,5 +158,3 @@ class ConexionBD
 		return $this->sentencia->rowCount();
 	}
 }
-
-?>
