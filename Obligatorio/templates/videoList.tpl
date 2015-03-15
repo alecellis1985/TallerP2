@@ -1,30 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>MyCompany Videos</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
+        {include file="head.tpl"}
         <link href="resources/css/starRating.css" rel="stylesheet">
-        <link href="resources/css/main.css" rel="stylesheet">
-        <link href="resources/css/common.css" rel="stylesheet">
-        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
     </head>
 
     <body>
-
         <div id="modalCommentsContainer">{include file="modalComments.tpl"}</div>
-        
         <div id="header">{include file="header.tpl"}</div>
-        
         <!-- Page Content -->
         <div class="container contentContainer">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>

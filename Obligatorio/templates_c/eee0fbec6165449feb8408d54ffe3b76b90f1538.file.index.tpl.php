@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-10 00:46:52
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-15 01:46:48
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2489954f1d0de60cbf6-39540379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eee0fbec6165449feb8408d54ffe3b76b90f1538' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1425681046,
+      1 => 1426394033,
       2 => 'file',
     ),
   ),
@@ -26,19 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_54f1d0de6c5403_62285886')) {function content_54f1d0de6c5403_62285886($_smarty_tpl) {?><!DOCTYPE html> 
 <html class="no-js"> 
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MyCompany Videos</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php echo $_smarty_tpl->getSubTemplate ("head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-        <link rel="stylesheet" href="resources/css/normalize.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
-        <link rel="stylesheet" href="resources/css/main.css">
-        <link rel="stylesheet" href="resources/css/common.css">
     </head>
-
     <body>
         <!-- Navigation -->
         <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>

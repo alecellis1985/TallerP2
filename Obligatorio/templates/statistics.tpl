@@ -37,23 +37,12 @@
                             <tbody>
                                 {foreach from=$videosPerRating item=video}
                                     <tr data-id="{$video['idVideo']}">
-
                                         <td align="center" valign="middle">
-                                            <p>
-                                                <span class="star-rating">
-                                                    <input type="radio" name="ratingStatic" value="1" class="disableClick">
-                                                    <i {if $video.rating >= 1} class="rated" {/if}></i>
-                                                    <input type="radio" name="ratingStatic" value="2" class="disableClick">
-                                                    <i {if $video.rating >= 2} class="rated" {/if}></i>
-                                                    <a href="videoDetails.tpl"></a>
-                                                    <input type="radio" name="ratingStatic" value="3" class="disableClick">
-                                                    <i {if $video.rating >= 3} class="rated" {/if}></i>
-                                                    <input type="radio" name="ratingStatic" value="4" class="disableClick">
-                                                    <i {if $video.rating >= 4} class="rated" {/if}></i>
-                                                    <input type="radio" name="ratingStatic" value="5" class="disableClick">
-                                                    <i {if $video.rating >= 5} class="rated" {/if}></i>
-                                                </span>
-                                            </p>
+                                            <span class="star-rating">
+                                                {for $x=1; $x < 6; $x++ }
+                                                     <i {if $video.rating >= $x}class="rated"{/if}></i>
+                                                {/for}
+                                            </span>
                                         </td>
                                         <td><div data-id="client">{$video['client']}</div></td>
                                         <td><div data-id="client">{$video['views']}</div></td>
@@ -98,16 +87,7 @@
 
     </div>
     <div class="footer">{include file="footerPrivate.tpl"}</div>
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../resources/js/libs/jquery.js"><\/script>')</script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script>
-        var bootstrap_enabled = (typeof $().modal == 'function');
-        bootstrap_enabled || document.write('<link rel="stylesheet" href="../resources/css/bootstrap.css">');
-    </script>
-    <script src="../resources/js/libs/plugins.js"></script>
-    <script src="../resources/js/helper.js"></script>
-    <script src="../resources/js/main.js"></script>
+    {include file="coreJsLibrariesPrivate.tpl"}
     <script language="JavaScript" type="text/javascript">
         var videos = [];
         var name = '';

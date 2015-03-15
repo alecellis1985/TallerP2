@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-14 20:35:11
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-15 01:54:53
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:663454f1d1c5dac580-22839531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02c05dd2c7c1bc30adde73c684ae976d3f0acba5' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1426375993,
+      1 => 1426394986,
       2 => 'file',
     ),
   ),
@@ -27,32 +27,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_54f1d1c5eccf48_06368168')) {function content_54f1d1c5eccf48_06368168($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <?php echo $_smarty_tpl->getSubTemplate ("head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-        <title>MyCompany Videos</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
         <link href="resources/css/starRating.css" rel="stylesheet">
-        <link href="resources/css/main.css" rel="stylesheet">
-        <link href="resources/css/common.css" rel="stylesheet">
-        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
     </head>
 
     <body>
-
         <div id="modalCommentsContainer"><?php echo $_smarty_tpl->getSubTemplate ("modalComments.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-        
         <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-        
         <!-- Page Content -->
         <div class="container contentContainer">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
