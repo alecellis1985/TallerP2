@@ -122,7 +122,7 @@ function deleteVid()
 function getTrElemById(id)
 {
     var ret = undefined;
-    $.each($('#manageVideosTable tbody>tr'),function(key,elem){
+    $.each($('#manageVideosTable>tbody>tr'),function(key,elem){ //>tr[class!="videoDetails"]
         var element = $(elem);
         if(element.data('id') === id)
         {

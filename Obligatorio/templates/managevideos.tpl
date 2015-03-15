@@ -37,7 +37,7 @@
                                             <td><div data-id="destacado">{$video['destacado']}</div></td>
                                             <td><div data-id="deleted">{$video['deleted']}</div></td>
                                             <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
-                                            <td><div data-id="description">{$video['description']}</div></td>
+                                            <td><div data-id="description" >{$video['description']}</div></td>
                                             <td>
                                                 <div><button type="button" class="btn btn-default editVid" data-id="{$video['idVideo']}" data-toggle="modal" data-target="#videoModal">Edit</button></div>
                                             </td>
