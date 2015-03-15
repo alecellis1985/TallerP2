@@ -23,7 +23,7 @@
                     
                 </div>
                 <div class="col-md-4 col-md-offset-2">
-                    <img class="companyLogo"src='resources/img/companyLogo.png' alt='Blast off with Bootstrap' />
+                    <img class="companyLogo" src='resources/img/companyLogo.png' alt='Blast off with Bootstrap' />
                 </div>
 
             </div>

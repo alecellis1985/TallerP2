@@ -26,8 +26,8 @@
                                             <td><div data-id="client">{$video['views']}</div></td>
                                             <td><div data-id="client">{$video['rating']}</div></td>
                                             <td><div data-id="url">{$video['url']}</div></td>
-                                            <td><div data-id="destacado">{$video['destacado']}</div></td>
-                                            <td><div data-id="deleted">{$video['deleted']}</div></td>
+                                            <td><div data-id="destacado" class="glyphicon {if $video['destacado'] == 0} glyphicon-remove {else} glyphicon-ok{/if}"></div></td>
+                                            <td><div data-id="deleted" class="glyphicon {if $video['deleted'] == 0} glyphicon-remove {else} glyphicon-ok{/if}"></div></td>
                                             <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                             <td><div data-id="description" >{$video['description']}</div></td>
                                             <td>
