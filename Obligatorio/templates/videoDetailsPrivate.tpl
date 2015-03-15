@@ -1,41 +1,18 @@
 <div class="col-md-12 portfolio-item">
-    <table>
-        <tbody>
-            <tr>
-                <td><h4>Client</h4></td>
-                <td align="center" valign="bottom"><p>{$video.client}</p></td>
-            </tr>
-            <tr>
-                <td><h4>Release date</h4></td>
-                <td align="center" valign="bottom"><p>{$video.releaseDate}</p></td>
-            </tr>
-            <tr>
-                <td><h4>Rating</h4></td>
-                <td align="center" valign="middle">
-                    <p>
-                        <span class="star-rating">
-                            <input type="radio" name="ratingStatic" value="1" class="disableClick">
-                            <i {if $video.rating >= 1} class="rated" {/if}></i>
-                            <input type="radio" name="ratingStatic" value="2" class="disableClick">
-                            <i {if $video.rating >= 2} class="rated" {/if}></i>
-                            <a href="videoDetails.tpl"></a>
-                            <input type="radio" name="ratingStatic" value="3" class="disableClick">
-                            <i {if $video.rating >= 3} class="rated" {/if}></i>
-                            <input type="radio" name="ratingStatic" value="4" class="disableClick">
-                            <i {if $video.rating >= 4} class="rated" {/if}></i>
-                            <input type="radio" name="ratingStatic" value="5" class="disableClick">
-                            <i {if $video.rating >= 5} class="rated" {/if}></i>
-                        </span>
-                    </p>
-                </td>
-
-            </tr>
-            <tr>
-                <td><h4>Votes</h4></td>
-                <td align="center" valign="bottom"><p>{$video.votes}</p></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-12"><label class="h4">Client &nbsp;</label><label class="h5">{$video.client}</label></div>
+        <div class="col-md-12"><label class="h4">Release date &nbsp;</label><label class="h5">{$video.releaseDate}</label></div>
+        <div class="col-md-12"><label class="h4">Rating &nbsp;</label>
+            <label class="h5">
+                <span class="star-rating">
+                    {for $x=1; $x < 6; $x++ }
+                        <i {if $video.rating >= $x}class="rated"{/if}></i>
+                   {/for}
+                </span>
+            </label>
+        </div>
+        <div class="col-md-12"><label class="h4">Votes &nbsp;</label><label class="h5">{$video.votes}</label></div>
+    </div>
 </div>
 <div id="videoCommentsContainer">
     {include file="videoCommentsPrivate.tpl"}
@@ -67,7 +44,4 @@
         <input type="hidden" id="totalCommentPages" value="{$commentsPages}">
     </div>
 {/if}
-<div class="col-md-12 portfolio-item">
-    <button id="closeVideoDetails" type="button" class="btn btn-default">Close details &#x25B2;</button>
-</div>
 <hr>

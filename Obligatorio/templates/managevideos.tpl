@@ -6,6 +6,7 @@
     <body>
         <!-- Navigation -->
         <div id="header">{include file="headerPrivate.tpl"}</div>
+        <link rel="stylesheet" href="../resources/css/starRating.css">
         <div class="container contentContainer" style="margin-top: 50px;">
             <div>{include file="videoModal.tpl"}</div>
             <div class="row bottom bottom-buffer">
@@ -33,7 +34,7 @@
                                                 <div><button type="button" class="btn btn-default editVid" data-id="{$video['idVideo']}" data-toggle="modal" data-target="#videoModal">Edit</button></div>
                                             </td>
                                             <td>
-                                                <div><button type="button" class="btn btn-default commentsVid" data-id="{$video['idVideo']}">Comments</button></div>
+                                                <div><button type="button" class="btn btn-default commentsVid" data-id="{$video['idVideo']}">Comments &#x25BC;</button></div>
                                             </td>
                                             <td>
                                                 <div><button type="button" class="btn btn-danger deleteVid" data-id="{$video['idVideo']}">Delete</button></div>

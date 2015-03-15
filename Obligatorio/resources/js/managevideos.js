@@ -156,7 +156,13 @@ function videoDetails() {
     var tr = getTrElemById(vidId);
     if(closeDetails(tr.next()))
     {
+        $(this).html('Comments &#x25BC;');
         return;
+    }
+    else
+    {
+        $(this).html('Comments &#x25B2;');
+        
     }
     var data = {videoId: vidId};
     $.ajax({
