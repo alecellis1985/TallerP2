@@ -86,7 +86,7 @@ function editVid()
     var arrElement = Helper.getItemFromArray(videos, videoId, 'idVideo');
     if(arrElement !== -1)
     {
-        $('#videoTitle').html('Edit '+ arrElement.client +'Video');
+        $('#videoTitle').html('Edit '+ arrElement.title +'Video');
         $.each($('#videofrm input'),function(key,elem){
             elem.value = arrElement[elem.name];
         });

@@ -37,10 +37,8 @@
                             <a href="" class="previousPage disableClick" title="Previous page">&lsaquo;</a>
                         </li>
                         {for $i=1 to $videoPages}
-                            
                             <li {if $i == 1} class="active"{/if}>
                                 <a href="" class="paginationBtn" data-page="{$i}">{$i}</a>
-
                             </li>                   
                         {/for}
                         <li>

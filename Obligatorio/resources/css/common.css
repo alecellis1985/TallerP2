@@ -63,3 +63,18 @@
 {
     background-color:#EAEAEA;
 }
+
+iframe
+{
+    padding: 5px;
+    border: 1px solid #BBBBBB;
+    border: 2px solid rgba(156, 156, 156, 0.37);
+    -ms-border-radius: 6px;
+/*    border-radius: 6px;*/
+}
+
+#videosContainer .videoDetails
+{
+    background: none;
+    color: #41A9B2;
+}

@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="videoTitle"></h4>
+        <h3 class="modal-title" id="videoTitle"></h3>
       </div>
       <form id="videofrm" role="form" action="" method="POST">
           <div class="modal-body">

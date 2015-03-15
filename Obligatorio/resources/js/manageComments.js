@@ -36,6 +36,9 @@ function widthrawComment()
         dataType:'json',
         timeout: 4000,
         data:data,
+        beforeSend: function (e) {
+            $('.loadingOverlay').css('display', 'block');
+        },
         success:function(datos)
         {
             editCommentComplete(data,element,that);
@@ -45,6 +48,8 @@ function widthrawComment()
         {
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
         }
+    }).done(function (e) {
+        $('.loadingOverlay').css('display', 'none');
     });
 }
 
