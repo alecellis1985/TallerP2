@@ -1,16 +1,7 @@
 <!DOCTYPE html> 
 <html class="no-js"> 
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MyCompany Videos</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../resources/css/normalize.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
-        <link rel="stylesheet" href="../resources/css/main.css">
-        <link rel="stylesheet" href="../resources/css/common.css">
+    {include file="headPrivate.tpl"}
     </head>
     <body>
         <!-- Navigation -->
@@ -19,9 +10,9 @@
             <div>{include file="videoModal.tpl"}</div>
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12 ">
-                    <h2><i>MyCompany films corp.</i></h2>
+                    <h2><i>Videos</i></h2>
                     <div>
-                        <button id="addVid" type="button" class="btn btn-default" data-toggle="modal" data-target="#videoModal">Add new video</button>
+                        <button id="addVid" type="button" class="btn btn-success" data-toggle="modal" data-target="#videoModal">Add new video</button>
                         <table id="manageVideosTable" class="table table-striped">
                              <thead>
                              <th>Title</th><th>Client</th><th>Views</th><th>Rating</th><th>Url</th><th>Prominent</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="3">Actions</th>

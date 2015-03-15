@@ -39,5 +39,22 @@
     color: #d9534f;
 }
 
+.navbar-inverse .navbar-nav>li>a
+{
+    border-right: 1px solid rgb(63, 63, 69);
+    border-left: 1px solid rgb(63, 63, 69);
+    color: #41A9B2;
+    transition: background 1s;
+}
 
+.navbar-inverse .navbar-brand
+{
+    transition: background 1s;
+    color: #41A9B2;
+}
 
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover
+{
+    background: #333;
+    color:#51BDC7;
+}
