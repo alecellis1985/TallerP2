@@ -37,7 +37,13 @@
                                                 <td><div data-id="dateTime">{$comment['dateTime']}</div></td>
                                                 <td><div data-id="public">{$comment['public']}</div></td>
                                                 <td>
-                                                    <div><button type="button" class="btn btn-default widthrawComment" data-id="{$comment['idComments']}">Widthraw</button></div>
+                                                    <div>
+                                                    {if $comment['public'] == 1}
+                                                    <button type="button" class="btn btn-danger widthrawComment" data-id="{$comment['idComments']}">Widthraw</button>
+                                                    {else}
+                                                    <button type="button" class="btn btn-success widthrawComment" data-id="{$comment['idComments']}">Activate</button>
+                                                    {/if}
+                                                    </div>
                                                 </td>
                                             </tr>
                                     {/foreach}

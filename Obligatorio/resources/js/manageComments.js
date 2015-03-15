@@ -51,7 +51,10 @@ function widthrawComment()
 function editCommentComplete(data,element,btn)
 {
     var states = ['Activate','Widthraw'];
+    var btnClass = ['btn-success','btn-danger'];
     btn.html(states[data.public]);
+    var prevClass = data.public === 0 ? 1 : 0;
+    btn.removeClass(btnClass[prevClass]).addClass(btnClass[data.public]);
     btn.removeClass("disableClick");
     element.html(data.public);
 }
