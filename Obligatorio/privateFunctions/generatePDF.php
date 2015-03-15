@@ -32,9 +32,9 @@ if ($_SESSION['ingreso']) {
                 $pdf->SetFont('Arial', '', 14);
                 $pdf->AddPage();
                 $pdf->FancyTable($header2, $data);
-                $url = '../temp/Pdf/test.pdf';
-                $pdf->Output($url, 'F');
-                $response = MessageHandler::getSuccessResponse('Pdf Generated', $url);
+                //$url = '../temp/Pdf/test.pdf';
+                $filename = "MyCompay_Statistics" . date('Ymd') . ".pdf";
+                $pdf->Output($filename, 'D');
             }
         }
         $conn->desconectar();
@@ -44,10 +44,6 @@ if ($_SESSION['ingreso']) {
 if($response == null)
 {
     header('HTTP/1.1 400 Bad Request');
-    echo MessageHandler::getDBErrorResponse();
-}
-else
-{
-    echo $response;
+    echo "System Error";
 }
 

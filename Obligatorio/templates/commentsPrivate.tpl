@@ -14,7 +14,7 @@
     </head>
     <body>
         <!-- Navigation -->
-        <div id="header">{include file="header.tpl"}</div>
+        <div id="header">{include file="headerPrivate.tpl"}</div>
         <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12 ">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">{include file="footer.tpl"}</div>
+        <div class="footer">{include file="footerPrivate.tpl"}</div>
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script>window.jQuery || document.write('<script src="../resources/js/libs/jquery.js"><\/script>')</script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

@@ -6,15 +6,7 @@ function startVideos()
     $('.editVid').click(editVid);
     $('#addVid').click(addVid);
     $('#videofrm').submit(saveVid);
-    $("#allVideosLink").attr("href","../videoList.php");
-    $("#homeLink").attr("href","../index.php");
-    $("#logOut").data("url","../logout.php");
-    $("#manageVideosId").attr("href","manageVideos.php");
-    $("#statisticsId").attr("href","statistics.php");
-    
     $(".commentsVid").click(videoDetails);
-    $("#homeFooterLink").attr("href","../videoList.php");
-    $("#videoListFooterLink").attr("href","../index.php");
 }
 
 function addVid()

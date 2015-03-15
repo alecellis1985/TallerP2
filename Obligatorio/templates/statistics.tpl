@@ -15,7 +15,7 @@
     </head>
     <body>
         <!-- Navigation -->
-        <div id="header">{include file="header.tpl"}</div>
+        <div id="header">{include file="headerPrivate.tpl"}</div>
         <div class="container contentContainer" style="margin-top: 50px;">
 
             <div class="row bottom-buffer">
@@ -25,7 +25,7 @@
                 <div class="col-md-2 col-md-offset-4">
                     <ul class="nav navbar-nav" style="margin:20px 0 10px 0;">
                         <li>
-                            <div><button type="button" class="btn btn-danger generatePdf">PDF</button></div>
+                            <div><button type="button" class="btn btn-danger generatePdf" onclick="self.location.href = 'http://localhost:8081/TallerP2/Obligatorio/privateFunctions/generatePDF.php';">PDF</button></div>
                         </li>
                         <li style="margin-left: 10px;">
                             <div>
@@ -106,7 +106,7 @@
         </div>
 
     </div>
-    <div class="footer">{include file="footer.tpl"}</div>
+    <div class="footer">{include file="footerPrivate.tpl"}</div>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script>window.jQuery || document.write('<script src="../resources/js/libs/jquery.js"><\/script>')</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
