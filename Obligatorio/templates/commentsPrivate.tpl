@@ -35,7 +35,9 @@
                                                 <td><div data-id="client">{$comment['ip']}</div></td>
                                                 <td><div data-id="client">{$comment['text']}</div></td>
                                                 <td><div data-id="dateTime">{$comment['dateTime']}</div></td>
-                                                <td><div data-id="public">{$comment['public']}</div></td>
+                                                <td>
+                                                    <div data-id="public" data-val="{$comment['public']}" class="glyphicon {if $comment['public'] == 1}glyphicon-ok {else}glyphicon-remove{/if}"></div>
+                                                </td>
                                                 <td>
                                                     <div>
                                                     {if $comment['public'] == 1}

@@ -28,3 +28,16 @@
     outline: none;
     outline-offset: 0px;
 }
+
+.glyphicon-ok
+{
+    color: #5cb85c;
+}
+
+.glyphicon-remove
+{
+    color: #d9534f;
+}
+
+
+
