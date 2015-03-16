@@ -16,11 +16,11 @@
                 <div class="col-md-2 col-md-offset-4">
                     <ul class="nav navbar-nav" style="margin:20px 0 10px 0;">
                         <li>
-                            <div><button type="button" class="btn btn-danger generatePdf" onclick="self.location.href = 'http://localhost:8081/TallerP2/Obligatorio/privateFunctions/generatePDF.php';">PDF</button></div>
+                            <div><button type="button" class="btn btn-danger generatePdf">PDF</button></div>
                         </li>
                         <li style="margin-left: 10px;">
                             <div>
-                                <button type="button" class="btn btn-success generateXls" onclick="self.location.href = 'http://localhost:8081/TallerP2/Obligatorio/privateFunctions/excelPrinter.php';">Excel</button>
+                                <button type="button" class="btn btn-success generateXls" >Excel</button>
                             </div>
                         </li>
                     </ul>
