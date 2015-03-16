@@ -22,7 +22,7 @@
                 </div>
               <div class="form-group">
                   <label for="releaseDate">Release Date:</label>
-                  <input type="text" name="releaseDate" class="form-control" placeholder="Release Date" readonly>
+                  <input type="date" name="releaseDate" class="form-control" placeholder="Release Date" readonly>
                 </div>
               <div class="form-group">
                   <label for="description">Description:</label>
