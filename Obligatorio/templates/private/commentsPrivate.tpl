@@ -7,6 +7,7 @@
         <!-- Navigation -->
         <div id="header">{include file="private/headerPrivate.tpl"}</div>
         <div class="container contentContainer" style="margin-top: 50px;">
+            {include file="private/videoInfoModal.tpl"}
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12 ">
                     <h2>Comments</h2>
@@ -36,6 +37,7 @@
                                                     {else}
                                                     <button type="button" class="btn btn-success widthrawComment" data-id="{$comment['idComments']}">Activate</button>
                                                     {/if}
+                                                    <button id="showVidData" type="button" class="btn btn-default" data-toggle="modal" data-target="#videoInfoModal">Video Details</button>
                                                     </div>
                                                 </td>
                                             </tr>
