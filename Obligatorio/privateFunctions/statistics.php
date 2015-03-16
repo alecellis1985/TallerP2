@@ -25,7 +25,7 @@ if ($_SESSION['ingreso']) {
                 $videosPerComment = $conn->restantesRegistros();
                 $smarty->assign("videosPerComment", $videosPerComment);
 
-                $smarty->display("statistics.tpl");
+                $smarty->display("private/statistics.tpl");
             } else {
                 echo "Error, please refresh the web.";
             }

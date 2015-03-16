@@ -17,7 +17,7 @@ if($_SESSION['ingreso'])
         {
             $videos =  $conn->restantesRegistros();
             $smarty->assign("videos", $videos);
-            $smarty->display("managevideos.tpl");
+            $smarty->display("private/managevideos.tpl");
         }
         else
         {

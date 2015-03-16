@@ -31,7 +31,7 @@ if ($conn->conectar()) {
                 $commentsCount = $conn->restantesRegistros();
                 $commentsPages = ceil((int) $commentsCount[0][0] / CANTPAGCOMMENTS);
                 $smarty->assign("commentsPages", $commentsPages);
-                $smarty->display("videoDetailsPrivate.tpl");
+                $smarty->display("private/videoDetailsPrivate.tpl");
             } else {
                 echo "SQL ERROR.";
             }

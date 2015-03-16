@@ -18,7 +18,7 @@ if ($_SESSION['ingreso'])
             $count = $conn->cantidadRegistros();
             $smarty->assign("commentsCount", $count);
             $smarty->assign("comments", $comments);
-                $smarty->display("commentsPrivate.tpl");
+                $smarty->display("private/commentsPrivate.tpl");
             } else {
                 echo "Error, please refresh the web.";
             }
