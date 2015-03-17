@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-13 23:32:25
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-16 19:34:50
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1426300344,
+      1 => 1426453562,
       2 => 'file',
     ),
   ),
@@ -27,32 +27,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_54e64e48ea0814_53351998')) {function content_54e64e48ea0814_53351998($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <?php echo $_smarty_tpl->getSubTemplate ("head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-        <title>MyCompany Videos</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="resources/css/2-col-portfolio.css" rel="stylesheet">
         <link href="resources/css/starRating.css" rel="stylesheet">
-        <link href="resources/css/main.css" rel="stylesheet">
-        <link href="resources/css/common.css" rel="stylesheet">
-        <link rel="icon" type="image/png" href="resources/img/faviconMovie.jpg">
     </head>
 
     <body>
-
         <div id="modalCommentsContainer"><?php echo $_smarty_tpl->getSubTemplate ("modalComments.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-        
         <div id="header"><?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 </div>
-        
         <!-- Page Content -->
         <div class="container contentContainer">
             <div class="loadingOverlay"><img src="resources/img/loading.gif" alt="Loading..." height="100%" width="100%"></div>
@@ -86,12 +70,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-                            
                             <li <?php if ($_smarty_tpl->tpl_vars['i']->value==1) {?> class="active"<?php }?>>
                                 <a href="" class="paginationBtn" data-page="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 </a>
-
                             </li>                   
                         <?php }} ?>
                         <li>

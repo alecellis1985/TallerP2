@@ -24,8 +24,8 @@ function saveVid(e)
 	client:$('input[name="client"]').val(),
 	url:$('input[name="url"]').val(),
 	releaseDate:$('input[name="releaseDate"]').val(),
-	description:$('textarea[name="description"]').val(),
-        title:$('input[name="title"]').val(),
+	description:$('textarea[name="description"]').val().replace("*",""),
+        title:$('input[name="title"]').val()
     };
     var action =$(this).attr('action');
     var url = '../privateFunctions/'+action;
