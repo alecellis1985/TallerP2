@@ -61,6 +61,7 @@ function clearLogInForm() {
 function logIn(e) {
     e.preventDefault();
     var postData = {username: $("#userName").val(), password: $("#pwd").val()}
+    
     $.ajax({
         type: "POST",
         dataType: "json",

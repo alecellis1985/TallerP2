@@ -1,4 +1,4 @@
-<div class="col-md-12 portfolio-item">
+{*<div class="col-md-12 portfolio-item">
     <div class="row">
         <div class="col-md-12"><label class="h4">Client &nbsp;</label><label class="h5">{$video.client}</label></div>
         <div class="col-md-12"><label class="h4">Release date &nbsp;</label><label class="h5">{$video.releaseDate}</label></div>
@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-12"><label class="h4">Votes &nbsp;</label><label class="h5">{$video.votes}</label></div>
     </div>
-</div>
+</div>*}
 <div id="videoCommentsContainer">
     {include file="private/videoCommentsPrivate.tpl"}
 </div>
