@@ -11,7 +11,7 @@
     $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
     if($conn->conectar())
     {
-        $sql = "SELECT COUNT(*) FROM videos";
+        $sql = "SELECT COUNT(*) FROM videos where deleted <> 1";
         if($conn->consulta($sql))
         {
             $countVideos = $conn->restantesRegistros();
@@ -31,7 +31,6 @@
             echo "SQL ERROR";
         }
         $smarty->assign('videos', $videos);	
-        $smarty->assign('videosCount', $countVideos);
         $smarty->assign('videoPages', $videoPages);
         $smarty->assign('videosCountInPage', count($videos));
     }
