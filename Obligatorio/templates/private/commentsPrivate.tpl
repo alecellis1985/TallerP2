@@ -2,6 +2,7 @@
 <html class="no-js">
     <head>
         {include file="private/headPrivate.tpl"}
+        <link type="text/css" rel="stylesheet" href="../resources/css/starRating.css">
     </head>
     <body>
         <!-- Navigation -->
@@ -17,14 +18,13 @@
                     {else} 
                         <table id="manageCommentsTable" class="table table-striped">
                                  <thead>
-                                 <th>Video Id</th><th>Alias</th><th>Ip</th><th width="110px">Comment</th><th>Date</th><th>Active</th><th colspan="1">Actions</th>
+                                 <th>Video Id</th><th>Author</th><th width="110px">Comment</th><th>Date</th><th>Active</th><th colspan="1">Actions</th>
                                 </thead>
                                 <tbody>
                                     {foreach from=$comments item=comment}
                                             <tr data-id="{$comment['idComments']}">
                                                 <td><div data-id="idVideo">{$comment['idVideo']}</div></td>
-                                                <td><div data-id="client">{$comment['alias']}</div></td>
-                                                <td><div data-id="client">{$comment['ip']}</div></td>
+                                                <td><div data-id="client">{if $comment['alias'] eq ''} {$comment['ip']} {else} {$comment['alias']} {/if}</div></td>
                                                 <td><div data-id="client">{$comment['text']}</div></td>
                                                 <td><div data-id="dateTime">{$comment['dateTime']}</div></td>
                                                 <td>

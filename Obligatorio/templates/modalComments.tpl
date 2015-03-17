@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label for="comment">Comment:</label>
-                        <textarea id="commentText" class="form-control" type="text" rows="5" name="comment" class="form-control" placeholder="Comment" required></textarea>
+                        <textarea id="commentText" maxlength="250" class="form-control" type="text" rows="5" name="comment" class="form-control" placeholder="Comment" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

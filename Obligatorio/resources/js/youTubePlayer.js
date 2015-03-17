@@ -37,7 +37,7 @@ function onPlayerStateChange(event) {
 
 function playVideo(state) {
     if (state === YT.PlayerState.PLAYING) {
-        debugger;
+        
         var videoId = parseInt(currentPlayer.c.id.replace("videoPlayer", ""));
         if (!players[currentPlayer.c.id.toString()]) {
             players[currentPlayer.c.id.toString()] =  true;

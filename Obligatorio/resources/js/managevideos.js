@@ -48,7 +48,7 @@ function completeSaveVideo(targetBtn) {
         description: $('textarea[name="description"]').val().replace("*", ""),
         title: $('input[name="title"]').val()
     };
-    debugger;
+    
     var action = $(targetBtn).attr('action');
     var url = '../privateFunctions/' + action;
     $('#closeVideoModal').trigger('click');

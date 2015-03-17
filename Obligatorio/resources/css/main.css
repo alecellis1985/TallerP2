@@ -191,6 +191,7 @@ textarea {
     padding: 20px 0;
 }
 
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -204,6 +205,7 @@ html {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 200px;
+
 }
 .footer {
     color: #efefef;

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 12:30:53
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 13:15:48
          compiled from "templates\videoPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3092054f1c8fcc796a4-62577662%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '51dd9406b89923476a38130f920081cf816f7b33' => 
     array (
       0 => 'templates\\videoPage.tpl',
-      1 => 1426565867,
+      1 => 1426608639,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="row">
         <?php }?>
         <div class="col-md-6 portfolio-item">
-            
             <div class="videoPlayer" id="videoPlayer<?php echo $_smarty_tpl->tpl_vars['videos']->value[$_smarty_tpl->tpl_vars['x']->value-1]['idVideo'];?>
 " data-url="<?php echo $_smarty_tpl->tpl_vars['videos']->value[$_smarty_tpl->tpl_vars['x']->value-1]['url'];?>
 "></div>
