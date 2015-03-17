@@ -43,10 +43,10 @@
                                 </li>                   
                             {/for}
                             <li>
-                                <a href="" class="nextPage" data-page="2" title="Next page">&rsaquo;</a>
+                                <a href="" class="nextPage{if $videoPages eq 1} disableClick {/if}}" data-page="2" title="Next page">&rsaquo;</a>
                             </li> 
                             <li>
-                                <a href="" class="lastPage" data-page="{$videoPages}" title="Last page">&raquo;</a>
+                                <a href="" class="lastPage{if $videoPages eq 1} disableClick {/if}" data-page="{$videoPages}" title="Last page">&raquo;</a>
                             </li>
                         </ul>
                     </div>

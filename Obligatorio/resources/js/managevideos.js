@@ -11,47 +11,69 @@ function startVideos()
 
 function addVid()
 {
-    $('#videofrm').attr('action','addVideo.php');
+    $('#videofrm').attr('action', 'addVideo.php');
     $('#videoTitle').html('Add new video');
+    $("#videoFormErrors").parent().addClass("hide");
     $('#videofrm')[0].reset();
 }
 
 function saveVid(e)
 {
+    var url = 'http://gdata.youtube.com/feeds/api/videos/videoID'.replace('videoID', $('input[name="url"]').val());
     e.preventDefault();
+    $.ajax({
+        type: "GET",
+        dataType: "xml",
+        url: url,
+        timeout: 4000,
+        success: function (data) {
+            $("#videoFormErrors").parent().addClass("hide");
+            completeSaveVideo();
+        },
+        error: function (data) {
+            //InvalidURLERROR
+            $("#videoFormErrors").text("Invalid video URL. Please make sure the video exists on YouTube.com");
+            $("#videoFormErrors").parent().removeClass("hide");
+        }
+    });
+
+
+}
+
+function completeSaveVideo() {
     var modifiedData = {
-	idVideo:$('#idVideo').val(),
-	client:$('input[name="client"]').val(),
-	url:$('input[name="url"]').val(),
-	releaseDate:$('input[name="releaseDate"]').val(),
-	description:$('textarea[name="description"]').val().replace("*",""),
-        title:$('input[name="title"]').val()
+        idVideo: $('#idVideo').val(),
+        client: $('input[name="client"]').val(),
+        url: $('input[name="url"]').val(),
+        releaseDate: $('input[name="releaseDate"]').val(),
+        description: $('textarea[name="description"]').val().replace("*", ""),
+        title: $('input[name="title"]').val()
     };
-    var action =$(this).attr('action');
-    var url = '../privateFunctions/'+action;
+    var action = $(this).attr('action');
+    var url = '../privateFunctions/' + action;
     $('#closeVideoModal').trigger('click');
     $.ajax({
-        type:"POST",
-        dataType:"json",
-        url:url,
-        data:modifiedData,
+        type: "POST",
+        dataType: "json",
+        url: url,
+        data: modifiedData,
         timeout: 4000,
-        success:function(datos)
+        success: function (datos)
         {
-            if(action==="editVideo.php")
+            if (action === "editVideo.php")
             {
-                completeEditVideo(datos,modifiedData);
+                completeEditVideo(datos, modifiedData);
             }
-            else if (action=="addVideo.php")
+            else if (action === "addVideo.php")
             {
                 completeAddVideo(datos);
             }
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
-        error: function(datos)
+        error: function (datos)
         {
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
-        }        
+        }
     });
 }
 
@@ -60,17 +82,17 @@ function completeAddVideo(datos)
     videos.push(datos.data);
 }
 
-function completeEditVideo(datos,modifiedData)
+function completeEditVideo(datos, modifiedData)
 {
     var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
-    if(arrElement != -1)
+    if (arrElement != -1)
     {
         arrElement = $.extend({}, arrElement, modifiedData);
-        $.each($('#manageVideosTable tbody>tr'),function(key,elem){
+        $.each($('#manageVideosTable tbody>tr'), function (key, elem) {
             var element = $(elem);
-            if(element.data('id') == modifiedData.idVideo)
+            if (element.data('id') == modifiedData.idVideo)
             {
-                $.each(element.find('div'),function(key,elem){
+                $.each(element.find('div'), function (key, elem) {
                     $(elem).html(arrElement[$(elem).data('id')]);
                 });
             }
@@ -82,15 +104,15 @@ function editVid()
 {
     var videoId = $(this).data('id');
     $('#idVideo').val(videoId);
-    $('#videofrm').attr('action','editVideo.php');
+    $('#videofrm').attr('action', 'editVideo.php');
     var arrElement = Helper.getItemFromArray(videos, videoId, 'idVideo');
-    if(arrElement !== -1)
+    if (arrElement !== -1)
     {
-        $('#videoTitle').html('Edit '+ arrElement.title +'Video');
-        $.each($('#videofrm input'),function(key,elem){
+        $('#videoTitle').html('Edit ' + arrElement.title + 'Video');
+        $.each($('#videofrm input'), function (key, elem) {
             elem.value = arrElement[elem.name];
         });
-        $.each($('#videofrm textarea'),function(key,elem){
+        $.each($('#videofrm textarea'), function (key, elem) {
             elem.value = arrElement[elem.name];
         });
     }
@@ -101,17 +123,17 @@ function deleteVid()
     $(this).addClass("disableClick");
     var videoId = $(this).data('id');
     $.ajax({
-        type:'POST',
-        url:'../privateFunctions/deleteVideo',
-        dataType:'json',
+        type: 'POST',
+        url: '../privateFunctions/deleteVideo',
+        dataType: 'json',
         timeout: 4000,
-        data:{'idVideo':videoId},
-        success:function(datos)
+        data: {'idVideo': videoId},
+        success: function (datos)
         {
-            deleteVidComplete(datos,videoId);
+            deleteVidComplete(datos, videoId);
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
-        error: function(datos)
+        error: function (datos)
         {
 //            deleteVidComplete(datos,videoId);
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
@@ -122,9 +144,9 @@ function deleteVid()
 function getTrElemById(id)
 {
     var ret = undefined;
-    $.each($('#manageVideosTable>tbody>tr'),function(key,elem){ //>tr[class!="videoDetails"]
+    $.each($('#manageVideosTable>tbody>tr'), function (key, elem) { //>tr[class!="videoDetails"]
         var element = $(elem);
-        if(element.data('id') === id)
+        if (element.data('id') === id)
         {
             ret = element;
             return;
@@ -133,18 +155,18 @@ function getTrElemById(id)
     return ret;
 }
 
-function deleteVidComplete(datos,id){
-    Helper.deleteByPropertyAndValueInArray('idVideo',id,videos);
+function deleteVidComplete(datos, id) {
+    Helper.deleteByPropertyAndValueInArray('idVideo', id, videos);
     var htmlElement = getTrElemById(id);
     closeDetails(htmlElement.next());
-    if(htmlElement !== undefined)
+    if (htmlElement !== undefined)
     {
-        htmlElement.css('background-color','#F9E6E6');
+        htmlElement.css('background-color', '#F9E6E6');
         var children = htmlElement.children();
         var height = $(children[0]).height();
         var tdDivs = htmlElement.children().find('div');
-        tdDivs.height(height+'px');
-        tdDivs.slideUp(1500,function(){
+        tdDivs.height(height + 'px');
+        tdDivs.slideUp(1500, function () {
             htmlElement.remove();
         });
     }
@@ -154,7 +176,7 @@ function deleteVidComplete(datos,id){
 function videoDetails() {
     var vidId = $(this).data('id');
     var tr = getTrElemById(vidId);
-    if(closeDetails(tr.next()))
+    if (closeDetails(tr.next()))
     {
         $(this).html('Comments &#x25BC;');
         return;
@@ -162,7 +184,7 @@ function videoDetails() {
     else
     {
         $(this).html('Comments &#x25B2;');
-        
+
     }
     var data = {videoId: vidId};
     $.ajax({
@@ -172,7 +194,7 @@ function videoDetails() {
             $('.loadingOverlay').css('display', 'block');
         },
         success: function (data) {
-            processVideoDetails(data,tr);
+            processVideoDetails(data, tr);
         },
         timeout: 4000,
         error: problemas,
@@ -185,9 +207,9 @@ function videoDetails() {
 
 function closeDetails(tr)
 {
-    if(tr.attr('class') === 'videoDetails')
+    if (tr.attr('class') === 'videoDetails')
     {
-        tr.find('.videoDetails').slideUp('slow',function(){
+        tr.find('.videoDetails').slideUp('slow', function () {
             tr.remove();
         });
         return true;
@@ -195,10 +217,11 @@ function closeDetails(tr)
     return false;
 }
 
-function problemas(){}
+function problemas() {
+}
 
-function processVideoDetails(data,tr) {
-    
+function processVideoDetails(data, tr) {
+
     var divAnimation = $('<div style="display:none" class="videoDetails"></div>');
     divAnimation.append(data);
     var container = $('<tr class="videoDetails"><td colspan="12"></td></tr>');

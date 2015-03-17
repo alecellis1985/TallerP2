@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="form-group hide">
-                    <span id="logInErrors" class="error"></span>
+                    <span id="videoFormErrors" class="error"></span>
                 </div>
           </div>
           <div class="modal-footer">
