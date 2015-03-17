@@ -13,9 +13,10 @@ $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
 if ($conn->conectar()) {
     $sql = "SELECT * FROM videos WHERE deleted <> 1 AND destacado = 1";
     if ($conn->consulta($sql, array())) {
+        $existeVideo = $conn->cantidadRegistros() > 0;
         $mainVideo = $conn->restantesRegistros();
-        $smarty->assign("mainVideo", $mainVideo);
-        $smarty->assign("videoExists", $conn->cantidadRegistros() > 0);
+        $smarty->assign("mainVideo", $mainVideo[0]);
+        $smarty->assign("videoExists", $existeVideo);
     } else {
         echo "Error de SQL";
     }

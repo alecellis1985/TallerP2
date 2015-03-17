@@ -31,7 +31,6 @@ function saveVid(e)
             completeSaveVideo();
         },
         error: function (data) {
-            //InvalidURLERROR
             $("#videoFormErrors").text("Invalid video URL. Please make sure the video exists on YouTube.com");
             $("#videoFormErrors").parent().removeClass("hide");
         }
