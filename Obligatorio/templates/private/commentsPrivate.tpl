@@ -32,12 +32,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
+                                                    <button data-vidId="{$comment['idVideo']}" type="button" class="btn btn-default showVidData" data-toggle="modal" data-target="#videoInfoModal">Video Details</button>
                                                     {if $comment['public'] == 1}
                                                     <button type="button" class="btn btn-danger widthrawComment" data-id="{$comment['idComments']}">Widthraw</button>
                                                     {else}
                                                     <button type="button" class="btn btn-success widthrawComment" data-id="{$comment['idComments']}">Activate</button>
                                                     {/if}
-                                                    <button id="showVidData" type="button" class="btn btn-default" data-toggle="modal" data-target="#videoInfoModal">Video Details</button>
                                                     </div>
                                                 </td>
                                             </tr>
