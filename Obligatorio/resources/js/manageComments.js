@@ -4,6 +4,40 @@ $(document).ready(initFn);
 function initFn()
 {
     $('.widthrawComment').click(widthrawComment);
+    $('.showVidData').click(showVidDetails);
+}
+
+function showVidDetails()
+{
+    var data = {idVideo:$(this).data('vidid')};
+    $.ajax({
+        data:data,
+        url:'../privateFunctions/getVideo',       
+        type:'GET',
+        dataType:'json',
+        beforeSend: function (e) {
+             $('.loadingOverlay').css('display', 'block');
+         },
+        success:function(datos)
+        {
+            datos.data[0].deleted = datos.data[0].deleted == 1?"Yes":"No";
+            datos.data[0].destacado = datos.data[0].destacado == 1?"Yes":"No";
+            $.each(datos.data[0],function(key,value){
+                if(isNaN(key))
+                {
+                    
+                    
+                    $('#videoInfo'+key).text(value);
+                }
+            });
+        },
+        error: function(datos)
+        {
+            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
+        }
+    }).done(function (e) {
+        $('.loadingOverlay').css('display', 'none');
+    });
 }
 
 function widthrawComment()

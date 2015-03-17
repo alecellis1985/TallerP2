@@ -88,3 +88,29 @@ iframe
 {
     padding-bottom: 6px;
 }
+
+#videoInfoModal ul>li
+{
+    list-style-type: none;
+    float: left;
+    width: 50%;
+}
+
+  
+#videoInfoModal ul>li>label
+{
+    padding-right: 5px;
+}
+
+#videoInfoModal ul>li>label:last-child
+{
+    font-weight: normal;
+}
+
+#videoInfoModal ul
+{
+    float: left;
+  padding: 0px;
+}
+  
+

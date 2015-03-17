@@ -18,7 +18,7 @@
 
 
                             <thead>
-                            <th>Title</th><th>Client</th><th>Views</th><th>Rating</th><th>Url</th><th>Featured</th><th>Deleted</th><th width="110px">Release Date</th><th>Description</th><th colspan="3">Actions</th>
+                            <th>Title</th><th>Client</th><th>Views</th><th>Rating</th><th>Url</th><th>Featured</th><th>Active</th><th width="110px">Release Date</th><th>Description</th><th colspan="3">Actions</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videos item=video}
@@ -37,7 +37,7 @@
                                         </td>
                                         <td><div data-id="url">{$video['url']}</div></td>
                                         <td><div data-id="destacado" class="glyphicon {if $video['destacado'] == 0} glyphicon-remove {else} glyphicon-ok{/if}"></div></td>
-                                        <td><div data-id="deleted" class="glyphicon {if $video['deleted'] == 0} glyphicon-remove {else} glyphicon-ok{/if}"></div></td>
+                                        <td><div data-id="deleted" class="glyphicon {if $video['deleted'] == 1} glyphicon-remove {else} glyphicon-ok{/if}"></div></td>
                                         <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
                                         <td><div data-id="description" >{$video['description']}</div></td>
                                         <td>
