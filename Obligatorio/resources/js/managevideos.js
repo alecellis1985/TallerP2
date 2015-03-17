@@ -2,6 +2,7 @@ $(document).ready(startVideos);
 
 function startVideos()
 {
+    var editGridId ='';
     $('.deleteVid').click(deleteVid);
     $('.editVid').click(editVid);
     $('#addVid').click(addVid);
@@ -72,9 +73,9 @@ function completeSaveVideo(targetBtn) {
         {
             if (action === "editVideo.php")
             {
-                var htmlElement = getTrElemById(parseInt(modifiedData.idVideo));
+                var htmlElement = getTrElemById(editGridId,parseInt(modifiedData.idVideo));
                 closeDetails(htmlElement.next());
-                completeEditVideo(datos, modifiedData);
+                completeEditVideo(datos, modifiedData,editGridId);
             }
             else if (action === "addVideo.php")
             {
@@ -105,51 +106,62 @@ function generateTr(data)
     ratingSpan += '</span>';
     var destacadoClass = data.featured ? 'glyphicon-ok' : 'glyphicon-remove';
     var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';
-    debugger;
     if (data.featured) {
         var currentFeatured = $(".glyphicon-ok[data-id='destacado']");
         currentFeatured.removeClass("glyphicon-ok");
         currentFeatured.addClass("glyphicon-remove");
     }   
-    var tr = '<tr data-id="' + data.idVideo + '">' +
-            '<td><div data-id="title"> ' + data.title + '</div></td>' +
-            '<td><div data-id="client">' + data.client + '</div></td>' +
-            '<td><div data-id="client">' + data.views + '</div></td>' +
-            '<td align="center" valign="middle">' +
-            '<div data-id="rating">' +
-            ratingSpan +
-            '</div>' +
-            '</td>' +
-            '<td><div data-id="url">' + data.url + '</div></td>' +
-            '<td><div data-id="destacado" class="glyphicon ' + destacadoClass + '"></div></td>' +
-            '<td><div data-id="deleted" class="glyphicon ' + deletedClass + '"></div></td>' +
-            '<td><div data-id="releaseDate">' + data.releaseDate + '</div></td>' +
-            '<td><div data-id="description" >' + data.description + '</div></td>' +
-            '<td>' +
-            '<div><button type="button" class="btn btn-default editVid" data-id="' + data.idVideo + '" data-toggle="modal" data-target="#videoModal">Edit</button></div>' +
-            '</td>' +
-            '<td>' +
-            '<div><button type="button" class="btn btn-default commentsVid" data-id="' + data.idVideo + '">Comments &#x25BC;</button></div>' +
-            '</td>' +
-            '<td>' +
-            '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>' +
-            '</td>' +
-            '</tr>';
+    
+    var deleteBtn = '';
+    if(editGridId === 'manageVideosTable')
+    {
+        deleteBtn = '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>';
+    }
+    
+    var tr = '<tr data-id="'+data.idVideo+'">'+
+        '<td><div data-id="title"> '+ data.title +'</div></td>'+
+        '<td><div data-id="client">'+ data.client +'</div></td>'+
+        '<td><div data-id="client">'+ data.views +'</div></td>'+
+        '<td align="center" valign="middle">'+
+            '<div data-id="rating">'+
+                ratingSpan + 
+            '</div>'+
+        '</td>'+
+        '<td><div data-id="url">' + data.url + '</div></td>'+
+        '<td><div data-id="destacado" class="glyphicon ' + destacadoClass + '"></div></td>'+
+        '<td><div data-id="deleted" class="glyphicon ' + deletedClass + '"></div></td>'+
+        '<td><div data-id="releaseDate">' + data.releaseDate + '</div></td>'+
+        '<td><div data-id="description" >' + data.description + '</div></td>'+
+        '<td>'+
+            '<div><button type="button" class="btn btn-default editVid" data-id="' + data.idVideo + '" data-toggle="modal" data-target="#videoModal">Edit</button></div>'+
+        '</td>'+
+        '<td>'+
+            '<div><button type="button" class="btn btn-default commentsVid" data-id="' + data.idVideo + '">Comments &#x25BC;</button></div>'+
+        '</td>'+
+        '<td>'+
+        deleteBtn+
+//            '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>'+
+            
+        '</td>'+
+    '</tr>';
     var trElem = $(tr);
     trElem.find('.commentsVid').click(videoDetails);
     trElem.find('.editVid').click(editVid);
-    trElem.find('.deleteVid').click(deleteVid);
+    if(editGridId === 'manageVideosTable')
+    {
+        trElem.find('.deleteVid').click(deleteVid);
+    }
     return trElem;
 }
 
-function completeEditVideo(datos, modifiedData)
+function completeEditVideo(datos, modifiedData,tableId)
 {
     var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
     if (arrElement != -1)
     {
-//        arrElement = $.extend({}, arrElement, modifiedData);
         $.extend(arrElement, modifiedData);
-        $.each($('#manageVideosTable tbody>tr'), function (key, elem) {
+        
+        $.each($('#'+tableId+' tbody>tr'),function(key,elem){
             var element = $(elem);
             if (element.data('id') == modifiedData.idVideo)
             {
@@ -161,7 +173,10 @@ function completeEditVideo(datos, modifiedData)
 
 function editVid()
 {
+    
     var videoId = $(this).data('id');
+    var table = Helper.getParentElement(this, 'table');
+    editGridId = $(table).attr('id');
     $('#idVideo').val(videoId);
     $('#videofrm').attr('action', 'editVideo.php');
     var arrElement = Helper.getItemFromArray(videos, videoId, 'idVideo');
@@ -205,10 +220,10 @@ function deleteVid()
     });
 }
 
-function getTrElemById(id)
+function getTrElemById(gridId,id)
 {
     var ret = undefined;
-    $.each($('#manageVideosTable>tbody>tr'), function (key, elem) { //>tr[class!="videoDetails"]
+    $.each($('#'+gridId+'>tbody>tr'), function (key, elem) { //>tr[class!="videoDetails"]
         var element = $(elem);
         if (element.data('id') === id)
         {
@@ -219,9 +234,10 @@ function getTrElemById(id)
     return ret;
 }
 
+//Deletes video from videos grid and. Adds element to deleted grid
 function deleteVidComplete(datos, id) {
-    Helper.deleteByPropertyAndValueInArray('idVideo', id, videos);
-    var htmlElement = getTrElemById(id);
+//    Helper.deleteByPropertyAndValueInArray('idVideo', id, videos);
+    var htmlElement = getTrElemById('manageVideosTable',id);
     closeDetails(htmlElement.next());
     if (htmlElement !== undefined)
     {
@@ -233,13 +249,18 @@ function deleteVidComplete(datos, id) {
         tdDivs.slideUp(1500, function () {
             htmlElement.remove();
         });
+        
     }
-    //make json call to get one more elem for this page and add it
+    var arrElement = Helper.getItemFromArray(videos, id, 'idVideo');
+    arrElement.deleted = 1;
+    editGridId = '';
+    $('#manageVideosTableDeleted tbody').append(generateTr(arrElement));
 }
 
 function videoDetails() {
     var vidId = $(this).data('id');
-    var tr = getTrElemById(vidId);
+    var table = Helper.getParentElement(this, 'table');
+    var tr = getTrElemById($(table).attr('id'),vidId);
     if (closeDetails(tr.next()))
     {
         $(this).html('Comments &#x25BC;');
