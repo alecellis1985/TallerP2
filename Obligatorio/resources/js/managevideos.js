@@ -28,7 +28,7 @@ function addVid()
 function saveVid(e)
 {
     var videoId = $('input[name="url"]').val();
-    var url = 'http://gdata.youtube.com/feeds/api/videos/'+videoId;
+    var url = 'http://gdata.youtube.com/feeds/api/videos/' + videoId;
     e.preventDefault();
     $.ajax({
         type: "GET",
@@ -55,9 +55,10 @@ function completeSaveVideo(targetBtn) {
         url: $('input[name="url"]').val(),
         releaseDate: $('input[name="releaseDate"]').val(),
         description: $('textarea[name="description"]').val().replace("*", ""),
-        title: $('input[name="title"]').val()
+        title: $('input[name="title"]').val(),
+        featured: $('input[name="destacado"]').prop("checked")
     };
-    
+
     var action = $(targetBtn).attr('action');
     var url = '../privateFunctions/' + action;
     $('#closeVideoModal').trigger('click');
@@ -99,35 +100,41 @@ function generateTr(data)
     var ratingSpan = '<span class="star-rating">';
     //rating cannot be more than 0 because vid is new
     for (var i = 1; i < 6; i++) {
-            ratingSpan+='<i></i>';
+        ratingSpan += '<i></i>';
     }
-    ratingSpan+='</span>';
-    var destacadoClass = data.destacado == 0 ? 'glyphicon-remove' : 'glyphicon-ok';
-    var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';            
-    var tr = '<tr data-id="'+data.idVideo+'">'+
-        '<td><div data-id="title"> '+ data.title +'</div></td>'+
-        '<td><div data-id="client">'+ data.client +'</div></td>'+
-        '<td><div data-id="client">'+ data.views +'</div></td>'+
-        '<td align="center" valign="middle">'+
-            '<div data-id="rating">'+
-                ratingSpan + 
-            '</div>'+
-        '</td>'+
-        '<td><div data-id="url">' + data.url + '</div></td>'+
-        '<td><div data-id="destacado" class="glyphicon ' + destacadoClass + '"></div></td>'+
-        '<td><div data-id="deleted" class="glyphicon ' + deletedClass + '"></div></td>'+
-        '<td><div data-id="releaseDate">' + data.releaseDate + '</div></td>'+
-        '<td><div data-id="description" >' + data.description + '</div></td>'+
-        '<td>'+
-            '<div><button type="button" class="btn btn-default editVid" data-id="' + data.idVideo + '" data-toggle="modal" data-target="#videoModal">Edit</button></div>'+
-        '</td>'+
-        '<td>'+
-            '<div><button type="button" class="btn btn-default commentsVid" data-id="' + data.idVideo + '">Comments &#x25BC;</button></div>'+
-        '</td>'+
-        '<td>'+
-            '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>'+
-        '</td>'+
-    '</tr>';
+    ratingSpan += '</span>';
+    var destacadoClass = data.featured ? 'glyphicon-ok' : 'glyphicon-remove';
+    var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';
+    debugger;
+    if (data.featured) {
+        var currentFeatured = $(".glyphicon-ok[data-id='destacado']");
+        currentFeatured.removeClass("glyphicon-ok");
+        currentFeatured.addClass("glyphicon-remove");
+    }   
+    var tr = '<tr data-id="' + data.idVideo + '">' +
+            '<td><div data-id="title"> ' + data.title + '</div></td>' +
+            '<td><div data-id="client">' + data.client + '</div></td>' +
+            '<td><div data-id="client">' + data.views + '</div></td>' +
+            '<td align="center" valign="middle">' +
+            '<div data-id="rating">' +
+            ratingSpan +
+            '</div>' +
+            '</td>' +
+            '<td><div data-id="url">' + data.url + '</div></td>' +
+            '<td><div data-id="destacado" class="glyphicon ' + destacadoClass + '"></div></td>' +
+            '<td><div data-id="deleted" class="glyphicon ' + deletedClass + '"></div></td>' +
+            '<td><div data-id="releaseDate">' + data.releaseDate + '</div></td>' +
+            '<td><div data-id="description" >' + data.description + '</div></td>' +
+            '<td>' +
+            '<div><button type="button" class="btn btn-default editVid" data-id="' + data.idVideo + '" data-toggle="modal" data-target="#videoModal">Edit</button></div>' +
+            '</td>' +
+            '<td>' +
+            '<div><button type="button" class="btn btn-default commentsVid" data-id="' + data.idVideo + '">Comments &#x25BC;</button></div>' +
+            '</td>' +
+            '<td>' +
+            '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>' +
+            '</td>' +
+            '</tr>';
     var trElem = $(tr);
     trElem.find('.commentsVid').click(videoDetails);
     trElem.find('.editVid').click(editVid);
@@ -142,11 +149,11 @@ function completeEditVideo(datos, modifiedData)
     {
 //        arrElement = $.extend({}, arrElement, modifiedData);
         $.extend(arrElement, modifiedData);
-        $.each($('#manageVideosTable tbody>tr'),function(key,elem){
+        $.each($('#manageVideosTable tbody>tr'), function (key, elem) {
             var element = $(elem);
             if (element.data('id') == modifiedData.idVideo)
             {
-                element.replaceWith( generateTr(arrElement));
+                element.replaceWith(generateTr(arrElement));
             }
         });
     }
@@ -160,12 +167,17 @@ function editVid()
     var arrElement = Helper.getItemFromArray(videos, videoId, 'idVideo');
     if (arrElement !== -1)
     {
-        $('#videoTitle').html('Edit ' + arrElement.title + 'Video');
+        $('#videoTitle').html('Edit ' + arrElement.title + ' Video');
         $.each($('#videofrm input'), function (key, elem) {
             elem.value = arrElement[elem.name];
         });
         $.each($('#videofrm textarea'), function (key, elem) {
             elem.value = arrElement[elem.name];
+        });
+        $.each($('#videofrm input[type="checkbox"]'), function (key, elem) {
+            var boolVal = arrElement[elem.name] === "1" ? true : false;
+            $(elem).prop('checked', boolVal);
+            $(elem).prop('disabled', boolVal);
         });
     }
 }
