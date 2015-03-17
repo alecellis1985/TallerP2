@@ -46,7 +46,6 @@ function saveVid(e)
     }
     var videoId = $('input[name="url"]').val();
     var url = 'http://gdata.youtube.com/feeds/api/videos/'+videoId;
-    
     $.ajax({
         type: "GET",
         dataType: "xml",
@@ -72,9 +71,10 @@ function completeSaveVideo(targetBtn) {
         url: $('input[name="url"]').val(),
         releaseDate: $('input[name="releaseDate"]').val(),
         description: $('textarea[name="description"]').val().replace("*", ""),
-        title: $('input[name="title"]').val()
+        title: $('input[name="title"]').val(),
+        featured: $('input[name="destacado"]').prop("checked")
     };
-    
+
     var action = $(targetBtn).attr('action');
     var url = '../privateFunctions/' + action;
     $('#closeVideoModal').trigger('click');
@@ -116,11 +116,16 @@ function generateTr(data)
     var ratingSpan = '<span class="star-rating">';
     //rating cannot be more than 0 because vid is new
     for (var i = 1; i < 6; i++) {
-            ratingSpan+='<i></i>';
+        ratingSpan += '<i></i>';
     }
-    ratingSpan+='</span>';
-    var destacadoClass = data.destacado == 0 ? 'glyphicon-remove' : 'glyphicon-ok';
-    var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';    
+    ratingSpan += '</span>';
+    var destacadoClass = data.featured ? 'glyphicon-ok' : 'glyphicon-remove';
+    var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';
+    if (data.featured) {
+        var currentFeatured = $(".glyphicon-ok[data-id='destacado']");
+        currentFeatured.removeClass("glyphicon-ok");
+        currentFeatured.addClass("glyphicon-remove");
+    }   
     
     var deleteBtn = '';
     if(editGridId === 'manageVideosTable')
@@ -175,7 +180,7 @@ function completeEditVideo(datos, modifiedData,tableId)
             var element = $(elem);
             if (element.data('id') == modifiedData.idVideo)
             {
-                element.replaceWith( generateTr(arrElement));
+                element.replaceWith(generateTr(arrElement));
             }
         });
     }
@@ -192,12 +197,17 @@ function editVid()
     var arrElement = Helper.getItemFromArray(videos, videoId, 'idVideo');
     if (arrElement !== -1)
     {
-        $('#videoTitle').html('Edit ' + arrElement.title + 'Video');
+        $('#videoTitle').html('Edit ' + arrElement.title + ' Video');
         $.each($('#videofrm input'), function (key, elem) {
             elem.value = arrElement[elem.name];
         });
         $.each($('#videofrm textarea'), function (key, elem) {
             elem.value = arrElement[elem.name];
+        });
+        $.each($('#videofrm input[type="checkbox"]'), function (key, elem) {
+            var boolVal = arrElement[elem.name] === "1" ? true : false;
+            $(elem).prop('checked', boolVal);
+            $(elem).prop('disabled', boolVal);
         });
     }
 }
