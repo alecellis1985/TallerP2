@@ -2,9 +2,9 @@
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 require_once("../includes/MessageHandler.php");
-//start_session();
-//if($_SESSION['ingreso'])
-//{
+start_session();
+if($_SESSION['ingreso'])
+{
    $idVideo = $_POST['idVideo'];
    $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
    $response = null;
@@ -27,8 +27,8 @@ require_once("../includes/MessageHandler.php");
     {
         echo $response;
     }
-//}
-//else
-//{
-//    echo "FORBBBBIDENZEN";
-//}
+}
+else
+{
+    echo "Unauthorized";
+}

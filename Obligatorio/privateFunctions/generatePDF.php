@@ -39,10 +39,15 @@ if ($_SESSION['ingreso']) {
         }
         $conn->desconectar();
     }
+    if ($response == null) {
+        header('HTTP/1.1 400 Bad Request');
+        echo "System Error";
+    }
+}
+else
+{
+    echo "Unauthorized";
 }
 
-if ($response == null) {
-    header('HTTP/1.1 400 Bad Request');
-    echo "System Error";
-}
+
 
