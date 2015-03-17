@@ -200,11 +200,17 @@ function editVid()
         $.each($('#videofrm textarea'), function (key, elem) {
             elem.value = arrElement[elem.name];
         });
-        $.each($('#videofrm input[type="checkbox"]'), function (key, elem) {
-            var boolVal = arrElement[elem.name] === "1" ? true : false;
-            $(elem).prop('checked', boolVal);
-            $(elem).prop('disabled', boolVal);
-        });
+        if(arrElement.deleted == 1)
+        {
+            $('#videofrm input[name="destacado"]').prop('disabled', true);
+        }
+        else
+        {
+            var boolVal = arrElement.destacado === "1" ? true : false;
+            $('#videofrm input[name="destacado"]').prop('checked', boolVal).prop('disabled', boolVal);
+        }
+        
+        
     }
 }
 

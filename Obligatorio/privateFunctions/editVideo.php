@@ -3,7 +3,6 @@
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 require_once("../includes/MessageHandler.php");
-//TODO MISSING TITLE
 $idVideo = $_POST['idVideo'];
 $title = $_POST['title'];
 $client = $_POST['client'];
