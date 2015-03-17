@@ -28,7 +28,7 @@ function saveVid(e)
         timeout: 4000,
         success: function (data) {
             $("#videoFormErrors").parent().addClass("hide");
-            completeSaveVideo();
+            completeSaveVideo(e.target);
         },
         error: function (data) {
             $("#videoFormErrors").text("Invalid video URL. Please make sure the video exists on YouTube.com");
@@ -39,7 +39,7 @@ function saveVid(e)
 
 }
 
-function completeSaveVideo() {
+function completeSaveVideo(targetBtn) {
     var modifiedData = {
         idVideo: $('#idVideo').val(),
         client: $('input[name="client"]').val(),
@@ -48,7 +48,8 @@ function completeSaveVideo() {
         description: $('textarea[name="description"]').val().replace("*", ""),
         title: $('input[name="title"]').val()
     };
-    var action = $(this).attr('action');
+    debugger;
+    var action = $(targetBtn).attr('action');
     var url = '../privateFunctions/' + action;
     $('#closeVideoModal').trigger('click');
     $.ajax({
