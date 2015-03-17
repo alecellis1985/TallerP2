@@ -71,6 +71,8 @@ function completeSaveVideo(targetBtn) {
         {
             if (action === "editVideo.php")
             {
+                var htmlElement = getTrElemById(parseInt(modifiedData.idVideo));
+                closeDetails(htmlElement.next());
                 completeEditVideo(datos, modifiedData);
             }
             else if (action === "addVideo.php")
@@ -138,7 +140,8 @@ function completeEditVideo(datos, modifiedData)
     var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
     if (arrElement != -1)
     {
-        arrElement = $.extend({}, arrElement, modifiedData);
+//        arrElement = $.extend({}, arrElement, modifiedData);
+        $.extend(arrElement, modifiedData);
         $.each($('#manageVideosTable tbody>tr'),function(key,elem){
             var element = $(elem);
             if (element.data('id') == modifiedData.idVideo)
