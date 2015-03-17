@@ -7,6 +7,14 @@ function startVideos()
     $('#addVid').click(addVid);
     $('#videofrm').submit(saveVid);
     $(".commentsVid").click(videoDetails);
+    $('#closeVideoModal').click(clearData);
+    $('.close').click(clearData);
+}
+
+function clearData()
+{
+    $("#videoFormErrors").parent().addClass("hide");
+    $('#videofrm')[0].reset();
 }
 
 function addVid()
@@ -19,7 +27,8 @@ function addVid()
 
 function saveVid(e)
 {
-    var url = 'http://gdata.youtube.com/feeds/api/videos/videoID'.replace('videoID', $('input[name="url"]').val());
+    var videoId = $('input[name="url"]').val();
+    var url = 'http://gdata.youtube.com/feeds/api/videos/'+videoId;
     e.preventDefault();
     $.ajax({
         type: "GET",
