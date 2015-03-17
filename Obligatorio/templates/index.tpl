@@ -2,6 +2,7 @@
 <html class="no-js"> 
     <head>
         {include file="head.tpl"}
+        <link href="resources/css/starRating.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navigation -->
@@ -9,7 +10,7 @@
 
         <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
-                <div class="col-md-6 ">
+                <div class="col-md-6 col-md-offset-1 ">
                     <h2><i>MyCompany films corp.</i></h2>
                     <div>
                         <p> We are a film producer company that offer our clients high quality custom videos for their business. You can 
@@ -20,23 +21,37 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-md-offset-2">
+                <div class="col-md-2 col-md-offset-2">
                     <img class="companyLogo"src='resources/img/companyLogo.png' alt='Blast off with Bootstrap' />
                 </div>
 
             </div>
             <div class="row">
                 {if $videoExists}
-                    <div class="col-md-6 portfolio-item">
+                    <div class="col-md-5  col-md-offset-1 portfolio-item">
                         <div class="videoPlayer" id="videoPlayer{$mainVideo.idVideo}" data-url="{$mainVideo.url}"></div>
                         <h3>
-                            <a href="#">{$mainVideo.client}</a>
+                            <a href="#" class="disableClick">{$mainVideo.client}</a>
                         </h3>
                         <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
-                        <p>{$mainVideo.description}</p>
+                        <p>
+                            <span class="star-rating">
+                                <input type="radio" name="ratingStatic" value="1" class="disableClick">
+                                <i {if $mainVideo.rating >= 1} class="rated" {/if}></i>
+                                <input type="radio" name="ratingStatic" value="2" class="disableClick">
+                                <i {if $mainVideo.rating >= 2} class="rated" {/if}></i>
+                                <a href="videoDetails.tpl"></a>
+                                <input type="radio" name="ratingStatic" value="3" class="disableClick">
+                                <i {if $mainVideo.rating >= 3} class="rated" {/if}></i>
+                                <input type="radio" name="ratingStatic" value="4" class="disableClick">
+                                <i {if $mainVideo.rating >= 4} class="rated" {/if}></i>
+                                <input type="radio" name="ratingStatic" value="5" class="disableClick">
+                                <i {if $mainVideo.rating >= 5} class="rated" {/if}></i>
+                            </span>
+                        </p>
                     </div>
 
-                    <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4 col-md-offset-1">
                         <h3>
                             <i>MyCompany films</i> featured Video
                         </h3>

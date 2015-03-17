@@ -1,8 +1,8 @@
 <!DOCTYPE html> 
 <html class="no-js">
     <head>
-    {include file="private/headPrivate.tpl"}
-    <link rel="stylesheet" href="../resources/css/starRating.css">
+        {include file="private/headPrivate.tpl"}
+        <link rel="stylesheet" href="../resources/css/starRating.css">
     </head>
     <body>
         <!-- Navigation -->
@@ -14,6 +14,7 @@
                     <h1><i>Site Statistics</i></h1>
                 </div>
                 <div class="col-md-2 col-md-offset-4">
+{*                    <div><h4>Export statistics</h4></div>*}
                     <ul class="nav navbar-nav" style="margin:20px 0 10px 0;">
                         <li>
                             <div><button type="button" class="btn btn-danger generatePdf">PDF</button></div>
@@ -26,9 +27,10 @@
                     </ul>
                 </div>
             </div>
+            <hr>
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12">
-                    <h2><i>Videos per Rating</i></h2>
+                    <h2>Videos per Rating</h2>
                     <div>
                         <table id="videosPerRatingTable" class="table table-striped">
                             <thead>
@@ -40,7 +42,7 @@
                                         <td align="center" valign="middle">
                                             <span class="star-rating">
                                                 {for $x=1; $x < 6; $x++ }
-                                                     <i {if $video.rating >= $x}class="rated"{/if}></i>
+                                                    <i {if $video.rating >= $x}class="rated"{/if}></i>
                                                 {/for}
                                             </span>
                                         </td>
@@ -58,29 +60,30 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-12 ">
-                <h2><i>Videos per Comments</i></h2>
-                <div>
-                    <table id="videosPerCommentTable" class="table table-striped">
-                        <thead>
-                        <th>Comments count</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Active</th><th width="110px">Release Date</th><th>Description</th>
-                        </thead>
-                        <tbody>
-                            {foreach from=$videosPerComment item=video}
-                                <tr data-id="{$video['idVideo']}">
-                                    <td><div data-id="commentCount">{if $video['commentCount']}{$video['commentCount']}{else}0{/if}</div></td>
-                                    <td><div data-id="client">{$video['client']}</div></td>
-                                    <td><div data-id="views">{$video['views']}</div></td>
-                                    <td><div data-id="url">{$video['url']}</div></td>
-                                    <td><div data-id="destacado">{if $video['destacado'] == 0}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
-                                    <td><div data-id="deleted">{if $video['deleted'] == 1}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
-                                    <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
-                                    <td><div data-id="description">{$video['description']}</div></td>
-                                </tr>
-                            {/foreach}
-                        </tbody>
-                    </table>
+            <div class="row bottom bottom-buffer">
+                <div class="col-md-12 ">
+                    <h2>Videos per Comments</h2>
+                    <div>
+                        <table id="videosPerCommentTable" class="table table-striped">
+                            <thead>
+                            <th>Comments</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Active</th><th width="110px">Release Date</th><th>Description</th>
+                            </thead>
+                            <tbody>
+                                {foreach from=$videosPerComment item=video}
+                                    <tr data-id="{$video['idVideo']}">
+                                        <td><div data-id="commentCount">{if $video['commentCount']}{$video['commentCount']}{else}0{/if}</div></td>
+                                        <td><div data-id="client">{$video['client']}</div></td>
+                                        <td><div data-id="views">{$video['views']}</div></td>
+                                        <td><div data-id="url">{$video['url']}</div></td>
+                                        <td><div data-id="destacado">{if $video['destacado'] == 0}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
+                                        <td><div data-id="deleted">{if $video['deleted'] == 1}<span class="glyphicon glyphicon-remove"></span>{else}<span class="glyphicon glyphicon-ok"></span>{/if}</div></td>
+                                        <td><div data-id="releaseDate">{$video['releaseDate']}</div></td>
+                                        <td><div data-id="description">{$video['description']}</div></td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ $(document).on("click", "#videoDetails .paginationBtn", goToPageComment);
 $(document).on("click", "#addComment", function (e) {
 
     var videoTitle = $($(e.target).parent().parent().siblings()[0]).find(".videoTitle").text();
-    $("#modalCommentsTitle").text('Add comment to "' + videoTitle + '"');
+    $("#modalCommentsTitle").text('Add comment to "' + videoTitle + '"' );
 });
 
 $(document).ready(start);
