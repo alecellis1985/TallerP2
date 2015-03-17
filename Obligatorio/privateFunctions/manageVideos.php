@@ -12,7 +12,7 @@ if($_SESSION['ingreso'])
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     if($conn->conectar())
     {
-        $sql = "SELECT * FROM videos WHERE deleted <> 1";
+        $sql = "SELECT * FROM videos"; //WHERE deleted <> 1
         if($conn->consulta($sql))
         {
             $videos =  $conn->restantesRegistros();
