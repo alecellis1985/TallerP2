@@ -28,9 +28,25 @@ function addVid()
 
 function saveVid(e)
 {
+    e.preventDefault();
+    /*
+     $("#videoFormErrors").text("Invalid video URL. Please make sure the video exists on YouTube.com");
+    $("#videoFormErrors").parent().removeClass("hide");
+     */
+    //Date Validation
+    var date = new Date();
+    var month = (date.getMonth()+1)<10?'0'+(date.getMonth()+1):(date.getMonth()+1);
+    var day = (date.getDate())<10?'0'+(date.getDate()):(date.getDate());;
+    if($('input[name="releaseDate"]').val() < date.getFullYear() +'-'+ month +'-'+ day)
+    {
+        
+        $("#videoFormErrors").text("Invalid date. Please make sure the date selected is after or equal to "+ day +'-'+month+'-'+date.getFullYear());
+        $("#videoFormErrors").parent().removeClass("hide");
+        return;
+    }
     var videoId = $('input[name="url"]').val();
     var url = 'http://gdata.youtube.com/feeds/api/videos/'+videoId;
-    e.preventDefault();
+    
     $.ajax({
         type: "GET",
         dataType: "xml",
