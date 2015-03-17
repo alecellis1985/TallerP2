@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 01:05:39
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 13:10:42
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:276854f086b5dbb433-12109124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cc7b08b058169aafa9d586d776e281382af123c' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1426565134,
+      1 => 1426608626,
       2 => 'file',
     ),
   ),
@@ -56,8 +56,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="row">
                 <?php if ($_smarty_tpl->tpl_vars['videoExists']->value) {?>
                     <div class="col-md-6 portfolio-item">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['url'];?>
-?rel=0" frameborder="0" allowfullscreen></iframe>
+                        <div class="videoPlayer" id="videoPlayer<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['idVideo'];?>
+" data-url="<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['url'];?>
+"></div>
                         <h3>
                             <a href="#"><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['client'];?>
 </a>
@@ -111,6 +112,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
         <?php echo '<script'; ?>
  src="resources/js/main.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="resources/js/youTubePlayer.js"><?php echo '</script'; ?>
 >
     </body>
 </html>

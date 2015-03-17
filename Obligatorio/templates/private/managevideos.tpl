@@ -11,10 +11,11 @@
             <div>{include file="videoModal.tpl"}</div>
             <div class="row bottom bottom-buffer">
                 <div class="col-md-12 ">
-                    <h2>Videos</h2>
+                    <h2><i>Manage Videos</i></h2>
+                    <hr>
                     <div>
                         <button id="addVid" type="button" class="btn btn-success" data-toggle="modal" data-target="#videoModal">Add new video</button>
-                        <table id="manageVideosTable" class="table table-striped" >
+                        <table id="manageVideosTable" class="table table-striped">
 
 
                             <thead>

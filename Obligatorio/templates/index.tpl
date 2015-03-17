@@ -28,7 +28,7 @@
             <div class="row">
                 {if $videoExists}
                     <div class="col-md-6 portfolio-item">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{$mainVideo.url}?rel=0" frameborder="0" allowfullscreen></iframe>
+                        <div class="videoPlayer" id="videoPlayer{$mainVideo.idVideo}" data-url="{$mainVideo.url}"></div>
                         <h3>
                             <a href="#">{$mainVideo.client}</a>
                         </h3>
@@ -64,5 +64,6 @@
         <script src="resources/js/libs/plugins.js"></script>
         <script src="resources/js/helper.js"></script>
         <script src="resources/js/main.js"></script>
+        <script src="resources/js/youTubePlayer.js"></script>
     </body>
 </html>
