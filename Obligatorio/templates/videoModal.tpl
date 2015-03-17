@@ -28,6 +28,10 @@
                         <label for="description">Description:</label>
                         <textarea class="form-control" maxlength="250" type="text" rows="6" name="description" class="form-control" placeholder="Description" required></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="featured">Featured Video:</label>
+                        <input type="checkbox" name="destacado"  placeholder="Featured">
+                    </div>
 
                     <div class="form-group hide">
                         <span id="videoFormErrors" class="error"></span>

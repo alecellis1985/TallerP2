@@ -1,4 +1,4 @@
-$(document).ready(startVideos);
+																   $(document).ready(startVideos);
 
 function startVideos()
 {
@@ -29,10 +29,6 @@ function addVid()
 function saveVid(e)
 {
     e.preventDefault();
-    /*
-     $("#videoFormErrors").text("Invalid video URL. Please make sure the video exists on YouTube.com");
-    $("#videoFormErrors").parent().removeClass("hide");
-     */
     //Date Validation
     var date = new Date();
     var month = (date.getMonth()+1)<10?'0'+(date.getMonth()+1):(date.getMonth()+1);
