@@ -6,15 +6,18 @@
     <body>
         <!-- Navigation -->
         <div id="header">{include file="header.tpl"}</div>
-        
+
         <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
                 <div class="col-md-6 ">
                     <h2><i>MyCompany films corp.</i></h2>
                     <div>
-                        <p> We are a film producer company that offer our clients high quality custom videos for their business. Bla
-                            Bla Bla Bla Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla Bla
-                            Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla Bla.</p>
+                        <p> We are a film producer company that offer our clients high quality custom videos for their business. You can 
+                            check out our films produce for different clients and leave your comments and score. Your opinion and feedback is very
+                            appreciated by our team.</p>
+                        <p>
+                            Go ahead and take a tour through our site! 
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-2">
@@ -23,22 +26,27 @@
 
             </div>
             <div class="row">
-                <div class="col-md-6 portfolio-item">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{$mainVideo[0].url}?rel=0" frameborder="0" allowfullscreen></iframe>
-                    <h3>
-                        <a href="#">{$mainVideo.client}</a>
-                    </h3>
-                    <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
-                    <p>{$mainVideo.description}</p>
-                </div>
-                
-                <div class="col-md-5 col-md-offset-1">
-                    <h3>
-                        <i>MyCompany films</i> featured Video
-                    </h3>
-                    <p>{$mainVideo.description}</p>
-                </div>
+                {if $videoExists}
+                    <div class="col-md-6 portfolio-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{$mainVideo.url}?rel=0" frameborder="0" allowfullscreen></iframe>
+                        <h3>
+                            <a href="#">{$mainVideo.client}</a>
+                        </h3>
+                        <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
+                        <p>{$mainVideo.description}</p>
+                    </div>
 
+                    <div class="col-md-5 col-md-offset-1">
+                        <h3>
+                            <i>MyCompany films</i> featured Video
+                        </h3>
+                        <p>{$mainVideo.description}</p>
+                    </div>
+                {else}
+                    <div class="col-md-12">
+                        <h2>No available videos at the moment</h2>
+                    </div>
+                {/if}
             </div>
 
         </div>
