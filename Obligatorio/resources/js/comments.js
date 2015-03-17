@@ -7,7 +7,9 @@ $(document).on("click", "#videoDetails .nextPage", goToPageComment);
 $(document).on("click", "#videoDetails .lastPage", goToPageComment);
 $(document).on("click", "#videoDetails .paginationBtn", goToPageComment);
 $(document).on("click", "#addComment", function (e) {
-    $("#modalCommentsTitle").text("Add comment");
+
+    var videoTitle = $($(e.target).parent().parent().siblings()[0]).find(".videoTitle").text();
+    $("#modalCommentsTitle").text('Add comment to "' + videoTitle + '"');
 });
 
 $(document).ready(start);

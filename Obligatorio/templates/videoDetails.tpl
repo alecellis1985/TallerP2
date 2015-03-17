@@ -3,6 +3,10 @@
     <table>
         <tbody>
             <tr>
+                <td><h4>Title</h4></td>
+                <td align="center" valign="bottom"><p class="videoTitle">{$video.title}</p></td>
+            </tr>
+            <tr>
                 <td><h4>Client</h4></td>
                 <td align="center" valign="bottom"><p>{$video.client}</p></td>
             </tr>

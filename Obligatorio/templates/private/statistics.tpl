@@ -11,7 +11,7 @@
 
             <div class="row bottom-buffer">
                 <div class="col-md-6">
-                    <h1>Site Statistics</h1>
+                    <h1><i>Site Statistics</i></h1>
                 </div>
                 <div class="col-md-2 col-md-offset-4">
                     <ul class="nav navbar-nav" style="margin:20px 0 10px 0;">

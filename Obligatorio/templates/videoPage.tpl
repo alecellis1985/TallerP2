@@ -5,7 +5,7 @@
         <div class="col-md-6 portfolio-item">
             <div class="videoPlayer" id="videoPlayer{$videos[$x-1].idVideo}" data-url="{$videos[$x-1].url}"></div>
             <h3>
-                <a class="videoDetails" href="">{$videos[$x-1].client}</a>
+                <a class="videoDetails" href="">{$videos[$x-1].title}</a>
             </h3>
             <input type="hidden" class="videoId" value="{$videos[$x-1].idVideo}">
             <p class="starRating">{include file="starRating.tpl"}</p>
