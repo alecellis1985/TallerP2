@@ -22,9 +22,12 @@ if ($conn->conectar()) {
         $comments = $conn->restantesRegistros();
         $smarty->assign("comments", $comments);
         $smarty->display("videoComments.tpl");
+        $conn->desconectar();
     } else {
+        $conn->desconectar();
         echo "Error de SQL";
     }
 } else {
+    $conn->desconectar();
     echo "Error de Conexion";
 }    

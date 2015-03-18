@@ -23,12 +23,16 @@ if ($conn->conectar()) {
         if ($conn->consulta($sqlUpdate, $paramsUpdate)) {
             $result = array("success" => true);
             echo json_encode($result);
+            $conn->desconectar();
         } else {
             echo json_encode($ERROR);
+            $conn->desconectar();
         }
     } else {
         echo json_encode($ERROR);
+        $conn->desconectar();
     }
 } else {
     echo json_encode($ERROR);
+    $conn->desconectar();
 }

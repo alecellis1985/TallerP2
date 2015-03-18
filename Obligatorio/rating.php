@@ -66,8 +66,10 @@ if ($conn->conectar()) {
 }
 if ($response == null) {
     header('HTTP/1.1 400 Bad Request');
+    $conn->desconectar();
     echo MessageHandler::getDBErrorResponse();
 } else {
+    $conn->desconectar();
     echo $response;
 }
 

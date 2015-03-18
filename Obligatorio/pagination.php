@@ -21,7 +21,9 @@ if ($conn->conectar()) {
         $smarty->assign('videos', $videos);
         $smarty->assign('videosCountInPage', count($videos));
         $smarty->display("videoPage.tpl");
+        $conn->desconectar();
     } else {
+        $conn->desconectar();
         echo "Error de SQL";
     }
 } else {

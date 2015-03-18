@@ -20,6 +20,7 @@ if ($sessionExists && $_SESSION['ingreso']) {
         header('HTTP/1.1 400 Bad Request');
         echo MessageHandler::getDBErrorResponse();
     } else {
+        $conn->desconectar();
         echo $response;
     }
 } else {

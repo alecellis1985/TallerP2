@@ -10,6 +10,7 @@ $comment = $_POST['comment'];
 $idVideo = intval($_POST['idVideo']);
 
 if (!isset($comment)) {
+    $conn->desconectar();
     echo MessageHandler::getErrorResponse("Comment text is required");
 } else {
     $response = null;
@@ -34,6 +35,7 @@ if (!isset($comment)) {
     if ($response == null) {
         echo MessageHandler::getErrorResponse("SERVER ERROR");
     } else {
+        $conn->desconectar();
         echo $response;
     }
 }

@@ -16,18 +16,22 @@ if ($conn->conectar()) {
         $countVideos = $conn->restantesRegistros();
         $videoPages = ceil((int) $countVideos[0][0] / CANTPAG);
     } else {
+        $conn->desconectar();
         echo "SQL Error";
     }
     $sql2 = "SELECT * FROM videos where deleted <> 1 ORDER BY rating desc LIMIT " . CANTPAG;
     if ($conn->consulta($sql2)) {
         $videos = $conn->restantesRegistros();
     } else {
+        $conn->desconectar();
         echo "SQL ERROR";
     }
     $smarty->assign('videos', $videos);
     $smarty->assign('videoPages', $videoPages);
     $smarty->assign('videosCountInPage', count($videos));
 } else {
+    $conn->desconectar();
     echo "Could not connect to SQL";
 }
 $smarty->display("videoList.tpl");
+$conn->desconectar();

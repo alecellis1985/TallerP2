@@ -18,10 +18,13 @@ if ($conn->conectar()) {
         $smarty->assign("mainVideo", $mainVideo[0]);
         $smarty->assign("videoExists", $existeVideo);
     } else {
+        $conn->desconectar();
         echo "Error de SQL";
     }
 } else {
+    $conn->desconectar();
     echo "Error de Conexi�n";
 }
 
 $smarty->display("index.tpl");
+$conn->desconectar();
