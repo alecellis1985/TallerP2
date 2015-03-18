@@ -8,7 +8,7 @@ require_once("../config/parametros.php");
 $smarty = new Smarty();
 $smarty->template_dir = '../templates';
 $smarty->compile_dir = '../templates_c';
-        
+
 if ($_SESSION['ingreso']) {
     $videoId = (int) $_POST['videoId'];
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
@@ -43,12 +43,10 @@ if ($_SESSION['ingreso']) {
             echo "SQL ERROR";
         }
     } else {
-    //    $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
-    //    echo json_encode($result);
+        //    $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
+        //    echo json_encode($result);
         echo "SQL ERROR.";
-    }  
-}
-else
-{
+    }
+} else {
     echo "Unauthorized";
 }

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once("../includes/class.Conexion.BD.php");
 require_once("../config/parametros.php");
@@ -8,8 +9,7 @@ $smarty = new Smarty();
 $smarty->template_dir = '../templates';
 $smarty->compile_dir = '../templates_c';
 
-if ($_SESSION['ingreso']) 
-{
+if ($_SESSION['ingreso']) {
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     if ($conn->conectar()) {
         $sqlVideosPerRating = "SELECT * FROM comments ORDER BY dateTime DESC";
@@ -18,12 +18,12 @@ if ($_SESSION['ingreso'])
             $count = $conn->cantidadRegistros();
             $smarty->assign("commentsCount", $count);
             $smarty->assign("comments", $comments);
-                $smarty->display("private/commentsPrivate.tpl");
-            } else {
-                echo "Error, please refresh the web.";
-            }
-            $conn->desconectar();
+            $smarty->display("private/commentsPrivate.tpl");
+        } else {
+            echo "Error, please refresh the web.";
         }
+        $conn->desconectar();
+    }
 } else {
     echo "Unauthorized user";
 }

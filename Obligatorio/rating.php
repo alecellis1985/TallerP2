@@ -34,8 +34,8 @@ if ($conn->conectar()) {
                 $paramsSelect[0] = array("idVideo", $videoId, "int");
                 if ($conn->consulta($sqlSelectVideo, $paramsSelect)) {
                     $videos = $conn->restantesRegistros();
-                    $video = $videos[0];                    
-                    $newVotes = intval($video["votes"]) + 1; 
+                    $video = $videos[0];
+                    $newVotes = intval($video["votes"]) + 1;
                     $currentRating = floatval($video["rating"]);
                     $newAvgRating = (($currentRating + $rating) / $newVotes);
                     $newAvgRatingString = number_format($newAvgRating, 2, '.', '');

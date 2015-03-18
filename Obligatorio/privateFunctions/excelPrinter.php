@@ -7,7 +7,7 @@ require_once("../config/parametros.php");
 
 
 if ($_SESSION['ingreso']) {
-    
+
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     if ($conn->conectar()) {
         $sqlVideosPerRating = "SELECT * FROM videos ORDER BY rating DESC";
@@ -29,10 +29,8 @@ if ($_SESSION['ingreso']) {
     header("Content-Type: application/vnd.ms-excel");
     ExcelArrPrinter::printArray($videosPerRating, "Videos Per Comments");
     ExcelArrPrinter::printArray($videosPerComment, "Videos Per Rating");
-    exit; 
-}
-else
-{
+    exit;
+} else {
     echo "Private Zone";
 }
 
