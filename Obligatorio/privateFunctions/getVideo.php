@@ -3,8 +3,9 @@
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 require_once("../includes/MessageHandler.php");
+$sessionExists = session_start();
 
-if ($_SESSION['ingreso']) {
+if ($sessionExists && $_SESSION['ingreso']) {
     $idVideo = $_GET['idVideo'];
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     $response = null;

@@ -4,7 +4,7 @@ require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 require_once("../includes/MessageHandler.php");
 
-start_session();
+session_start();
 if ($_SESSION['ingreso']) {
     $idComments = $_POST['idComments'];
     $public = $_POST['public'];

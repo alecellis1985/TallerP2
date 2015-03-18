@@ -9,8 +9,8 @@ $url = $_POST['url'];
 $releaseDate = $_POST['releaseDate'];
 $description = $_POST['description'];
 $title = $_POST['title'];
-start_session();
-if ($_SESSION['ingreso']) {
+$sessionExists = session_start();
+if ($sessionExists && $_SESSION['ingreso']) {
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     $response = null;
     if ($conn->conectar()) {
@@ -23,10 +23,6 @@ if ($_SESSION['ingreso']) {
         $parametros[3] = array("releaseDate", $releaseDate, "STRING", 250);
         $parametros[4] = array("description", $description, "STRING", 250);
         /*
-         * TODO: check if video already exists
-         * * TODO: check if video already exists
-         * * TODO: check if video already exists
-         * * TODO: check if video already exists
          * TODO: check if video already exists
          *          */
         if ($conn->consulta($sql, $parametros)) {

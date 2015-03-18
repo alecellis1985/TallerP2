@@ -3,8 +3,8 @@
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 require_once("../includes/MessageHandler.php");
-start_session();
-if ($_SESSION['ingreso']) {
+$sessionExists = session_start();
+if ($sessionExists && $_SESSION['ingreso']) {
     $idVideo = $_POST['idVideo'];
     $title = $_POST['title'];
     $client = $_POST['client'];
