@@ -3,16 +3,16 @@
 session_start();
 require_once("includes/class.Conexion.BD.php");
 require_once("config/parametros.php");
+require_once 'includes/MessageHandler.php';
 
 $alias = $_POST['alias'];
 $comment = $_POST['comment'];
 $idVideo = intval($_POST['idVideo']);
 
 if (!isset($comment)) {
-    $result = array("success" => false, "errorMsj" => "Comment text is required");
-    echo json_encode($result);
+    echo MessageHandler::getErrorResponse("Comment text is required");
 } else {
-
+    $response = null;
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     if ($conn->conectar()) {
 
@@ -26,14 +26,14 @@ if (!isset($comment)) {
         $params[3] = array("comment", $comment, "string");
 
         if ($conn->consulta($sql, $params)) {
-            $result = array("success" => true);
-            echo json_encode($result);
+            $response = MessageHandler::getSuccessResponse("", null);
         } else {
-            $result = array("success" => false, "errorMsj" => "SERVER ERROR");
-            echo json_encode($result);
+            $response = MessageHandler::getErrorResponse("SERVER ERROR");
         }
+    }
+    if ($response == null) {
+        echo MessageHandler::getErrorResponse("SERVER ERROR");
     } else {
-        $result = array("success" => false, "errorMsj" => "SERVER ERROR");
-        echo json_encode($result);
+        echo $response;
     }
 }

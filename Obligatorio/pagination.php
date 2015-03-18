@@ -20,7 +20,6 @@ if ($conn->conectar()) {
         $videos = $conn->restantesRegistros();
         $smarty->assign('videos', $videos);
         $smarty->assign('videosCountInPage', count($videos));
-        //echo json_encode($videos);
         $smarty->display("videoPage.tpl");
     } else {
         echo "Error de SQL";
