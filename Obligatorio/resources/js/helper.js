@@ -2,22 +2,24 @@
  * 
  * @type Function| returns all basic functions
  */
-var Helper = (function() {
-    var alertTypes = ['success' , 'danger', 'info'];
-    var getUserAsync = function(url)
+var Helper = (function () {
+    var alertTypes = ['success', 'danger', 'info'];
+    var getUserAsync = function (url)
     {
         var deferred = $.Deferred();
         $.ajax({
             type: "POST",
             dataType: "json",
-            success: function(result){ deferred.resolve(result)},
+            success: function (result) {
+                deferred.resolve(result);
+            },
             timeout: 4000,
             error: errorLogIn,
-            url: url,
-        });  
+            url: url
+        });
         return deferred.promise();
     };
-    
+
     var getParentElem = function (element, tagg) {
         if (element === null || element === undefined)
             return null;
@@ -26,11 +28,12 @@ var Helper = (function() {
         }
         else {
             return getParentElem(element.parentElement, tagg);
-        };
+        }
+        ;
     };
     var isUndefinedOrNull = function (obj) {
         return obj === null || obj === undefined;
-    }
+    };
     /**
      * Deletes an element from an array 
      * eg: deleteByPropertyAndValueInArray('id', 23, myArray)
@@ -43,7 +46,7 @@ var Helper = (function() {
     var deleteByPropertyAndValueInArr = function (property, value, arr) {
         var arrLength = arr.length;
         while (arrLength--) {
-            if (arr[arrLength][property] == value) {
+            if (arr[arrLength][property] === value) {
                 arr.splice(arrLength, 1);
                 return;
             }
@@ -64,34 +67,34 @@ var Helper = (function() {
         var arrLength = arr.length;
         while (arrLength--)
         {
-            if (arr[arrLength][field] == value)
+            if (arr[arrLength][field] === value)
                 return arr[arrLength];
         }
         return -1;
     };
-    
+
     return {
         /**
          * Alert Types to use for alertMsg function
          * @returns {Array alert types: 'success' , 'error', 'block'}
          */
-        getAlertTypes:function()
+        getAlertTypes: function ()
         {
             return alertTypes;
         },
-        getUser:function(url)
+        getUser: function (url)
         {
             return getUserAsync(url);
         },
-        getParentElement:function(element, tagg)
+        getParentElement: function (element, tagg)
         {
             return getParentElem(element, tagg);
         },
-        deleteByPropertyAndValueInArray:function(property, value, arr)
+        deleteByPropertyAndValueInArray: function (property, value, arr)
         {
             deleteByPropertyAndValueInArr(property, value, arr);
         },
-        getItemFromArray:function(arr, value, field)
+        getItemFromArray: function (arr, value, field)
         {
             return getItemByFieldValue(arr, value, field);
         },
@@ -102,16 +105,16 @@ var Helper = (function() {
          * @param {String} msg: message that will be shown
          * @returns {nothing}
          */
-        alertMsg: function(containerDiv,alertType,msg) {
-            var alert = $('<div class="alert alert-'+alertType+'" style="display:none">'+
-                        '<p id="sucessAlert">'+msg+'<p>'+
+        alertMsg: function (containerDiv, alertType, msg) {
+            var alert = $('<div class="alert alert-' + alertType + '" style="display:none">' +
+                    '<p id="sucessAlert">' + msg + '<p>' +
                     '</div>');
             containerDiv.append(alert);
-            alert.slideDown(2500,function(){
-                $(this).slideUp(4500,function(){
-                   $(this).remove();
-               });
-            });   
+            alert.slideDown(2500, function () {
+                $(this).slideUp(4500, function () {
+                    $(this).remove();
+                });
+            });
         },
         /**
          * Function to set cookies
@@ -120,10 +123,10 @@ var Helper = (function() {
          * @param {type} exdays
          * @returns {undefined}
          */
-        setCookie: function(cname, cvalue, exdays) {
+        setCookie: function (cname, cvalue, exdays) {
             var d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            var expires = "expires="+d.toUTCString();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
             document.cookie = cname + "=" + cvalue + "; " + expires;
         },
         /**
@@ -131,15 +134,17 @@ var Helper = (function() {
          * @param {type} cname
          * @returns {cookie saved with the same name or undefined if it did not found it.}
          */
-         getCookie: function(cname) {
+        getCookie: function (cname) {
             var name = cname + "=";
             var ca = document.cookie.split(';');
-            for(var i=0; i<ca.length; i++) {
+            for (var i = 0; i < ca.length; i++) {
                 var c = ca[i];
-                while (c.charAt(0)===' ') c = c.substring(1);
-                if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+                while (c.charAt(0) === ' ')
+                    c = c.substring(1);
+                if (c.indexOf(name) === 0)
+                    return c.substring(name.length, c.length);
             }
             return undefined;
         }
-    };  
+    };
 })();

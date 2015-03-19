@@ -1,3 +1,4 @@
+//Init YouTube API
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -10,6 +11,7 @@ function onYouTubeIframeAPIReady() {
 
 }
 
+//Load all videos
 function loadVideos() {
     $('.loadingOverlay').css('display', 'block');
     var playerDivs = $(".videoPlayer");
@@ -35,6 +37,7 @@ function onPlayerStateChange(event) {
     playVideo(event.data);
 }
 
+//When video is played it adds 1 to views count
 function playVideo(state) {
     if (state === YT.PlayerState.PLAYING) {
         

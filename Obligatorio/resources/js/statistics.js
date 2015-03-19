@@ -7,8 +7,6 @@ function exportToPDF(e) {
     self.location.href = newUrl;
 }
 
-
-
 function exportToXls(e) {
     e.preventDefault();
     var newUrl = self.location.href.replace('statistics.php','excelPrinter.php');
