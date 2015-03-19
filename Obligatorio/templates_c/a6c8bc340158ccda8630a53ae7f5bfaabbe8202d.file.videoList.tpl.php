@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 14:42:13
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-18 09:11:27
          compiled from "templates\videoList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:695154e64e48930040-80581404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a6c8bc340158ccda8630a53ae7f5bfaabbe8202d' => 
     array (
       0 => 'templates\\videoList.tpl',
-      1 => 1426614125,
+      1 => 1426677441,
       2 => 'file',
     ),
   ),
@@ -79,7 +79,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
                                 </li>                   
                             <?php }} ?>
                             <li>
-                                <a href="" class="nextPage<?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?> disableClick <?php }?>}" data-page="2" title="Next page">&rsaquo;</a>
+                                <a href="" class="nextPage<?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?> disableClick <?php }?>" data-page="2" title="Next page">&rsaquo;</a>
                             </li> 
                             <li>
                                 <a href="" class="lastPage<?php if ($_smarty_tpl->tpl_vars['videoPages']->value==1) {?> disableClick <?php }?>" data-page="<?php echo $_smarty_tpl->tpl_vars['videoPages']->value;?>

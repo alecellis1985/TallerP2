@@ -2,7 +2,7 @@ $(document).ready(startVideos);
 
 function startVideos()
 {
-    var editGridId ='';
+    var editGridId = '';
     $('.deleteVid').click(deleteVid);
     $('.editVid').click(editVid);
     $('#addVid').click(addVid);
@@ -31,16 +31,17 @@ function saveVid(e)
     e.preventDefault();
     //Date Validation
     var date = new Date();
-    var month = (date.getMonth()+1)<10?'0'+(date.getMonth()+1):(date.getMonth()+1);
-    var day = (date.getDate())<10?'0'+(date.getDate()):(date.getDate());;
-    if($('input[name="releaseDate"]').val() < date.getFullYear() +'-'+ month +'-'+ day)
+    var month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
+    var day = (date.getDate()) < 10 ? '0' + (date.getDate()) : (date.getDate());
+    ;
+    if ($('input[name="releaseDate"]').val() < date.getFullYear() + '-' + month + '-' + day)
     {
         $("#videoFormErrors").text("Invalid date. Please make sure the date selected is after or equal to "+ day +'-'+month+'-'+date.getFullYear());
         $("#videoFormErrors").parent().removeClass("hide");
         return;
     }
     var videoId = $('input[name="url"]').val();
-    var url = 'http://gdata.youtube.com/feeds/api/videos/'+videoId;
+    var url = 'http://gdata.youtube.com/feeds/api/videos/' + videoId;
     $.ajax({
         type: "GET",
         dataType: "xml",
@@ -83,11 +84,12 @@ function completeSaveVideo(targetBtn) {
         {
             if (action === "editVideo.php")
             {
-                var htmlElement = getTrElemById(editGridId,parseInt(modifiedData.idVideo));
+                var htmlElement = getTrElemById(editGridId, parseInt(modifiedData.idVideo));
                 closeDetails(htmlElement.next());
-                completeEditVideo(datos, modifiedData,editGridId);
+                completeEditVideo(datos, modifiedData, editGridId);
             }
-            else if (action === "addVideo.php")
+            else
+            if (action === "addVideo.php")
             {
                 completeAddVideo(datos);
             }
@@ -120,58 +122,58 @@ function generateTr(data)
         var currentFeatured = $(".glyphicon-ok[data-id='destacado']");
         currentFeatured.removeClass("glyphicon-ok");
         currentFeatured.addClass("glyphicon-remove");
-    }   
-    
+    }
+
     var deleteBtn = '';
-    if(editGridId === 'manageVideosTable')
+    if (editGridId === 'manageVideosTable')
     {
         deleteBtn = '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>';
     }
-    
-    var tr = '<tr data-id="'+data.idVideo+'">'+
-        '<td><div data-id="title"> '+ data.title +'</div></td>'+
-        '<td><div data-id="client">'+ data.client +'</div></td>'+
-        '<td><div data-id="client">'+ data.views +'</div></td>'+
-        '<td align="center" valign="middle">'+
-            '<div data-id="rating">'+
-                ratingSpan + 
-            '</div>'+
-        '</td>'+
-        '<td><div data-id="url">' + data.url + '</div></td>'+
-        '<td><div data-id="destacado" class="glyphicon ' + destacadoClass + '"></div></td>'+
-        '<td><div data-id="deleted" class="glyphicon ' + deletedClass + '"></div></td>'+
-        '<td><div data-id="releaseDate">' + data.releaseDate + '</div></td>'+
-        '<td><div data-id="description" >' + data.description + '</div></td>'+
-        '<td>'+
-            '<div><button type="button" class="btn btn-default editVid" data-id="' + data.idVideo + '" data-toggle="modal" data-target="#videoModal">Edit</button></div>'+
-        '</td>'+
-        '<td>'+
-            '<div><button type="button" class="btn btn-default commentsVid" data-id="' + data.idVideo + '">Comments &#x25BC;</button></div>'+
-        '</td>'+
-        '<td>'+
-        deleteBtn+
+
+    var tr = '<tr data-id="' + data.idVideo + '">' +
+            '<td><div data-id="title"> ' + data.title + '</div></td>' +
+            '<td><div data-id="client">' + data.client + '</div></td>' +
+            '<td><div data-id="client">' + data.views + '</div></td>' +
+            '<td align="center" valign="middle">' +
+            '<div data-id="rating">' +
+            ratingSpan +
+            '</div>' +
+            '</td>' +
+            '<td><div data-id="url">' + data.url + '</div></td>' +
+            '<td><div data-id="destacado" class="glyphicon ' + destacadoClass + '"></div></td>' +
+            '<td><div data-id="deleted" class="glyphicon ' + deletedClass + '"></div></td>' +
+            '<td><div data-id="releaseDate">' + data.releaseDate + '</div></td>' +
+            '<td><div data-id="description" >' + data.description + '</div></td>' +
+            '<td>' +
+            '<div><button type="button" class="btn btn-default editVid" data-id="' + data.idVideo + '" data-toggle="modal" data-target="#videoModal">Edit</button></div>' +
+            '</td>' +
+            '<td>' +
+            '<div><button type="button" class="btn btn-default commentsVid" data-id="' + data.idVideo + '">Comments &#x25BC;</button></div>' +
+            '</td>' +
+            '<td>' +
+            deleteBtn +
 //            '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>'+
-            
-        '</td>'+
-    '</tr>';
+
+            '</td>' +
+            '</tr>';
     var trElem = $(tr);
     trElem.find('.commentsVid').click(videoDetails);
     trElem.find('.editVid').click(editVid);
-    if(editGridId === 'manageVideosTable')
+    if (editGridId === 'manageVideosTable')
     {
         trElem.find('.deleteVid').click(deleteVid);
     }
     return trElem;
 }
 
-function completeEditVideo(datos, modifiedData,tableId)
+function completeEditVideo(datos, modifiedData, tableId)
 {
     var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
     if (arrElement != -1)
     {
         $.extend(arrElement, modifiedData);
-        
-        $.each($('#'+tableId+' tbody>tr'),function(key,elem){
+
+        $.each($('#' + tableId + ' tbody>tr'), function (key, elem) {
             var element = $(elem);
             if (element.data('id') == modifiedData.idVideo)
             {
@@ -183,7 +185,7 @@ function completeEditVideo(datos, modifiedData,tableId)
 
 function editVid()
 {
-    
+
     var videoId = $(this).data('id');
     var table = Helper.getParentElement(this, 'table');
     editGridId = $(table).attr('id');
@@ -199,7 +201,7 @@ function editVid()
         $.each($('#videofrm textarea'), function (key, elem) {
             elem.value = arrElement[elem.name];
         });
-        if(arrElement.deleted == 1)
+        if (arrElement.deleted == 1)
         {
             $('#videofrm input[name="destacado"]').prop('disabled', true);
         }
@@ -208,8 +210,8 @@ function editVid()
             var boolVal = arrElement.destacado === "1" ? true : false;
             $('#videofrm input[name="destacado"]').prop('checked', boolVal).prop('disabled', boolVal);
         }
-        
-        
+
+
     }
 }
 
@@ -235,10 +237,10 @@ function deleteVid()
     });
 }
 
-function getTrElemById(gridId,id)
+function getTrElemById(gridId, id)
 {
     var ret = undefined;
-    $.each($('#'+gridId+'>tbody>tr'), function (key, elem) { //>tr[class!="videoDetails"]
+    $.each($('#' + gridId + '>tbody>tr'), function (key, elem) { //>tr[class!="videoDetails"]
         var element = $(elem);
         if (element.data('id') === id)
         {
@@ -252,7 +254,7 @@ function getTrElemById(gridId,id)
 //Deletes video from videos grid and. Adds element to deleted grid
 function deleteVidComplete(datos, id) {
 //    Helper.deleteByPropertyAndValueInArray('idVideo', id, videos);
-    var htmlElement = getTrElemById('manageVideosTable',id);
+    var htmlElement = getTrElemById('manageVideosTable', id);
     closeDetails(htmlElement.next());
     if (htmlElement !== undefined)
     {
@@ -264,7 +266,7 @@ function deleteVidComplete(datos, id) {
         tdDivs.slideUp(1500, function () {
             htmlElement.remove();
         });
-        
+
     }
     var arrElement = Helper.getItemFromArray(videos, id, 'idVideo');
     arrElement.deleted = 1;
@@ -275,7 +277,7 @@ function deleteVidComplete(datos, id) {
 function videoDetails() {
     var vidId = $(this).data('id');
     var table = Helper.getParentElement(this, 'table');
-    var tr = getTrElemById($(table).attr('id'),vidId);
+    var tr = getTrElemById($(table).attr('id'), vidId);
     if (closeDetails(tr.next()))
     {
         $(this).html('Comments &#x25BC;');

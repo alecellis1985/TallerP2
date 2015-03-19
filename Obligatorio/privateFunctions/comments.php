@@ -18,12 +18,12 @@ if ($_SESSION['ingreso'])
             $count = $conn->cantidadRegistros();
             $smarty->assign("commentsCount", $count);
             $smarty->assign("comments", $comments);
-                $smarty->display("private/commentsPrivate.tpl");
-            } else {
-                echo "Error, please refresh the web.";
-            }
-            $conn->desconectar();
+            $smarty->display("private/commentsPrivate.tpl");
+        } else {
+            echo "Error, please refresh the web.";
         }
+        $conn->desconectar();
+    }
 } else {
     echo "Unauthorized user";
 }

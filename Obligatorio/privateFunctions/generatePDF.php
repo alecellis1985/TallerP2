@@ -1,5 +1,4 @@
 <?php
-
 require('../includes/PDFCreator.php');
 require_once("../includes/class.Conexion.BD.php");
 require_once("../config/parametros.php");
@@ -26,7 +25,7 @@ if ($_SESSION['ingreso']) {
                 $pdf->AddPage();
                 $pdf->FancyTable($header, $data);
 
-                $header2 = array('Video Id', 'Title', 'Rating', 'Featured?', 'Deleted?','Views', 'Votes');
+                $header2 = array('Video Id', 'Title', 'Rating', 'Featured?', 'Deleted?', 'Views', 'Votes');
                 // Data loading
                 $data = $pdf->LoadData($videosPerRating, false, "Videos per Rating");
                 $pdf->SetFont('Arial', '', 14);
@@ -43,9 +42,7 @@ if ($_SESSION['ingreso']) {
         header('HTTP/1.1 400 Bad Request');
         echo "System Error";
     }
-}
-else
-{
+} else {
     echo "Unauthorized";
 }
 

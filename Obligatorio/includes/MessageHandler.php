@@ -15,6 +15,11 @@ class MessageHandler
         return json_encode(Array('success'=>true,'msg'=>$message,'data'=>$data == null ? Array() : $data));
     }
     
+    public static function getErrorResponse($message)
+    {
+        return json_encode(Array('success'=>false,'errorMsj'=>$message));
+    }
+    
     public static function getDBErrorResponse()
     {
         return json_encode(Array('success'=>false,'msg'=>self::DbErrorMsg,'data'=>Array()));

@@ -34,18 +34,20 @@ if ($_SESSION['ingreso']) {
                     $commentsPages = ceil((int) $commentsCount[0][0] / CANTPAGCOMMENTS);
                     $smarty->assign("commentsPages", $commentsPages);
                     $smarty->display("private/videoDetailsPrivate.tpl");
+                    $conn->desconectar();
                 } else {
+                    $conn->desconectar();
                     echo "SQL ERROR.";
                 }
             } else {
+                $conn->desconectar();
                 echo "SQL ERROR";
             }
         } else {
+            $conn->desconectar();
             echo "SQL ERROR";
         }
     } else {
-    //    $result = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
-    //    echo json_encode($result);
         echo "SQL ERROR.";
     }  
 }
