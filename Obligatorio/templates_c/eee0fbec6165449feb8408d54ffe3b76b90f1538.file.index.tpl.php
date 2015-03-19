@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 14:54:09
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-17 23:32:21
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2489954f1d0de60cbf6-39540379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eee0fbec6165449feb8408d54ffe3b76b90f1538' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1426614487,
+      1 => 1426624072,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <head>
         <?php echo $_smarty_tpl->getSubTemplate ("head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
+        <link href="resources/css/starRating.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navigation -->
@@ -37,7 +38,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <div class="container contentContainer" style="margin-top: 50px;">
             <div class="row bottom bottom-buffer">
-                <div class="col-md-6 ">
+                <div class="col-md-6 col-md-offset-1 ">
                     <h2><i>MyCompany films corp.</i></h2>
                     <div>
                         <p> We are a film producer company that offer our clients high quality custom videos for their business. You can 
@@ -48,27 +49,40 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-md-offset-2">
+                <div class="col-md-2 col-md-offset-2">
                     <img class="companyLogo"src='resources/img/companyLogo.png' alt='Blast off with Bootstrap' />
                 </div>
 
             </div>
             <div class="row">
                 <?php if ($_smarty_tpl->tpl_vars['videoExists']->value) {?>
-                    <div class="col-md-6 portfolio-item">
+                    <div class="col-md-5  col-md-offset-1 portfolio-item">
                         <div class="videoPlayer" id="videoPlayer<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['idVideo'];?>
 " data-url="<?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['url'];?>
 "></div>
                         <h3>
-                            <a href="#"><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['client'];?>
+                            <a href="#" class="disableClick"><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['client'];?>
 </a>
                         </h3>
                         <!-- TODO: Cambiar esto por rating con estrellas y dejar la descripcion en la siguiente columna-->
-                        <p><?php echo $_smarty_tpl->tpl_vars['mainVideo']->value['description'];?>
-</p>
+                        <p>
+                            <span class="star-rating">
+                                <input type="radio" name="ratingStatic" value="1" class="disableClick">
+                                <i <?php if ($_smarty_tpl->tpl_vars['mainVideo']->value['rating']>=1) {?> class="rated" <?php }?>></i>
+                                <input type="radio" name="ratingStatic" value="2" class="disableClick">
+                                <i <?php if ($_smarty_tpl->tpl_vars['mainVideo']->value['rating']>=2) {?> class="rated" <?php }?>></i>
+                                <a href="videoDetails.tpl"></a>
+                                <input type="radio" name="ratingStatic" value="3" class="disableClick">
+                                <i <?php if ($_smarty_tpl->tpl_vars['mainVideo']->value['rating']>=3) {?> class="rated" <?php }?>></i>
+                                <input type="radio" name="ratingStatic" value="4" class="disableClick">
+                                <i <?php if ($_smarty_tpl->tpl_vars['mainVideo']->value['rating']>=4) {?> class="rated" <?php }?>></i>
+                                <input type="radio" name="ratingStatic" value="5" class="disableClick">
+                                <i <?php if ($_smarty_tpl->tpl_vars['mainVideo']->value['rating']>=5) {?> class="rated" <?php }?>></i>
+                            </span>
+                        </p>
                     </div>
 
-                    <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4 col-md-offset-1">
                         <h3>
                             <i>MyCompany films</i> featured Video
                         </h3>

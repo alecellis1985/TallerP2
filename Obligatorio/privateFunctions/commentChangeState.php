@@ -26,6 +26,9 @@ if ($_SESSION['ingreso']) {
         $conn->desconectar();
         echo $response;
     }
-} else {
-    echo "Unauthorized";
+}
+else
+{
+    header('HTTP/1.1 401 Unauthorized Request');
+    echo MessageHandler::getDBUnauthorizedResponse();
 }

@@ -9,6 +9,7 @@ $url = $_POST['url'];
 $releaseDate = $_POST['releaseDate'];
 $description = $_POST['description'];
 $title = $_POST['title'];
+$featured = $_POST['featured'];
 $sessionExists = session_start();
 if ($sessionExists && $_SESSION['ingreso']) {
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
@@ -45,9 +46,10 @@ if ($sessionExists && $_SESSION['ingreso']) {
         header('HTTP/1.1 400 Bad Request');
         echo MessageHandler::getDBErrorResponse();
     } else {
-        echo $response;
         $conn->desconectar();
+        echo $response;
     }
 } else {
-    echo "Unauthorized";
+    header('HTTP/1.1 401 Unauthorized Request');
+    echo MessageHandler::getDBUnauthorizedResponse();
 }

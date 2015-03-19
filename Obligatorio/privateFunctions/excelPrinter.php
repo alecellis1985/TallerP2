@@ -1,13 +1,11 @@
 <?php
 
-$sessionExists = session_start();
 require('../includes/ExcelArrPrinter.php');
 require_once("../includes/class.Conexion.BD.php");
 require_once("../config/parametros.php");
 
-
-if ($sessionExists && $_SESSION['ingreso']) {
-
+session_start();
+if ($_SESSION['ingreso']) {
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
     if ($conn->conectar()) {
         $sqlVideosPerRating = "SELECT * FROM videos ORDER BY rating DESC";

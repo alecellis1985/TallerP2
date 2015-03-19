@@ -3,8 +3,9 @@
 require_once("../config/parametros.php");
 require_once("../includes/class.Conexion.BD.php");
 require_once("../includes/MessageHandler.php");
-$sessionExists = session_start();
-if ($sessionExists && $_SESSION['ingreso']) {
+session_start();
+if($_SESSION['ingreso'])
+{
     $idVideo = $_POST['idVideo'];
     $title = $_POST['title'];
     $client = $_POST['client'];
@@ -45,6 +46,9 @@ if ($sessionExists && $_SESSION['ingreso']) {
         $conn->desconectar();
         echo $response;
     }
-} else {
-    echo "Unauthorized";
+}
+else
+{
+    header('HTTP/1.1 401 Unauthorized Request');
+    echo MessageHandler::getDBUnauthorizedResponse();
 }    
