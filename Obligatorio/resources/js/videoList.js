@@ -5,8 +5,10 @@ function start() {
     $(".videoListPagination .nextPage").click(goToPage);
     $(".videoListPagination .lastPage").click(goToPage);
     $(".videoListPagination .paginationBtn").click(goToPage);
-    $(".star-rating input").click(rateVideo);
+    
 }
+
+$(document).on("click",".star-rating input", rateVideo);
 
 function goToPage(e) {
     e.preventDefault();
