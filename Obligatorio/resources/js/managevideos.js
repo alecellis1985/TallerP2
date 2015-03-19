@@ -30,17 +30,31 @@ function addVid()
 function saveVid(e)
 {
     e.preventDefault();
-    //Date Validation
-    var date = new Date();
-    var month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
-    var day = (date.getDate()) < 10 ? '0' + (date.getDate()) : (date.getDate());
-    ;
-    if ($('input[name="releaseDate"]').val() < date.getFullYear() + '-' + month + '-' + day)
+    var action = $(e.target).attr('action');
+    if (action === "addVideo.php")
     {
-        $("#videoFormErrors").text("Invalid date. Please make sure the date selected is after or equal to "+ day +'-'+month+'-'+date.getFullYear());
-        $("#videoFormErrors").parent().removeClass("hide");
-        return;
+        //Date Validation
+        var date = new Date();
+        var month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var day = (date.getDate()) < 10 ? '0' + (date.getDate()) : (date.getDate());
+        if ($('input[name="releaseDate"]').val() < date.getFullYear() + '-' + month + '-' + day)
+        {
+            $("#videoFormErrors").text("Invalid date. Please make sure the date selected is after or equal to "+ day +'-'+month+'-'+date.getFullYear());
+            $("#videoFormErrors").parent().removeClass("hide");
+            return;
+        }
     }
+    else
+    {
+        var limitEditDate = '2000-01-01';
+        if ($('input[name="releaseDate"]').val() < limitEditDate)
+        {
+            $("#videoFormErrors").text("Invalid date. Please make sure the date selected is after or equal to "+ limitEditDate);
+            $("#videoFormErrors").parent().removeClass("hide");
+            return;
+        }
+    }
+    
     var videoId = $('input[name="url"]').val().split('/').pop();
     var url = 'http://gdata.youtube.com/feeds/api/videos/' + videoId;
     $.ajax({
