@@ -56,7 +56,7 @@ if ($conn->conectar()) {
                     $response = MessageHandler::getErrorResponse("Internet connection error, please reload the page.");
                 }
             } else {
-                $result = array("success" => false, "errorMsj" => "SQL error.", "data" => $paramsIns);
+                $result = array("success" => false, "msg" => "Please try again, data error.", "data" => $paramsIns);
                 echo json_encode($result);
             }
         }

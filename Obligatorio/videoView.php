@@ -7,7 +7,7 @@ require_once("config/parametros.php");
 $videoId = intval($_POST['videoId']);
 
 $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
-$ERROR = array("success" => false, "errorMsj" => "Internet connection error, please reload the page.");
+$ERROR = array("success" => false, "msg" => "Internet connection error, please reload the page.");
 if ($conn->conectar()) {
     $sql = "SELECT idVideo, views FROM videos WHERE idVideo = :videoId";
     $params = array();

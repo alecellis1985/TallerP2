@@ -130,7 +130,7 @@ function processSaveComment(data) {
         reloadComments();
         $('#commentForm .btn-default').trigger('click');
     } else {
-        alert(data.errorMsj);
+        alert(data.msg);
     }
 }
 

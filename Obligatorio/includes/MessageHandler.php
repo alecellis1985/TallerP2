@@ -17,7 +17,7 @@ class MessageHandler
     
     public static function getErrorResponse($message)
     {
-        return json_encode(Array('success'=>false,'errorMsj'=>$message));
+        return json_encode(Array('success'=>false,'msg'=>$message));
     }
     
     public static function getDBErrorResponse()

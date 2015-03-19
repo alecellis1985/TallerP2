@@ -82,7 +82,6 @@ function completeSaveVideo(targetBtn) {
         timeout: 4000,
         success: function (datos)
         {
-            debugger;
             if (datos.success) {
                 $('#closeVideoModal').trigger('click');
                 if (action === "editVideo.php")
@@ -99,7 +98,7 @@ function completeSaveVideo(targetBtn) {
                 Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
                 
             } else {
-                $("#videoFormErrors").text(datos.errorMsj);
+                $("#videoFormErrors").text(datos.msg);
                 $("#videoFormErrors").parent().removeClass("hide");
             }
         },

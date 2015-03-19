@@ -83,7 +83,7 @@ function processLogIn(result) {
         $('#logInForm .btn-default').trigger('click');
         Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], 'Hello&nbsp' + Helper.getCookie('usuario') + ' you have been successfuly logged in.');
     } else {
-        $("#logInErrors").text(result.errorMsj);
+        $("#logInErrors").text(result.msg);
         $("#logInErrors").parent().removeClass("hide");
     }
 }
