@@ -119,26 +119,11 @@ function completeAddVideo(datos)
         {
             videos[vidLength].destacado = 0;
         }
+        $(".glyphicon-ok[data-id='destacado']").removeClass("glyphicon-ok").addClass("glyphicon-remove");
     }
     
     videos.push(datos.data[0]);
     editGridId = 'manageVideosTable';
-    
-    
-    $.each($('#' + editGridId + ' tbody>tr'), function (key, elem) {
-        var element = $(elem);
-        if(datos.data[0].destacado == 1)
-        {
-            $.each(element.find('div'), function (key2, elem2) {
-                var jqElem = $(elem2);
-                if(jqElem.data('id')=='destacado')
-                {
-                    jqElem.removeClass('glyphicon-ok').addClass('glyphicon-remove');
-                }
-            });
-        }
-    });
-        
     $('#manageVideosTable tbody').append(generateTr(datos.data[0]));
 
 }
@@ -153,11 +138,6 @@ function generateTr(data)
     ratingSpan += '</span>';
     var destacadoClass = data.destacado == 1 ? 'glyphicon-ok' : 'glyphicon-remove';
     var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';
-    if (data.featured) {
-        var currentFeatured = $(".glyphicon-ok[data-id='destacado']");
-        currentFeatured.removeClass("glyphicon-ok");
-        currentFeatured.addClass("glyphicon-remove");
-    }
 
     var deleteBtn = '';
     if (editGridId === 'manageVideosTable')
@@ -208,6 +188,7 @@ function completeEditVideo(datos, modifiedData, tableId)
         {
             videos[vidLength].destacado = 0;
         }
+        $(".glyphicon-ok[data-id='destacado']").removeClass("glyphicon-ok").addClass("glyphicon-remove");
     }
     
     var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
@@ -220,16 +201,6 @@ function completeEditVideo(datos, modifiedData, tableId)
             if (element.data('id') == modifiedData.idVideo)
             {
                 element.replaceWith(generateTr(arrElement));
-            }
-            else if(modifiedData.featured)
-            {
-                $.each(element.find('div'), function (key2, elem2) {
-                    var jqElem = $(elem2);
-                    if(jqElem.data('id')=='destacado')
-                    {
-                        jqElem.removeClass('glyphicon-ok').addClass('glyphicon-remove');
-                    }
-                });
             }
         });
     }
@@ -268,6 +239,13 @@ function deleteVid()
 {
     $(this).addClass("disableClick");
     var videoId = $(this).data('id');
+    var arrElement = Helper.getItemFromArray(videos, videoId, 'idVideo');
+    if(arrElement.destacado == 1)
+    {
+        Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], "Featured videos can not be deleted, please put another video as featured and try again.");
+        return;
+    }
+    
     $.ajax({
         type: 'POST',
         url: '../privateFunctions/deleteVideo',
@@ -276,7 +254,7 @@ function deleteVid()
         data: {'idVideo': videoId},
         success: function (datos)
         {
-            deleteVidComplete(datos, videoId);
+            deleteVidComplete(arrElement, videoId);
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
         error: function (datos)
@@ -301,8 +279,7 @@ function getTrElemById(gridId, id)
 }
 
 //Deletes video from videos grid and. Adds element to deleted grid
-function deleteVidComplete(datos, id) {
-//    Helper.deleteByPropertyAndValueInArray('idVideo', id, videos);
+function deleteVidComplete(arrElement, id) {
     var htmlElement = getTrElemById('manageVideosTable', id);
     closeDetails(htmlElement.next());
     if (htmlElement !== undefined)
@@ -317,7 +294,7 @@ function deleteVidComplete(datos, id) {
         });
 
     }
-    var arrElement = Helper.getItemFromArray(videos, id, 'idVideo');
+    
     arrElement.deleted = 1;
     editGridId = '';
     $('#manageVideosTableDeleted tbody').append(generateTr(arrElement));
