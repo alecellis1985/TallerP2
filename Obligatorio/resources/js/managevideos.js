@@ -54,8 +54,8 @@ function saveVid(e)
             return;
         }
     }
-    
-    var videoId = $('input[name="url"]').val().split('/').pop();
+    var splitUrl = $('input[name="url"]').val().split('v=');
+    var videoId = splitUrl[splitUrl.length - 1];
     var url = 'http://gdata.youtube.com/feeds/api/videos/' + videoId;
     $.ajax({
         type: "GET",
@@ -77,10 +77,13 @@ function saveVid(e)
 }
 
 function completeSaveVideo(targetBtn) {
+    var splitUrl = $('input[name="url"]').val().split('v=');
+    var url = splitUrl[splitUrl.length - 1];
+    
     var modifiedData = {
         idVideo: $('#idVideo').val(),
         client: $('input[name="client"]').val(),
-        url: $('input[name="url"]').val().split('/').pop(),
+        url: url,
         releaseDate: $('input[name="releaseDate"]').val(),
         description: $('textarea[name="description"]').val().replace("*", ""),
         title: $('input[name="title"]').val(),
