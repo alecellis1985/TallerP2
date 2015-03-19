@@ -23,23 +23,20 @@ if($_SESSION['ingreso'])
         }
         else
         {
-            $featuredInt = $featured ? 1 : 0;
+            $destacado = $featured ? 1 : 0;
             if ($featured) {
                 $sqlUpdateAll = "UPDATE videos SET destacado = 0";
             }
             $sql = "INSERT INTO videos (client, url, title, releaseDate, description, destacado, views, deleted)";
-            $sql .= " VALUES (:client, :url, :title, :releaseDate, :description, destacado = :featured, 0, 0)";
+            $sql .= " VALUES (:client, :url, :title, :releaseDate, :description, :destacado, 0, 0)";
             $parametros = array();
             $parametros[0] = array("client", $client, "STRING", 45);
             $parametros[1] = array("url", $url, "STRING", 150);
             $parametros[2] = array("title", $title, "STRING", 45);
             $parametros[3] = array("releaseDate", $releaseDate, "STRING", 250);
             $parametros[4] = array("description", $description, "STRING", 250);
-            $parametros[5] = array("featured", $featuredInt, "INT");
-            /*
-             * TODO: check if video already exists
-             *          */
-            if($featured)
+            $parametros[5] = array("destacado", $destacado, "INT");
+            if($destacado)
             {
                 $sqlUpdateAll = "UPDATE videos SET destacado = 0";
                 if($conn->consulta($sqlUpdateAll))

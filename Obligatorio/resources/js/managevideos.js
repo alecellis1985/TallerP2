@@ -24,6 +24,7 @@ function addVid()
     $('#videoTitle').html('Add new video');
     $("#videoFormErrors").parent().addClass("hide");
     $('#videofrm')[0].reset();
+    $('#videofrm input[name="destacado"]').prop('disabled', false);
 }
 
 function saveVid(e)
@@ -88,6 +89,7 @@ function completeSaveVideo(targetBtn) {
                 {
                     var htmlElement = getTrElemById(editGridId, parseInt(modifiedData.idVideo));
                     closeDetails(htmlElement.next());
+                    modifiedData.destacado = modifiedData.featured ? 1 : 0;
                     completeEditVideo(datos, modifiedData, editGridId);
                 }
                 else
@@ -111,8 +113,33 @@ function completeSaveVideo(targetBtn) {
 
 function completeAddVideo(datos)
 {
+    if(datos.data[0].destacado == 1)
+    {
+        var vidLength = videos.length;
+        while(vidLength--)
+        {
+            videos[vidLength].destacado = 0;
+        }
+    }
+    
     videos.push(datos.data[0]);
     editGridId = 'manageVideosTable';
+    
+    
+    $.each($('#' + editGridId + ' tbody>tr'), function (key, elem) {
+        var element = $(elem);
+        if(datos.data[0].destacado == 1)
+        {
+            $.each(element.find('div'), function (key2, elem2) {
+                var jqElem = $(elem2);
+                if(jqElem.data('id')=='destacado')
+                {
+                    jqElem.removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                }
+            });
+        }
+    });
+        
     $('#manageVideosTable tbody').append(generateTr(datos.data[0]));
 
 }
@@ -125,7 +152,7 @@ function generateTr(data)
         ratingSpan += '<i></i>';
     }
     ratingSpan += '</span>';
-    var destacadoClass = data.featured ? 'glyphicon-ok' : 'glyphicon-remove';
+    var destacadoClass = data.destacado == 1 ? 'glyphicon-ok' : 'glyphicon-remove';
     var deletedClass = data.deleted == 1 ? 'glyphicon-remove' : 'glyphicon-ok';
     if (data.featured) {
         var currentFeatured = $(".glyphicon-ok[data-id='destacado']");
@@ -161,8 +188,6 @@ function generateTr(data)
             '</td>' +
             '<td>' +
             deleteBtn +
-//            '<div><button type="button" class="btn btn-danger deleteVid" data-id="' + data.idVideo + '">Delete</button></div>'+
-
             '</td>' +
             '</tr>';
     var trElem = $(tr);
@@ -177,6 +202,15 @@ function generateTr(data)
 
 function completeEditVideo(datos, modifiedData, tableId)
 {
+    if(modifiedData.featured)
+    {
+        var vidLength = videos.length;
+        while(vidLength--)
+        {
+            videos[vidLength].destacado = 0;
+        }
+    }
+    
     var arrElement = Helper.getItemFromArray(videos, modifiedData.idVideo, 'idVideo');
     if (arrElement != -1)
     {
@@ -188,13 +222,22 @@ function completeEditVideo(datos, modifiedData, tableId)
             {
                 element.replaceWith(generateTr(arrElement));
             }
+            else if(modifiedData.featured)
+            {
+                $.each(element.find('div'), function (key2, elem2) {
+                    var jqElem = $(elem2);
+                    if(jqElem.data('id')=='destacado')
+                    {
+                        jqElem.removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                    }
+                });
+            }
         });
     }
 }
 
 function editVid()
 {
-
     var videoId = $(this).data('id');
     var table = Helper.getParentElement(this, 'table');
     editGridId = $(table).attr('id');
@@ -219,8 +262,6 @@ function editVid()
             var boolVal = arrElement.destacado === "1" ? true : false;
             $('#videofrm input[name="destacado"]').prop('checked', boolVal).prop('disabled', boolVal);
         }
-
-
     }
 }
 

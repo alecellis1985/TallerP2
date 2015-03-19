@@ -24,6 +24,7 @@ class MessageHandler
     {
         return json_encode(Array('success'=>false,'msg'=>self::DbErrorMsg,'data'=>Array()));
     }
+    
     public static function getDBUnauthorizedResponse()
     {
         return json_encode(Array('success'=>false,'msg'=>self::DbUnauthorizedMsg,'data'=>Array()));
