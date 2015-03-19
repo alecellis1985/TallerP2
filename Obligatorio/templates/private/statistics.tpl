@@ -34,7 +34,7 @@
                     <div>
                         <table id="videosPerRatingTable" class="table table-striped">
                             <thead>
-                            <th >Rating</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th width="110px">Release Date</th><th>Description</th><th>Active</th>
+                            <th >Rating</th><th>Client</th><th>Views</th><th>Url</th><th>Featured</th><th width="110px">Release Date</th><th>Description</th><th>Active</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videosPerRating item=video}
@@ -66,7 +66,7 @@
                     <div>
                         <table id="videosPerCommentTable" class="table table-striped">
                             <thead>
-                            <th>Comments</th><th>Client</th><th>Views</th><th>Url</th><th>Prominent</th><th>Active</th><th width="110px">Release Date</th><th>Description</th>
+                            <th>Comments</th><th>Client</th><th>Views</th><th>Url</th><th>Featured</th><th>Active</th><th width="110px">Release Date</th><th>Description</th>
                             </thead>
                             <tbody>
                                 {foreach from=$videosPerComment item=video}
