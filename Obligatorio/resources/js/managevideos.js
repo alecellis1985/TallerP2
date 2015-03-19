@@ -72,7 +72,6 @@ function completeSaveVideo(targetBtn) {
         title: $('input[name="title"]').val(),
         featured: $('input[name="destacado"]').prop("checked")
     };
-
     var action = $(targetBtn).attr('action');
     var url = '../privateFunctions/' + action;
     $.ajax({

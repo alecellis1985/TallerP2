@@ -9,6 +9,7 @@ $releaseDate = $_POST['releaseDate'];
 $description = $_POST['description'];
 $title = $_POST['title'];
 $featured = $_POST['featured'];
+
 session_start();
 if($_SESSION['ingreso'])
 {
@@ -23,7 +24,7 @@ if($_SESSION['ingreso'])
         }
         else
         {
-            $destacado = $featured ? 1 : 0;
+            $destacado = $featured == 'true' ? 1 : 0;
             if ($featured) {
                 $sqlUpdateAll = "UPDATE videos SET destacado = 0";
             }
