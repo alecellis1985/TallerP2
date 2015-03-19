@@ -9,7 +9,7 @@ $url = $_POST['url'];
 $releaseDate = $_POST['releaseDate'];
 $description = $_POST['description'];
 $title = $_POST['title'];
-start_session();
+session_start();
 if($_SESSION['ingreso'])
 {
     $conn = new ConexionBD(DRIVER,SERVIDOR,BASE,USUARIO,CLAVE);
@@ -51,5 +51,6 @@ if($_SESSION['ingreso'])
 }
 else
 {
-    echo "Unauthorized";
+    header('HTTP/1.1 401 Unauthorized Request');
+    echo MessageHandler::getDBUnauthorizedResponse();
 }

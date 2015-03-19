@@ -1,10 +1,10 @@
 <?php
 
-session_start();
 require('../includes/PDFCreator.php');
 require_once("../includes/class.Conexion.BD.php");
 require_once("../config/parametros.php");
 require_once("../includes/MessageHandler.php");
+session_start();
 $response = null;
 if ($_SESSION['ingreso']) {
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);

@@ -7,7 +7,7 @@ function initFn()
     $('.showVidData').click(showVidDetails);
 }
 
-function showVidDetails()
+function showVidDetails(e)
 {
     var data = {idVideo: $(this).data('vidid')};
     $.ajax({
@@ -39,6 +39,7 @@ function showVidDetails()
         },
         error: function (datos)
         {
+            $('#closeVideoModal').trigger('click');
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
         }
     }).done(function (e) {

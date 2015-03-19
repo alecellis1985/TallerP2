@@ -1,4 +1,4 @@
-																   $(document).ready(startVideos);
+$(document).ready(startVideos);
 
 function startVideos()
 {
@@ -35,7 +35,6 @@ function saveVid(e)
     var day = (date.getDate())<10?'0'+(date.getDate()):(date.getDate());;
     if($('input[name="releaseDate"]').val() < date.getFullYear() +'-'+ month +'-'+ day)
     {
-        
         $("#videoFormErrors").text("Invalid date. Please make sure the date selected is after or equal to "+ day +'-'+month+'-'+date.getFullYear());
         $("#videoFormErrors").parent().removeClass("hide");
         return;
@@ -231,7 +230,6 @@ function deleteVid()
         },
         error: function (datos)
         {
-//            deleteVidComplete(datos,videoId);
             Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], datos.responseJSON.msg);
         }
     });
@@ -299,7 +297,10 @@ function videoDetails() {
             processVideoDetails(data, tr);
         },
         timeout: 4000,
-        error: problemas,
+        error: function(data){
+            //for HTML data types
+           Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[1], JSON.parse(data.responseText).msg);
+        },
         url: "../privateFunctions/videoDetailsPrivate.php",
         data: data
     }).done(function (e) {
@@ -317,9 +318,6 @@ function closeDetails(tr)
         return true;
     }
     return false;
-}
-
-function problemas() {
 }
 
 function processVideoDetails(data, tr) {

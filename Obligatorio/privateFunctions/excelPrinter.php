@@ -1,11 +1,10 @@
 <?php
 
-session_start();
 require('../includes/ExcelArrPrinter.php');
 require_once("../includes/class.Conexion.BD.php");
 require_once("../config/parametros.php");
 
-
+session_start();
 if ($_SESSION['ingreso']) {
     
     $conn = new ConexionBD(DRIVER, SERVIDOR, BASE, USUARIO, CLAVE);
