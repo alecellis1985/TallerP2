@@ -40,7 +40,7 @@ function saveVid(e)
         $("#videoFormErrors").parent().removeClass("hide");
         return;
     }
-    var videoId = $('input[name="url"]').val();
+    var videoId = $('input[name="url"]').val().split('/').pop();
     var url = 'http://gdata.youtube.com/feeds/api/videos/' + videoId;
     $.ajax({
         type: "GET",
@@ -64,7 +64,7 @@ function completeSaveVideo(targetBtn) {
     var modifiedData = {
         idVideo: $('#idVideo').val(),
         client: $('input[name="client"]').val(),
-        url: $('input[name="url"]').val(),
+        url: $('input[name="url"]').val().split('/').pop(),
         releaseDate: $('input[name="releaseDate"]').val(),
         description: $('textarea[name="description"]').val().replace("*", ""),
         title: $('input[name="title"]').val(),
@@ -105,6 +105,7 @@ function completeSaveVideo(targetBtn) {
 function completeAddVideo(datos)
 {
     videos.push(datos.data[0]);
+    editGridId = 'manageVideosTable';
     $('#manageVideosTable tbody').append(generateTr(datos.data[0]));
 }
 
