@@ -50,6 +50,7 @@ function saveVid(e)
         success: function (data) {
             $("#videoFormErrors").parent().addClass("hide");
             completeSaveVideo(e.target);
+
         },
         error: function (data) {
             $("#videoFormErrors").text("Invalid video URL. Please make sure the video exists on YouTube.com");
@@ -73,7 +74,6 @@ function completeSaveVideo(targetBtn) {
 
     var action = $(targetBtn).attr('action');
     var url = '../privateFunctions/' + action;
-    $('#closeVideoModal').trigger('click');
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -82,18 +82,26 @@ function completeSaveVideo(targetBtn) {
         timeout: 4000,
         success: function (datos)
         {
-            if (action === "editVideo.php")
-            {
-                var htmlElement = getTrElemById(editGridId, parseInt(modifiedData.idVideo));
-                closeDetails(htmlElement.next());
-                completeEditVideo(datos, modifiedData, editGridId);
+            debugger;
+            if (datos.success) {
+                $('#closeVideoModal').trigger('click');
+                if (action === "editVideo.php")
+                {
+                    var htmlElement = getTrElemById(editGridId, parseInt(modifiedData.idVideo));
+                    closeDetails(htmlElement.next());
+                    completeEditVideo(datos, modifiedData, editGridId);
+                }
+                else
+                if (action === "addVideo.php")
+                {
+                    completeAddVideo(datos);
+                }
+                Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
+                
+            } else {
+                $("#videoFormErrors").text(datos.errorMsj);
+                $("#videoFormErrors").parent().removeClass("hide");
             }
-            else
-            if (action === "addVideo.php")
-            {
-                completeAddVideo(datos);
-            }
-            Helper.alertMsg($('#alerts'), Helper.getAlertTypes()[0], datos.msg);
         },
         error: function (datos)
         {
@@ -107,6 +115,7 @@ function completeAddVideo(datos)
     videos.push(datos.data[0]);
     editGridId = 'manageVideosTable';
     $('#manageVideosTable tbody').append(generateTr(datos.data[0]));
+
 }
 
 function generateTr(data)
