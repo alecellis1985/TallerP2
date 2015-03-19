@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generación: 17-03-2015 a las 14:15:04
+-- Tiempo de generación: 19-03-2015 a las 19:11:50
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -28,14 +28,12 @@ CREATE TABLE `comments` (
   `dateTime` datetime NOT NULL,
   `public` binary(1) NOT NULL,
   PRIMARY KEY  (`idComments`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- 
 -- Volcar la base de datos para la tabla `comments`
 -- 
 
-INSERT INTO `comments` VALUES (1, 2, 'juanchota', '127.0.0.1', 'vhvggvjh', '2015-03-17 01:16:23', 0x31);
-INSERT INTO `comments` VALUES (2, 3, 'Julio', '127.0.0.1', 'Comentario Comentario Comentario Comentario Comentario Comentario Comentario Comentario Comentario C', '2015-03-17 13:42:40', 0x31);
 
 -- --------------------------------------------------------
 
@@ -54,8 +52,6 @@ CREATE TABLE `ratings` (
 -- Volcar la base de datos para la tabla `ratings`
 -- 
 
-INSERT INTO `ratings` VALUES (1, 4, '127.0.0.1');
-INSERT INTO `ratings` VALUES (2, 5, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -95,13 +91,20 @@ CREATE TABLE `videos` (
   `deleted` binary(1) NOT NULL,
   PRIMARY KEY  (`idVideo`),
   UNIQUE KEY `url_UNIQUE` (`url`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 -- 
 -- Volcar la base de datos para la tabla `videos`
 -- 
 
-INSERT INTO `videos` VALUES (1, 0, 'ikMKJwbMQ_M', 0, 'Will Farrell Bush & Bush', 'Will Farrell stars in this new video. This is the description of the videos', 'Will Farrell', '2015-03-04', 4.00, 1, 0x31);
-INSERT INTO `videos` VALUES (3, 0, 'wViILXQfX7Y', 0, 'Title', 'dawad', 'Client', '1991-02-02', 0.00, 0, 0x30);
-INSERT INTO `videos` VALUES (2, 1, 'dcPD7AmDu2s', 1, 'Juanchoot', 'dwadawdawdawd', 'Elvis', '2015-03-07', 5.00, 1, 0x30);
+INSERT INTO `videos` VALUES (1, 1, 'F14n63OM3go', 0, 'Bordo vs 12', 'Bordo vs 12', 'Bordo vs 12', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (2, 0, 'ArislVlGea4', 0, 'Bordo vs Yaguari', 'Bordo vs Yaguari', 'Bordo vs Yaguari', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (3, 0, 'mJVDeIwSEnw', 0, 'Bordo vs Wanderers', 'Bordo vs Wanderers', 'Bordo vs Wanderers', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (4, 0, 'CmWaRy31eSA', 0, 'Bordo vs Matadero', 'Bordo vs Matadero', 'Bordo vs Matadero', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (5, 0, 'DlJEt2KU33I', 0, '2014 World Cup', '2014 World Cup', 'John Oliver Brazil World Cup', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (6, 0, 'ybyxjlas4Z0', 0, 'Bordo premios', 'Bordo premios', 'Bordo Premios', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (7, 0, '00gzNbI9_a4', 0, 'Bordo vs OCC', 'Bordo vs OCC', 'Bordo vs OCC', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (8, 0, 'nnDfGTGzNDY', 0, 'Bordo vs Odonto', 'Bordo vs Odonto', 'Bordo vs Odontologia', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (9, 0, 'ZNpMJGLHDGQ', 0, 'Bordo vs Moron', 'Bordo vs Moron', 'Bordo vs Moron', '2015-10-01', 0.00, 0, 0x30);
+INSERT INTO `videos` VALUES (10, 0, 'Y0oX0xiwOv8', 0, 'Boyhood Trailer', 'Boyhood is nominated for a total of 6 Academy Awards including Best Picture, Best Actor in a Supporting Role (Ethan Hawke), Best Actress in a Supporting Role (Patricia Arquette), Best Director (Richard Linklater), Best Film Editing (Sandra Adair) and Best Original Screenplay (Richard Linklater). ', 'Boyhood | Official US Trailer | 2015 Oscar No', '2015-10-01', 0.00, 0, 0x30);
 
