@@ -12,10 +12,7 @@ $(document).on("click", "#addComment", function (e) {
     $("#modalCommentsTitle").text('Add comment to "' + videoTitle + '"' );
 });
 
-$(document).ready(start);
-function start() {
-    $(".videoDetails").click(videoDetails);
-}
+$(document).on("click",".videoDetails",videoDetails);
 
 function goToPageComment(e) {
     e.preventDefault();

@@ -4,8 +4,7 @@ function start() {
     $(".videoListPagination .previousPage").click(goToPage);
     $(".videoListPagination .nextPage").click(goToPage);
     $(".videoListPagination .lastPage").click(goToPage);
-    $(".videoListPagination .paginationBtn").click(goToPage);
-    
+    $(".videoListPagination .paginationBtn").click(goToPage);    
 }
 
 $(document).on("click",".star-rating input", rateVideo);
